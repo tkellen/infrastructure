@@ -15,16 +15,19 @@ The most common lifecycle commands `init`, `plan`, `apply` have been aliased in
 the provided Makefile. If more complex management is needed, simply `cd` into
 the appropriate `terraform/state/` folder and run terraform directly.
 
-#### make [state]:init
+#### make [state]-init
 Prepare Terraform to manage the state you've specified. This must be run once
 before the other commands are accessible.
 
-#### make [state]:plan
+#### make [state]-plan
 Compare your local configuration to the actual deployed infrastructure and
 prepare a plan to reconcile any differences.
 
-#### make [state]:apply
+#### make [state]-apply
 After verifying plan, execute the changes.
+
+#### make [init|plan|apply]
+Executing make without a specified state (e.g. `make init`) will automatically process the specified command for all states.
 
 [AWSCLI]: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
 [Terraform]: https://www.terraform.io/downloads.html

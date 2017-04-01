@@ -1,14 +1,22 @@
-STATES := $(wildcard terraform/states/*)
-STATE_FROM_TARGET = $(firstword $(subst :, ,$1))
+STATES_DIR = terraform/states
+STATES = $(notdir $(wildcard $(STATES_DIR)/*))
+STATE_FROM_TARGET = $(firstword $(subst -, ,$1))
 
-%\:init: state = $(call STATE_FROM_TARGET, $@)
-%\:init:
+init: $(addsuffix -init, $(STATES))
+plan: $(addsuffix -plan, $(STATES))
+apply: $(addsuffix -apply, $(STATES))
+
+.PHONY: %-init
+%-init: state = $(call STATE_FROM_TARGET, $@)
+%-init:
 	cd terraform/states/$(state) && terraform init
 
-%\:plan: state = $(call STATE_FROM_TARGET, $@)
-%\:plan:
+.PHONY: %-plan
+%-plan: state = $(call STATE_FROM_TARGET, $@)
+%-plan:
 	cd terraform/states/$(state) && terraform plan -out $(state).plan
 
-%\:apply: state = $(call STATE_FROM_TARGET, $@)
-%\:apply:
+.PHONY: %-apply
+%-apply: state = $(call STATE_FROM_TARGET, $@)
+%-apply:
 	cd terraform/states/$(state) && terraform apply $(state).plan
