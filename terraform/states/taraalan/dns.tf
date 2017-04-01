@@ -23,7 +23,7 @@ resource "aws_route53_record" "a" {
   }
 }
 
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "cname-www" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "CNAME"
   name = "www"

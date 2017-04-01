@@ -17,8 +17,8 @@ resource "aws_iam_policy" "main" {
       "Effect": "Allow",
       "Action": "s3:*",
       "Resource": [
-        "arn:aws:s3:::truckwriters",
-        "arn:aws:s3:::truckwriters*"
+        "arn:aws:s3:::${var.name}",
+        "arn:aws:s3:::${var.name}*"
       ]
     },
     {
