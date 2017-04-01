@@ -27,7 +27,8 @@ prepare a plan to reconcile any differences.
 After verifying plan, execute the changes.
 
 #### make [init|plan|apply]
-Executing make without a specified state (e.g. `make init`) will automatically process the specified command for all states.
+Executing make without a specified state (e.g. `make init`) will process *all*
+states. **Be careful with this!**
 
 [AWSCLI]: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
 [Terraform]: https://www.terraform.io/downloads.html
