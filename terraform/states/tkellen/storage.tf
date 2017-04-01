@@ -3,10 +3,10 @@ resource "aws_s3_bucket" "main" {
   website {
     index_document = "index.html"
   }
-  policy = "${data.template_file.public-read.rendered}"
+  policy = "${data.template_file.main-public-read.rendered}"
 }
 
-data "template_file" "public-read" {
+data "template_file" "main-public-read" {
   template = "${file("${path.module}/../../templates/public-read-policy.tpl")}"
   vars {
     bucket = "tkellen.com"

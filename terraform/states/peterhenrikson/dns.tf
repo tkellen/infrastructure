@@ -5,6 +5,30 @@ resource "aws_route53_zone" "main" {
   }
 }
 
+resource "aws_route53_record" "a-new" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "A"
+  name = "new"
+  ttl = "1"
+  records = ["${var.public_ip}"]
+}
+
+resource "aws_route53_record" "a-db" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "A"
+  name = "db"
+  ttl = "1"
+  records = ["${var.public_ip}"]
+}
+
+resource "aws_route53_record" "cname-s3" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "s3"
+  ttl = "1"
+  records = ["s3.amazonaws.com"]
+}
+
 resource "aws_route53_record" "alias" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "A"
@@ -23,13 +47,6 @@ resource "aws_s3_bucket" "redirect-www" {
   }
 }
 
-resource "aws_s3_bucket" "redirect-calendar" {
-  bucket = "calendar.${var.domain}"
-  website {
-    redirect_all_requests_to = "https://teamup.com/ks9cce28760c21cfa7/"
-  }
-}
-
 resource "aws_route53_record" "alias-www" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "A"
@@ -37,17 +54,6 @@ resource "aws_route53_record" "alias-www" {
   alias {
     name = "${aws_s3_bucket.redirect-www.website_domain}"
     zone_id = "${aws_s3_bucket.redirect-www.hosted_zone_id}"
-    evaluate_target_health = false
-  }
-}
-
-resource "aws_route53_record" "alias-calendar" {
-  zone_id = "${aws_route53_zone.main.id}"
-  type = "A"
-  name = "calendar"
-  alias {
-    name = "${aws_s3_bucket.redirect-calendar.website_domain}"
-    zone_id = "${aws_s3_bucket.redirect-calendar.hosted_zone_id}"
     evaluate_target_health = false
   }
 }

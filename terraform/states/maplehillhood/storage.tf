@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "main" {
-  bucket = "curvyline.com"
+  bucket = "${var.domain}"
   website {
     index_document = "index.html"
   }
@@ -9,6 +9,6 @@ resource "aws_s3_bucket" "main" {
 data "template_file" "main-public-read" {
   template = "${file("${path.module}/../../templates/public-read-policy.tpl")}"
   vars {
-    bucket = "curvyline.com"
+    bucket = "${var.domain}"
   }
 }

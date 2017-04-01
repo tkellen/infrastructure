@@ -5,28 +5,33 @@ resource "aws_route53_zone" "main" {
   }
 }
 
-resource "aws_route53_record" "a" {
+resource "aws_route53_record" "alias" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "A"
   name = "${var.domain}"
-  ttl = "1"
-  records = ["${var.public_ip}"]
+  alias {
+    name = "${aws_s3_bucket.main.website_domain}"
+    zone_id = "${aws_s3_bucket.main.hosted_zone_id}"
+    evaluate_target_health = false
+  }
 }
 
-resource "aws_route53_record" "a-star" {
+resource "aws_s3_bucket" "redirect-www" {
+  bucket = "www.${var.domain}"
+  website {
+    redirect_all_requests_to = "${var.domain}"
+  }
+}
+
+resource "aws_route53_record" "alias-www" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "A"
-  name = "*"
-  ttl = "1"
-  records = ["${var.public_ip}"]
-}
-
-resource "aws_route53_record" "cname-cdn" {
-  zone_id = "${aws_route53_zone.main.id}"
-  type = "CNAME"
-  name = "cdn"
-  ttl = "1"
-  records = ["d1z4a0wlojt9sd.cloudfront.net"]
+  name = "www"
+  alias {
+    name = "${aws_s3_bucket.redirect-www.website_domain}"
+    zone_id = "${aws_s3_bucket.redirect-www.hosted_zone_id}"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "mx" {
@@ -78,8 +83,11 @@ resource "aws_route53_record" "aliases-apex" {
   zone_id = "${element(aws_route53_zone.aliases.*.id, count.index)}"
   type = "A"
   name = "${element(var.alias_domains, count.index)}"
-  ttl = "1"
-  records = ["${var.public_ip}"]
+  alias {
+    name = "${element(aws_s3_bucket.alias-apex.*.website_domain, count.index)}"
+    zone_id = "${element(aws_s3_bucket.alias-apex.*.hosted_zone_id, count.index)}"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "aliases-www" {
@@ -87,6 +95,25 @@ resource "aws_route53_record" "aliases-www" {
   zone_id = "${element(aws_route53_zone.aliases.*.id, count.index)}"
   type = "A"
   name = "www"
-  ttl = "1"
-  records = ["${var.public_ip}"]
+  alias {
+    name = "${element(aws_s3_bucket.alias-www.*.website_domain, count.index)}"
+    zone_id = "${element(aws_s3_bucket.alias-www.*.hosted_zone_id, count.index)}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_s3_bucket" "alias-apex" {
+  count = "${length(var.alias_domains)}"
+  bucket = "${element(var.alias_domains, count.index)}"
+  website {
+    redirect_all_requests_to = "${var.domain}"
+  }
+}
+
+resource "aws_s3_bucket" "alias-www" {
+  count = "${length(var.alias_domains)}"
+  bucket = "www.${element(var.alias_domains, count.index)}"
+  website {
+    redirect_all_requests_to = "${var.domain}"
+  }
 }
