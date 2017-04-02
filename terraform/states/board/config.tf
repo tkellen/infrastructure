@@ -1,5 +1,29 @@
+variable "profile" {
+  default = "aevitas"
+}
+
+variable "name" {
+  default = "board"
+}
+
+variable "domain" {
+  default = "boardcrewcial.org"
+}
+
+variable "vpc_cidr_block" {
+  default = "10.100.0.0/16"
+}
+
+variable "subnet_cidr_blocks" {
+  default = [
+    "10.100.0.0/24",
+    "10.100.1.0/24",
+    "10.100.2.0/24"
+  ]
+}
+
 provider "aws" {
-  profile = "aevitas"
+  profile = "${var.profile}"
   region = "us-east-1"
 }
 
@@ -26,24 +50,4 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
   owners = ["099720109477"]
-}
-
-variable "name" {
-  default = "board"
-}
-
-variable "domain" {
-  default = "boardcrewcial.org"
-}
-
-variable "vpc_cidr_block" {
-  default = "10.100.0.0/16"
-}
-
-variable "subnet_cidr_blocks" {
-  default = [
-    "10.100.0.0/24",
-    "10.100.1.0/24",
-    "10.100.2.0/24"
-  ]
 }

@@ -1,5 +1,9 @@
+variable "profile" {
+  default = "aevitas"
+}
+
 provider "aws" {
-  profile = "aevitas"
+  profile = "${var.profile}"
   region = "us-east-1"
 }
 

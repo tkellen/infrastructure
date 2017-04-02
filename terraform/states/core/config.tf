@@ -1,5 +1,17 @@
+variable "profile" {
+  default = "aevitas"
+}
+
+variable "name" {
+  default = "aevitas"
+}
+
+variable "domain" {
+  default = "aevitas.io"
+}
+
 provider "aws" {
-  profile = "aevitas"
+  profile = "${var.profile}"
   region = "us-east-1"
 }
 
@@ -10,12 +22,4 @@ terraform {
     bucket = "tfstate-store"
     key = "core.tfstate"
   }
-}
-
-variable "name" {
-  default = "aevitas"
-}
-
-variable "domain" {
-  default = "aevitas.io"
 }

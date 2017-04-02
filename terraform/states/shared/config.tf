@@ -2,14 +2,6 @@ variable "profile" {
   default = "aevitas"
 }
 
-variable "name" {
-  default = "taraalan"
-}
-
-variable "domain" {
-  default = "taraalan.com"
-}
-
 provider "aws" {
   profile = "${var.profile}"
   region = "us-east-1"
@@ -20,6 +12,6 @@ terraform {
     profile = "aevitas"
     region = "us-east-1"
     bucket = "tfstate-store"
-    key = "taraalan.tfstate"
+    key = "shared.tfstate"
   }
 }

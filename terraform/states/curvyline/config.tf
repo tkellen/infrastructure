@@ -1,5 +1,17 @@
+variable "profile" {
+  default = "aevitas"
+}
+
+variable "name" {
+  default = "curvyline"
+}
+
+variable "domain" {
+  default = "curvyline.com"
+}
+
 provider "aws" {
-  profile = "aevitas"
+  profile = "${var.profile}"
   region = "us-east-1"
 }
 
@@ -10,12 +22,4 @@ terraform {
     bucket = "tfstate-store"
     key = "curvyline.tfstate"
   }
-}
-
-variable "name" {
-  default = "curvyline"
-}
-
-variable "domain" {
-  default = "curvyline.com"
 }
