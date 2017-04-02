@@ -10,8 +10,8 @@
       "Effect": "Allow",
       "Action": "s3:*",
       "Resource": [
-        "arn:aws:s3:::${var.bucket}",
-        "arn:aws:s3:::${var.bucket}*"
+        "arn:aws:s3:::${bucket}",
+        "arn:aws:s3:::${bucket}*"
       ]
     }
   ]
