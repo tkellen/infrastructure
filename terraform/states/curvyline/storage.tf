@@ -7,7 +7,7 @@ resource "aws_s3_bucket" "main" {
 }
 
 data "template_file" "main-public-read" {
-  template = "${file("${path.module}/../../templates/aws/public-read-policy.tpl")}"
+  template = "${file("${path.module}/../../templates/aws/public-read.tpl")}"
   vars {
     bucket = "${var.domain}"
   }

@@ -3,6 +3,6 @@ terraform {
     profile = "aevitas"
     region = "us-east-1"
     bucket = "tfstate-store"
-    key = "charfacts.tfstate"
+    key = "bikecampcook.tfstate"
   }
 }

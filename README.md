@@ -4,7 +4,7 @@
 ## Setup
 1. Install [AWSCLI], [Terraform] and Make.
 2. Ensure your local `~/.aws/credentials` has a profile entry matching the
-   "state" you wish to manage (see `terraform/states/*/providers.tf`).
+   "state" you wish to manage (see providers in `terraform/states/*/config.tf`).
 
 ### What is this?
 This repository contains the configuration for just about every web property
