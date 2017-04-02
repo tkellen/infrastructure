@@ -1,3 +1,7 @@
+variable "profile" {
+  default = "aevitas"
+}
+
 variable "name" {
   default = "midwestcompliance"
 }
@@ -12,6 +16,31 @@ variable "vpc_cidr_block" {
 
 variable "office_ip" {
   default = "24.181.153.138"
+}
+
+
+provider "aws" {
+  profile = "${var.profile}"
+  region = "us-east-1"
+}
+
+terraform {
+  backend "s3" {
+    profile = "aevitas"
+    region = "us-east-1"
+    bucket = "tfstate-store"
+    key = "midwestcompliance.tfstate"
+  }
+}
+
+data "terraform_remote_state" "shared" {
+  backend = "s3"
+  config {
+    profile = "aevitas"
+    region = "us-east-1"
+    bucket = "tfstate-store"
+    key = "shared.tfstate"
+  }
 }
 
 data "aws_availability_zones" "available" {
