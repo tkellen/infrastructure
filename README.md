@@ -8,11 +8,11 @@
 
 ### What is this?
 This repository contains the configuration for just about every web property
-I maintain personally. There is a separate terraform state for each under `terraform/states`.
+I maintain personally. There is a separate "terraform" for each under `terraform/states/`.
 
 ### Commands Available
-The most common lifecycle commands `init`, `plan`, `apply` have been aliased in
-the provided Makefile. If more complex management is needed, simply `cd` into
+The most common lifecycle commands `init`, `plan`, and `apply` have been aliased
+in the project's Makefile. If more complex management is needed, just `cd` into
 the appropriate `terraform/state/` folder and run terraform directly.
 
 #### make [state]-init
