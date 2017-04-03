@@ -8,7 +8,7 @@
 
 ### What is this?
 This repository contains the configuration for just about every web property
-I maintain personally. There is a separate "terraform" for each under `terraform/states/`.
+I maintain personally (there are about 10 left to add!). There is a separate "terraform" for each under `terraform/states/`.
 
 ### Commands Available
 The most common lifecycle commands `init`, `plan`, and `apply` have been aliased
