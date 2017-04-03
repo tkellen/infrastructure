@@ -2,7 +2,7 @@
 > my infrastructure, as code
 
 ## Setup
-1. Install [AWSCLI], [Terraform] and Make.
+1. Install [AWSCLI], [Terraform] and [Make].
 2. Ensure your local `~/.aws/credentials` has a profile entry matching the
    "state" you wish to manage (see providers in `terraform/states/*/config.tf`).
 
@@ -42,3 +42,4 @@ states. **Be careful with this!**
 
 [AWSCLI]: http://docs.aws.amazon.com/cli/latest/userguide/installing.html
 [Terraform]: https://www.terraform.io/downloads.html
+[Make]: https://www.gnu.org/software/software.html
