@@ -26,6 +26,16 @@ prepare a plan to reconcile any differences.
 #### make [state]/apply
 After verifying plan, execute the changes.
 
+#### make [state]/ssh-toggle
+This toggles SSH access on and off for instances in the supplied state. This
+is a cost saving measure. I am not currently running a load balancer in front of
+my services, nor do I want to pay for a bastion host in each VPC, nor peer VPCs
+to a single one. This may be obsoleted for some properties when this work is incorporated:
+https://github.com/tkellen/microservices-architecture-boilerplate
+
+#### make [state]/ssh-status
+Displays if SSH is enabled or disabled for a given state.
+
 #### make [init|plan|apply]
 Executing make without a specified state (e.g. `make init`) will process *all*
 states. **Be careful with this!**
