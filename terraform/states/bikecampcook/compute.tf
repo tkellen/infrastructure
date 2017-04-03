@@ -7,7 +7,7 @@
 #    "${aws_security_group.main.id}",
 #  ]
 #  tags {
-#    "Name" = "${var.name}-production"
+#    Name = "${var.name}-production"
 #  }
 #  iam_instance_profile = "${module.role.instance_profile}"
 #}

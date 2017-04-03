@@ -7,7 +7,7 @@ resource "aws_instance" "production" {
     "${aws_security_group.main.id}",
   ]
   tags {
-    "Name" = "${var.name}-production"
+    Name = "${var.name}-production"
   }
   iam_instance_profile = "${module.iam.instance_profile}"
 }
@@ -21,7 +21,7 @@ resource "aws_instance" "staging" {
     "${aws_security_group.main.id}",
   ]
   tags {
-    "Name" = "${var.name}-staging"
+    Name = "${var.name}-staging"
   }
   iam_instance_profile = "${module.iam.instance_profile}"
 }
