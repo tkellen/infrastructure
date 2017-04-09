@@ -1,0 +1,77 @@
+/**
+ * SyntaxHighlighter
+ * http://alexgorbatchev.com/SyntaxHighlighter
+ *
+ * SyntaxHighlighter is donationware. If you are using it, please donate.
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
+ *
+ * @version
+ * 3.0.83 (July 02 2010)
+ *
+ * @copyright
+ * Copyright (C) 2004-2010 Alex Gorbatchev.
+ *
+ * @license
+ * Dual licensed under the MIT and GPL licenses.
+ */
+.syntaxhighlighter a,
+.syntaxhighlighter div,
+.syntaxhighlighter code,
+.syntaxhighlighter table,
+.syntaxhighlighter table td,
+.syntaxhighlighter table tr,
+.syntaxhighlighter table tbody,
+.syntaxhighlighter table thead,
+.syntaxhighlighter table caption,
+.syntaxhighlighter textarea{font-size:14px;line-height:1.1em;font-weight:700;font: 14px "Droid Sans Mono", "Courier New", Courier, monospace;text-shadow:-1px -1px 1px #000;}
+.syntaxhighlighter.source{overflow:hidden!important;padding:5px;}
+.syntaxhighlighter .italic{font-style:italic!important;}
+.syntaxhighlighter .line{white-space:pre!important;}
+.syntaxhighlighter table caption{text-align:left!important;color:#b9bdb6!important;padding:.5em 0 .5em 1em !important;}
+.syntaxhighlighter table td.code .container{position:relative!important;}
+.syntaxhighlighter table td.code .container textarea{box-sizing:border-box!important;position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;border:none!important;background:#FFF!important;padding-left:1em!important;overflow:hidden!important;white-space:pre!important;}
+.syntaxhighlighter table td.gutter .line{text-align:right!important;padding:0 .5em 0 1em !important;}
+.syntaxhighlighter table td.code .line{padding:0 1em!important;}
+.syntaxhighlighter.nogutter td.code .container textarea,.syntaxhighlighter.nogutter td.code .line{padding-left:0!important;}
+.syntaxhighlighter.show{display:block!important;}
+.syntaxhighlighter.collapsed .toolbar{font-size:1em!important;position:static!important;width:auto!important;height:auto!important;color:#5ba1cf!important;background:#000!important;border:1px solid #435a5f!important;padding:.1em .8em 0!important;}
+.syntaxhighlighter.collapsed .toolbar span{display:inline!important;margin-right:1em!important;}
+.syntaxhighlighter.collapsed .toolbar span a{display:none!important;padding:0!important;}
+.syntaxhighlighter .toolbar{position:absolute!important;right:1px!important;top:1px!important;width:11px!important;height:11px!important;font-size:10px!important;z-index:10!important;color:#FFF!important;background:#435a5f!important;border:none!important;}
+.syntaxhighlighter .toolbar a{display:block!important;text-align:center!important;text-decoration:none!important;padding-top:1px!important;color:#FFF!important;}
+.syntaxhighlighter.ie{font-size:.9em!important;padding:1px 0!important;}
+.syntaxhighlighter.ie .toolbar{line-height:8px!important;}
+.syntaxhighlighter.ie .toolbar a{padding-top:0!important;}
+.syntaxhighlighter.printing .line.alt1 .content,.syntaxhighlighter.printing .line.alt2 .content,.syntaxhighlighter.printing .line.highlighted .number,.syntaxhighlighter.printing .line.highlighted.alt1 .content,.syntaxhighlighter.printing .line.highlighted.alt2 .content{background:none!important;}
+.syntaxhighlighter.printing .line .number{color:#bbb!important;}
+.syntaxhighlighter.printing .line .content{color:#000!important;border:none!important;}
+.syntaxhighlighter.printing a{text-decoration:none!important;}
+.syntaxhighlighter.printing .comments,.syntaxhighlighter.printing .comments a{color:#008200!important;}
+.syntaxhighlighter.printing .string,.syntaxhighlighter.printing .string a{color:blue!important;}
+.syntaxhighlighter.printing .keyword{color:#069!important;font-weight:700!important;}
+.syntaxhighlighter.printing .variable{color:#a70!important;}
+.syntaxhighlighter.printing .constants{color:#06c!important;}
+.syntaxhighlighter.printing .color3,.syntaxhighlighter.printing .color3 a{color:red!important;}
+.syntaxhighlighter .line.highlighted.alt1,.syntaxhighlighter .line.highlighted.alt2{background-color:#323e41!important;}
+.syntaxhighlighter .gutter{color:#afafaf!important;}
+.syntaxhighlighter .gutter .line{border-right:3px solid #333!important;}
+.syntaxhighlighter .gutter .line.highlighted{background-color:#435a5f!important;color:#1b2426!important;}
+.syntaxhighlighter.collapsed{overflow:visible!important;}
+.syntaxhighlighter .comments,.syntaxhighlighter .comments a{color:#878a85!important;}
+.syntaxhighlighter .preprocessor{color:#435a5f!important;}
+.syntaxhighlighter .script{font-weight:700!important;color:#5ba1cf!important;background-color:none!important;}
+.syntaxhighlighter .color2,.syntaxhighlighter .color2 a{color:#FFF!important;}
+.syntaxhighlighter .bold,.syntaxhighlighter.printing .script{font-weight:bold!important;}
+.syntaxhighlighter table,.syntaxhighlighter table td.code{width:100%!important;}
+.syntaxhighlighter.collapsed table,.syntaxhighlighter .toolbar a.expandSource,.syntaxhighlighter.printing .toolbar{display:none!important;}
+.syntaxhighlighter.collapsed .toolbar span a.expandSource,.syntaxhighlighter .toolbar span.title{display:inline!important;}
+.syntaxhighlighter.printing .plain,.syntaxhighlighter.printing .plain a,.syntaxhighlighter.printing .break,.syntaxhighlighter.printing .break a{color:#000!important;}
+.syntaxhighlighter.printing .preprocessor,.syntaxhighlighter.printing .color1,.syntaxhighlighter.printing .color1 a{color:gray!important;}
+.syntaxhighlighter.printing .value,.syntaxhighlighter .value{color:#090!important;}
+.syntaxhighlighter.printing .functions,.syntaxhighlighter.printing .color2,.syntaxhighlighter.printing .color2 a{color:#ff1493!important;}
+.syntaxhighlighter .line.highlighted.number,.syntaxhighlighter .plain,.syntaxhighlighter .plain a{color:#b9bdb6!important;}
+.syntaxhighlighter.collapsed .toolbar a,.syntaxhighlighter .keyword{color:#5ba1cf!important;}
+.syntaxhighlighter.collapsed .toolbar a:hover,.syntaxhighlighter .string{color:#5ce638!important;}
+.syntaxhighlighter .toolbar a:hover,.syntaxhighlighter .constants,.syntaxhighlighter .color1,.syntaxhighlighter .color1 a{color:#e0e8ff!important;}
+.syntaxhighlighter .variable,.syntaxhighlighter .functions,.syntaxhighlighter .color3,.syntaxhighlighter .color3 a{color:#ffaa3e!important;}
+.toolbar{display:none;}

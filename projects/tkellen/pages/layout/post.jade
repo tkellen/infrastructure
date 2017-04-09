@@ -1,0 +1,12 @@
+extend main
+
+block content
+  .entry.container.sixteen.columns
+    .calendar
+        em.divide
+        p.month #{month}
+        p.day #{day}
+    h1.title #{title}
+    .content.hyphenate
+      block post
+    include ../include/comments

@@ -1,0 +1,55 @@
+//-
+  title: Dude
+  month: feb
+  day: 18
+//-
+extend layout/post
+
+block post
+
+  p.dropcap Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet orci eget dolor elementum vestibulum. Donec sapien nulla, luctus at ornare non, vulputate a nunc. Fusce arcu eros, egestas vitae pellentesque ac, luctus et sem. Nunc turpis eros, ullamcorper vel adipiscing in, sagittis ac nisi. Suspendisse pellentesque turpis a orci molestie lacinia. Integer enim nibh, scelerisque eu consectetur in, auctor sit amet lectus. Sed non massa dui. Fusce eu nisi lacus. Etiam at elit augue, sit amet elementum sapien. Fusce id varius mauris. Aliquam tristique tincidunt massa, ac tristique nulla aliquam vitae.
+
+  blockquote When you build an operating system, you strive to keep the whole thing logical. But business rules are just given to you, and without major political effort there’s nothing you can do to change them. You have to deal with a haphazard array of strange conditions that often interact with each other in surprising ways. …a few thousand of these one-off special cases is what leads to the complex business “illogic” that makes business software so difficult.
+    cite Martin Fowler - Patterns of Enterprise Application Architecture
+
+  hr
+
+  pre(class="brush: js").
+    /*
+    * grunt-contrib
+    * http://gruntjs.com/
+    *
+    * Copyright (c) 2012 Tyler Kellen, contributors
+    * Licensed under the MIT license.
+    * https://github.com/gruntjs/grunt-contrib/blob/master/LICENSE-MIT
+    */
+
+    'use strict';
+
+    module.exports = function(grunt) {
+
+      grunt.registerTask('build', function () {
+        var _ = grunt.util._;
+        var path = require('path');
+        var deps = require('./package.json').dependencies;
+        var authors = [];
+        var plugins = Object.keys(deps).map(function(plugin) {
+          var dir = path.dirname(require.resolve(plugin));
+          authors.push(grunt.file.read(path.join(dir, 'AUTHORS')).split('\n'));
+          return require(path.join(dir, 'package.json'));
+        });
+        authors = _.unique(
+          _.compact(
+            _.map(_.flatten(authors),function(author){return author.trim()})
+          )
+        ).sort().join("\n");
+        grunt.file.write("AUTHORS","Tyler Kellen (http://goingslowly.com)\n"+authors);
+        var tmpl = grunt.file.read('docs/overview.tmpl');
+        var readme = grunt.template.process(tmpl, {data:{plugins:plugins}});
+        grunt.file.write('docs/overview.md', readme);
+      });
+
+      grunt.loadNpmTasks('grunt-contrib-internal');
+      grunt.registerTask('default', ['build', 'build-contrib']);
+
+    };
