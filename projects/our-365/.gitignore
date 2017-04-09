@@ -1,0 +1,8 @@
+.DS_Store
+public/photos
+config/auth.yml
+tmp/
+Gemfile.lock
+.sass-cache/
+public/assets
+node_modules

@@ -1,0 +1,27 @@
+== partial :header, :locals => { :year => year }
+h3.day day #{count}
+
+.hide "#{CONFIG['description']}"
+
+ul#photos
+  - members.each do |member|
+    == partial :submission, :locals => { :member => member, :submission => member.submissionByDate(date) }
+
+.clearfix.nav
+  .prev
+    - if (date > Date.parse('2012-01-01'))
+      a href="#{prev_entry(date)}" &laquo;
+    - else
+      |&nbsp;
+
+  .date
+    == date.strftime("%B #{date.strftime('%e').to_i.en.ordinal}, %Y").downcase
+
+  .next
+    - if date < Date.today
+      a href="#{next_entry(date)}" &raquo;
+    - else
+      |&nbsp;
+
+.disqus
+  == partial :disqus, :locals => { :ymd => ymd.gsub(/-/,'/') }

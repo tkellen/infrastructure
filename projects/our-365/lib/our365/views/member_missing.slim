@@ -1,0 +1,7 @@
+h1 #{params[:name]}'s missing photos
+
+ul#photos
+  - photos.each do |photo|
+   li
+     a href="/#{photo[:date].strftime('%Y/%m/%d')}"
+      == photo[:date].strftime("%B #{ordinalize(photo[:date].strftime('%e'))}, %Y")

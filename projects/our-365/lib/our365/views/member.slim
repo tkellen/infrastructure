@@ -1,0 +1,5 @@
+h1 #{member.name}'s submissions for 2012
+
+ul#photos
+  - member.photos_dataset.order(:date_added).each do |item|
+    == partial :submission, :locals => { :submission => item, :member => member }
