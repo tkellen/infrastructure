@@ -1,0 +1,14 @@
+- @title = "Bicycle Touring Around the World: Budget"
+
+h1.color.paulmaul our budget
+
+h3 style="margin-top:45px" Budget: #{((spent/budget)*100).round}% Spent
+
+div.progress-bar.orangebar
+  span style="width: #{((spent/budget)*100).round}%"
+
+h4 style="margin-top:10px;" At the current spending rate we have $#{daily}/per day.
+
+h3 style="margin-top:75px" Loans: #{((paid.to_f/owed.to_f)*100).round}% Paid For ($#{paid} of $#{owed})
+div.progress-bar.bluebar.stripes
+  span style="width:#{((paid.to_f/owed.to_f)*100).round}%"

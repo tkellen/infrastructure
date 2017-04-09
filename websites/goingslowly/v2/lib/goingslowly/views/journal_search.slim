@@ -1,0 +1,12 @@
+- @title = "#{params[:query]} Bicycle Touring"
+- @description = "Bicycle touring around the world journal entries, filed under the search of #{params[:query]}"
+
+section#listing
+  h1.bar
+    a.color.paulmaul href==request.path title="searching for #{params[:query]}" searching for #{params[:query]}
+
+  == partial :journal_synopsis, :locals => { :prefix => "/search/#{params[:query]}" }, :collection => journals
+
+- content_for :js do
+  javascript:
+    gs.photos.initEffects();

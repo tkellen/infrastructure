@@ -1,0 +1,40 @@
+#play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0 0 -50px;
+  height: 100px;
+  width: 100px;
+  background: transparent image-url("play.png") center center no-repeat;
+  cursor: pointer;
+  border: 2px solid #ccc;
+}
+#play, #synopsis {
+  background-color: #111;
+  background-color: rgba(0,0,0,.9);
+  @include border-radius(9px);
+}
+#synopsis {
+  margin: 80px auto 0 auto;
+  color: #fff;
+  padding: 30px;
+  width: 650px;
+  font-size: 16px;
+  display: none;
+  h1 {
+    font-family: PaulMaul;
+    font-weight: normal;
+    color: #fff;
+    line-height: 42px;
+    font-size: 42px;
+  }
+  p { text-align: justify; }
+}
+
+#startreading {
+  font-family: PaulMaul;
+  text-align: center;
+  margin-bottom: 0px;
+  font-size: 42px !important;
+  display: block;
+}

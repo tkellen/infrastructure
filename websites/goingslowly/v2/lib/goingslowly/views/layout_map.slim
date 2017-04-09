@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    == partial :header
+
+  body
+    - if params[:hidenav].nil?
+      == partial :header_nav
+    == yield
+    == partial :footer

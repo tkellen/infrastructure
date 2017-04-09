@@ -1,0 +1,99 @@
+/* load fonts direct from s3 for firefox cors */
+
+@font-face {
+  font-family:'Dax';
+  src:url(//s3.goingslowly.com/font/dax-regular-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-regular-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-regular-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-regular-webfont.svg#svgFontName) format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
+@font-face {
+  font-family:'Dax';
+  src:url(//s3.goingslowly.com/font/dax-bold-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-bold-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-bold-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-bold-webfont.svg#svgFontName) format('svg');
+  font-weight:bold;
+  font-style:normal;
+}
+@font-face {
+  font-family:'Dax';
+  src:url(//s3.goingslowly.com/font/dax-italic-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-italic-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-italic-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-italic-webfont.svg#svgFontName) format('svg');
+  font-weight:normal;
+  font-style:italic;
+}
+@font-face {
+  font-family:'Dax';
+  src:url(//s3.goingslowly.com/font/dax-bolditalic-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-bolditalic-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-bolditalic-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-bolditalic-webfont.svg#svgFontName) format('svg');
+  font-weight:bold;
+  font-style:italic;
+}
+.dax{font-family:Dax,trebuchet,serif;}
+
+@font-face {
+  font-family:'DaxLight';
+  src:url(//s3.goingslowly.com/font/dax-light-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-light-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-light-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-light-webfont.svg#svgFontName) format('svg');
+  font-weight:normal;
+  font-style:normal;
+}
+@font-face {
+  font-family:'DaxLight';
+  src:url(//s3.goingslowly.com/font/dax-regular-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-regular-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-regular-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-regular-webfont.svg#svgFontName) format('svg');
+  font-weight:bold;
+  font-style:normal;
+}
+@font-face {
+  font-family:'DaxLight';
+  src:url(//s3.goingslowly.com/font/dax-lightitalic-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-lightitalic-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-lightitalic-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-lightitalic-webfont.svg#svgFontName) format('svg');
+  font-weight:normal;
+  font-style:italic;
+}
+@font-face {
+  font-family:'DaxLight';
+  src:url(//s3.goingslowly.com/font/dax-italic-webfont.eot?) format('eot'),
+      url(//s3.goingslowly.com/font/dax-italic-webfont.woff) format('woff'),
+      url(//s3.goingslowly.com/font/dax-italic-webfont.ttf) format('truetype'),
+      url(//s3.goingslowly.com/font/dax-italic-webfont.svg#svgFontName) format('svg');
+  font-weight:bold;
+  font-style:italic;
+}
+.daxlight{font-family:DaxLight,trebuchet,serif;}
+
+@font-face {
+  font-family: 'PaulMaul';
+  src: url(//s3.goingslowly.com/font/paulmaulxtrc01-webfont.eot?) format('eot'),
+       url(//s3.goingslowly.com/font/paulmaulxtrc01-webfont.woff) format('woff'),
+       url(//s3.goingslowly.com/font/paulmaulxtrc01-webfont.ttf) format('truetype'),
+       url(//s3.goingslowly.com/font/paulmaulxtrc01-webfont.svg#svgFontName) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.paulmaul{font-family:PaulMaul,georgia,serif;}
+
+@font-face {
+  font-family: 'Rabiohead';
+  src: url(//s3.goingslowly.com/font/rabiohead-webfont.eot?) format('eot'),
+       url(//s3.goingslowly.com/font/rabiohead-webfont.woff) format('woff'),
+       url(//s3.goingslowly.com/font/rabiohead-webfont.ttf) format('truetype'),
+       url(//s3.goingslowly.com/font/rabiohead-webfont.svg#svgFontName) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.rabiohead { font-family: 'Rabiohead', serif; }

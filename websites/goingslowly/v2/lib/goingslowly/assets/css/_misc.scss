@@ -1,0 +1,38 @@
+.hide { display: none; }
+.green { color: #00d051; }
+.orange { color: #ffbd11; }
+.red { color: #ff3845; }
+.purple { color: #cd7bfb; }
+.menublue { color: #00a7d8; }
+.yellow { color: #e2d900; }
+.blue { color: #92caf9; }
+.round { @include border-radius(5px); }
+.roundbot { @include border-bottom-radius(5px); }
+.hide { display: none; }
+.bar {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #404040;
+  width: 100%;
+}
+.anchor {
+  position: relative;
+  top: -40px;
+  content: "";
+}
+.clock {
+  height: 26px;
+  background: transparent image-url("clock.png") no-repeat;
+  padding: 4px 0 0 35px;
+  letter-spacing: 1px;
+  u { text-decoration: none !important; }
+}
+.indented { padding-left: 25px; }
+.progress {
+  text-shadow: none;
+  font-size: 18px;
+}
+
+@-moz-document url-prefix() {
+  p.dropcap:first-letter { margin-top:-5px; }
+  #top { left:-1px !important; }
+}

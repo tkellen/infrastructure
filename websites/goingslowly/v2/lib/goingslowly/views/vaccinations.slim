@@ -1,0 +1,115 @@
+- @title = "Bicycle Touring Around the World: Vaccinations"
+
+h1.paulmaul.color Vaccination Lookup Sheet
+div style="float:left;padding-top:40px;"
+  strong type your country below:
+  br
+  input#vacsearch type="text"
+  br
+  small Data from TravelWise pamphlet (2008)
+br
+
+table#vaclegend cellpadding="0" cellspacing="0"
+  tr
+    td.header colspan="2" Legend
+  tr
+    td.abbr R
+    td Recommended.
+  tr
+    td.abbr r
+    td Recommended for certain regions or high-risk groups.
+  tr
+    td.abbr M
+    td Vaccination certificate required.
+  tr
+    td.abbr m
+    td Vaccination certificate required if coming from or in transit through infected countries.
+
+#data style="clear:both"
+  div style="border:5px solid #000;padding:20px;font-size:24px"
+    |loading vaccination data...
+
+css:
+  #vactable { border: 5px solid #000; }
+  #vactable th
+  {
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+  }
+  #vactable td
+  {
+    font: 11px verdana;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    text-align: center;
+    color: #ddd;
+    font-weight: bold;
+  }
+
+  #vactable th, #vactable .country, #vactable .area, #vaclegend td.abbr
+  {
+    font: bold 11px verdana;
+    color: #fff;
+    background-color: #000;
+    text-align: left;
+  }
+  #vactable td, #vactable th { padding: 2px 4px; }
+  #vactable .area { font-size: 14px; }
+
+  #vacsearch
+  {
+    background-color: transparent;
+    border: 2px solid #ccc;
+    font: bold 24px trebuchet, sans-serif !important;
+    padding: 5px;
+    width: 350px;
+    color: #fff;
+  }
+
+  #vaclegend
+  {
+    float: right;
+    width: 300px;
+    border: 5px solid #000;
+    *border-bottom: none;
+  }
+  #vaclegend td.header
+  {
+    background-color: #000;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  #vaclegend td.abbr { padding-right: 8px; }
+  #vaclegend td
+  {
+    padding: 2px 4px;
+    background-color: #446574;
+    border-bottom: 1px solid #000;
+    color: #fff;
+    font: 11px verdana;
+  }
+
+  .col0,.col5 { background-color: #4062a1 !important; }
+  .col1,.col6 { background-color: #4fa037 !important; }
+  .col2,.col7 { background-color: #d88316 !important; }
+  .col3,.col8 { background-color: #793171 !important; }
+  .col4,.col9 { background-color: #de506a !important; }
+
+- content_for :js do
+  script src==assetPath('widget/jsift.js')
+  script src==assetPath('page/vaccinations.js')
+  javascript:
+    var table;
+    $(function(){
+      table = vac(vacdata);
+      $('#data').html(table)
+      var sift = jsift('vacinfo','vacsearch');
+      sift.hide = function(n)
+      {
+        if(n.className == 'area') return;
+        else
+        n.style.display='none';
+      };
+    });
+

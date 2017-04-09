@@ -1,0 +1,90 @@
+body, html { background-color: #333; }
+
+/* Main Layout */
+#container {
+  position: relative;
+  background: transparent image-url("contentback.png");
+  _background: #222;
+  zoom: 1;
+}
+#footer {
+  zoom: 1;
+  overflow: hidden;
+}
+#top {
+  nav {
+    _font-size: 16px;
+  }
+  ul {
+    margin-left: -100px;
+    li {
+      font-family: DaxLight !important;
+      font-weight: normal;
+    }
+  }
+}
+
+/* Home Page */
+#adventures section h1 { font-family: DaxLight; }
+
+/* Journal Slideshows */
+.slide-thumbs {
+  position: relative;
+  span {
+    filter: alpha(opacity=30);
+    .active, &:hover {
+      filter: alpha(opacity=100);
+    }
+  }
+}
+.slideshow { background-image: none; }
+.slidewrap .bx-window { height: 350px; }
+
+.slide-thumbs {
+  position: relative;
+  span {
+    filter: alpha(opacity=30);
+    .active, &:hover {
+      filter: alpha(opacity=100);
+    }
+  }
+}
+.slideshow { background-image: none; }
+.slidewrap .bx-window { height: 350px; }
+.mask {
+  zoom: 1;
+  background-color: #000;
+}
+
+/* Journal Layout */
+#time { _margin-bottom: -80px; }
+#lprev, #rprev, #rnext, #lnext {
+  _height: 0;
+  _visibility: hidden;
+}
+#lprev,#rprev,#lnext,
+#rnext {
+  font-family: times,serif;
+  font-size: 50px;
+  font-weight: normal;
+  color: #ccc;
+}
+#lprev,#rprev { line-height: 50px; }
+#lnext,#rnext { line-height: 110px; }
+hr { display: none }
+.hr {
+  clear: both;
+  border: 0;
+  height: 19px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  outline: 0;
+  background-image: image-url("theme/green/hr.png");
+  width: 100%;
+}
+
+#bookmarklink { right: 10px; }
+
+.slide-thumbs span {
+  -ms-behavior: url(/backgroundsize.htc);
+}

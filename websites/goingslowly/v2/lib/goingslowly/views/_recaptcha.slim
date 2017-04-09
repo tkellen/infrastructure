@@ -1,0 +1,6 @@
+#recaptcha
+input type='hidden' name='ip' value=request.ip
+script src='//www.google.com/recaptcha/api/js/recaptcha_ajax.js'
+- content_for :js do
+  javascript:
+    Recaptcha.create('#{AUTH['recaptcha']['public_key']}','recaptcha',{theme:'clean'});

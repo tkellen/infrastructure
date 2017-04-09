@@ -1,0 +1,37 @@
+a name="commentform"
+  a.blue href="http://goingslowly.com/newsletter/" style="float:right;margin-top:5px;" ...and sign up for our newsletter!
+  .post-a-comment.orange onclick="gs.journal.showCommentForm()" Post a Comment
+#comment-slide.hide
+  form#commentform.styled method="post" action="/comment"
+    .clearfix
+      label#label_name for="comment[name]" Name:
+      input#name type="text" name="comment[name]" style="width:250px;"
+    .clearfix
+      label#label_email for="comment[email]" Email:
+      input#email type="text" name="comment[email]" style="width:250px;"
+    .clearfix
+      label.plain for="comment[alerts]"
+      input#alerts type="checkbox" name="comment[alerts]" style="border:none;" value="CHECKED" checked="checked"
+      small.orange receive email for new comments
+    .clearfix
+      label#label_website for="comment[url]" Website:
+      input#url type="text" name="comment[url]" style="width:400px;"
+    .clearfix
+      label#label_body for="comment[body]" Comment:
+      textarea#body name="comment[body]" style="width:500px;height:100px"
+    .clearfix
+      label.plain for="check"
+      input type="checkbox" name="check" style="border:none;" value="CHECKED"
+      small.orange check this box to prove you are human
+    .clearfix style="margin-left:130px"
+      input.button type='submit' value='Post Comment'
+      br
+      small style="padding:10px 0 0 15px"
+        em
+          strong HTML allowed:
+          | &lt;a&gt;&lt;strong&gt;&lt;b&gt;&lt;i&gt;&lt;u&gt;&lt;em&gt;&lt;strike&gt;
+    input#journal_id type="hidden" name="comment[journal_id]" value==journal.id
+    input.noshow#age type="text" name="age"
+    input.noshow#timer type="text" name="timer" value==Time.now.to_i
+    css:
+      .noshow {display:none;}

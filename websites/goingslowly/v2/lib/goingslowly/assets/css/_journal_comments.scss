@@ -1,0 +1,61 @@
+#comments {
+  width: 700px !important;
+  margin: 0 auto !important;
+
+  h4 {
+    height: 50px;
+    padding: 10px 0px 0px 70px;
+    font-size: 32px;
+    line-height: 32px;
+    background: transparent image-url("journal/comments.png") left center no-repeat;
+    font-family: georgia, serif;
+  }
+  dl {
+    margin-bottom:50px;
+
+    .comment-top {
+      display: block;
+      height: 15px;
+      width: 700px;
+      background: transparent image-url("journal/commenttop.png") no-repeat;
+      margin-top: 20px;
+    }
+
+    .comment-body {
+      background-color: #fff;
+      color: #000;
+      width: 670px;
+      padding: 0px 15px;
+      min-height: 45px;
+      font: 18px DaxLight, trebuchet, sans-serif;
+      line-height: 24px;
+      a {
+        text-decoration: underline;
+        color: #d68800;
+      }
+    }
+
+    .comment-bottom {
+      display: block;
+      height: 23px;
+      width: 638px;
+      background: transparent image-url("journal/commentbottom.png") no-repeat;
+      font-size: 14px;
+      line-height:23px;
+      padding: 16px 0px 0px 62px;
+      color: #fff;
+    }
+    .authorpost {
+      background-image: image-url("journal/commentbottomauthorpost.png") !important;
+    }
+  }
+
+  .post-a-comment {
+    font-size: 34px;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+
+}
+
+

@@ -1,0 +1,37 @@
+- @title = set.title
+- @description = set.description.empty? ? "Bicycle touring photos of #{set.title}" : set.description
+
+doctype html
+html
+  head
+    == partial :header
+
+  body
+    == partial :header_nav
+
+    #content style="width:900px; margin: 0 auto;"
+      h1.paulmaul style="position:relative;z-index:10"
+        ' #{set.title}
+        span style="font-size:24px"
+          ' &raquo;
+          a href="/" title="return to home" return to home
+
+      #gallery
+        == partial :photo_set, :collection => photos
+
+      .collections
+        == partial :photo_collection, :collection => collections
+
+    == partial :footer
+    javascript:
+      $('#gallery a').each(function(){
+        $(this).attr('href',$(this).find('img').attr('src'));
+      });
+      Galleria.configure({
+        transition: 'fade',
+        showCounter: false,
+        autoplay: true,
+        popupLinks: true,
+        _toggleInfo: false
+      });
+      Galleria.run('#gallery');

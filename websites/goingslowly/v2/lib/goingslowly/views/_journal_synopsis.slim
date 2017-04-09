@@ -1,0 +1,17 @@
+article
+  h2.color
+    a href==(defined?(prefix) ? prefix+item.href : item.href) title==item.title
+      ==item.title
+  .img==item.photo.render(:feature)
+  .synopsis
+    a.rating href="/rating/#{item.rating.name}" title="this entry is rated #{item.rating.display}"
+      #{item.rating.name}
+    time datetime==item.ymd pubdate="true"
+      h5
+        em
+          a.color href==(defined?(prefix) ? prefix+item.href : item.href) title==item.title
+        a.color href==(defined?(prefix) ? prefix+item.href : item.href)
+          #{item.stamp.strftime('%A')}, #{item.date}
+    p
+      a href==(defined?(prefix) ? prefix+item.href : item.href) title==item.title
+        == item.synopsis

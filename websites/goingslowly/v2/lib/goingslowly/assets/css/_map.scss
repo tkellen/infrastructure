@@ -1,0 +1,42 @@
+#legend {
+  list-style: none;
+  position: absolute;
+  padding: 10px;
+  right: 10px;
+  top: 100px;
+  width: 200px;
+  background-color: #111;
+  background-color: rgba(17,17,17,.9);
+  @include border-radius(5px);
+  border: 1px solid #000;
+  color: #fff;
+  img {
+    margin-bottom:-3px;
+    padding-right: 10px;
+  }
+  li {
+    padding: 5px;
+    font-weight: bold;
+  }
+}
+
+.infowindow {
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+  overflow-x: hidden;
+  em { font-size: 16px; }
+  a {
+    font-weight: bold;
+    color: #000 !important;
+  }
+}
+.mapload {
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+  height: 32px;
+  background: transparent image-url("loader/mapload.gif") center center no-repeat;
+}

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    == partial :header
+
+  body
+    == partial :header_nav
+
+    #container.roundbot
+      #content
+        == yield
+
+    == partial :footer_nav, :locals => defined?(footer) ? footer : footerContext()
+    == partial :footer

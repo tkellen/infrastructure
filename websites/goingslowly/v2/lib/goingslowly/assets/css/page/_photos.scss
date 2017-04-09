@@ -1,0 +1,19 @@
+.photogallery {
+  margin: 25px 0;
+  clear: both;
+  @include clearfix;
+
+  li {
+    float: left;
+    margin: 0 3px 5px 25px;
+  }
+}
+
+.collections { width: 800px; margin: 0 auto; }
+
+#gallery {
+  width: 900px;
+  height: 600px;
+  margin-bottom: 25px;
+}
+

@@ -1,0 +1,9 @@
+script src==assetPath('autosuggest.js')
+script src==assetPath('site.js')
+/[ if lt IE 9 ]
+  script src==assetPath('ie.js')
+
+- if ENV['RACK_ENV'] == 'production'
+  == partial :analytics
+
+== yield_content :js

@@ -1,0 +1,39 @@
+#footer.roundbot
+  h1#browse.paulmaul browse by...
+  section style="width:100%"
+    nav
+      h1.bar.colored recent entries
+      span.beginning ...or <a href="http://journal.goingslowly.com/2007/12/merry-christmas" class="lightblue" title="read our story starting from the first entry">start at the beginning</a>
+      .entries
+        ul
+          == partial :journal_list, :locals => { :journals => journals[0...8] }
+        ul
+          == partial :journal_list, :locals => { :journals => journals[8...16] }
+        ul
+          == partial :journal_list, :locals => { :journals => journals[16...24] }
+
+  section
+    nav#archive
+      h1.bar.colored archive
+      ul
+        - archive.each do |item|
+          li
+            a href="#{CONFIG['url']['journal']}/#{item[:month].strftime('%Y')}/#{item[:month].strftime('%m')}" title="Entries for #{item[:month].strftime('%B, %Y')}"
+              ' #{item[:month].strftime('%B, %Y')}
+            strong==item[:count]
+
+  section
+    nav
+      h1.bar.colored topic
+      ul
+        - topic_sections.each do |section|
+          li
+            strong.colored #{section.name}
+            ul style="padding-left:10px"
+              == partial :topic_list, :collection => section.topic
+
+  section
+    nav
+      h1.bar.colored country
+      ul
+        == partial :topic_list, :collection => countries

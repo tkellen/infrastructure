@@ -1,0 +1,229 @@
+#journal {
+  padding: 90px 80px 60px 80px;
+  width: 800px;
+  min-height: 500px;
+  text-align: justify;
+  float: left;
+  @include clearfix;
+
+  p {
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .x {
+    position: relative;
+    top: -2px;
+    font: bold 12px verdana;
+    line-height: 14px;
+    cursor: pointer;
+    padding: 0 5px 3px 5px;
+    background-color: #000;
+    @include border-radius(3px);
+    &:hover {
+      background-color: #b7c134;
+      color: #000 !important;
+    }
+  }
+
+ .rating {
+    margin-top: 10px;
+    border: 1px solid #fff;
+    float: right;
+    line-height: 20px;
+    padding: 1px 5px;
+    background-color: #000;
+    font: bold 16px times,serif;
+    color: #fff;
+  }
+
+  article#entry {
+    header {
+      position: relative;
+      time { display: none; }
+      h1 {
+        text-align: left;
+        margin-bottom: -8px;
+        margin-right: 110px;
+        a {
+          font: 45px PaulMaul, georgia, serif;
+          text-shadow: 0 0 10px #000;
+          text-align: left;
+          line-height: 50px;
+          font-weight: bold;
+        }
+      }
+      .bar { margin-bottom:25px; }
+      .filedunder {
+        position: absolute;
+        text-align: right;
+        height: 25px;
+        top: -33px;
+        right: 0px;
+        z-index: 1;
+        a { color: #ccc; }
+      }
+    }
+
+    #author {
+      position: relative;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: right;
+      float: right;
+      width: 120px;
+      strong {
+        font-style: normal !important;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+      }
+    }
+
+    footer {
+
+      section {
+        @include clearfix;
+        font-size:16px;
+        padding:15px;
+        font-family: Dax,trebuchet,sans-serif;
+        width:770px;
+        border-bottom:1px solid #404040;
+        &.nobar { border: none; }
+      }
+
+      #pagination {
+        clear: both;
+        margin-top: 10px;
+        border-top: 1px solid #404040;
+        .older {
+          float: left;
+          width: 200px;
+          text-align: left;
+        }
+        .onthisday {
+          float: left;
+          width: 330px;
+          padding: 0 20px;
+          text-align: center;
+        }
+        .newer {
+          float: right;
+          width: 200px;
+          text-align: right;
+        }
+      }
+
+      #meta {
+        padding: 2px 15px 5px 15px;
+
+        #share {
+          display:none;
+          strong {
+            float: left;
+            margin: 10px 5px 0 0;
+          }
+          .twitter-share-button {
+            float: left;
+            margin: 12px 10px 0 5px;
+          }
+          .plusone {
+            float: left;
+            margin: 12px 10px 0 0;
+          }
+          .facebook {
+            float: left;
+            width: 450px;
+            height: 26px;
+            margin-top: 10px;
+          }
+        }
+      }
+
+      #topics {
+        padding: 0 15px 10px 15px;
+        overflow: auto;
+        margin-bottom: 20px;
+        strong {
+          float: left;
+          margin-top: 13px;
+        }
+        ul {
+          list-style: none;
+          float: left;
+          width: 650px;
+          li {
+            float:left;
+            margin: 10px 0 0 10px;
+            a {
+              display: block;
+              background-color: #333;
+              background-color: rgba(50,50,50,.7);
+              @include border-radius(3px);
+              @include transition(background-color 250ms ease-in);
+              padding: 4px 8px 1px 7px;
+              font-size: 14px;
+              line-height: 22px;
+              font-weight: bold;
+              border-top: 1px solid #000;
+              border-left: 1px solid #000;
+              color: #ddd;
+              margin: 0px;
+              &:hover
+              {
+                text-decoration:none;
+                color: #000;
+                @include box-shadow(2px 2px 5px #000);
+                padding-bottom: 2px;
+                margin-bottom:-1px;
+              }
+              &:active {
+                margin: 2px 2px 0px 2px;
+                padding: 2px 6px 1px 5px;
+                @include box-shadow(none);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #listing {
+    margin-top: 10px;
+    h1 { margin-bottom: 25px; }
+    article {
+      margin-bottom: 20px;
+      h2 {
+        font-size: 28px;
+        line-height: 28px;
+      }
+      @include clearfix;
+
+      .img {
+        float: left;
+        width: 210px;
+      }
+      .rating { margin-top: 5px; }
+      .synopsis {
+        float: left;
+        width: 590px;
+        margin-top: 5px;
+        font-size: 16px;
+        font-style: italic;
+        a:hover { text-decoration: none; }
+        p a { color: #fff; }
+      }
+    }
+  }
+}
+
+/* hacks to be fixed someday */
+@-moz-document url-prefix()
+{
+  #share .facebook {margin-top:9px;}
+  #topics strong{ margin-top:10px;}
+  #topics li {margin-top:8px;}
+}
+

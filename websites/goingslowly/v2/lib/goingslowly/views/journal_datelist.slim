@@ -1,0 +1,12 @@
+- @title = "#{CONFIG['seo']['title']}: #{display}"
+- @description = "Bicycle touring around the world journal entries, filed under #{display}"
+
+section#listing
+  h1.bar
+    a.color.paulmaul href==request.path title="Entries made in #{display}" Entries made in #{display}
+
+  == partial :journal_synopsis, :collection => journals
+
+- content_for :js do
+  javascript:
+    gs.photos.initEffects();

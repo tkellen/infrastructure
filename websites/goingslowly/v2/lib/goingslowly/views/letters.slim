@@ -1,0 +1,44 @@
+== partial :header
+
+- @title = "Letters"
+
+#impress style="display:none"
+
+  - letters.each do |letter|
+    - last = dir
+    - if dir == "up"
+      - x += 5000;
+      - dir = (x >= 15000) ? "down": "up"
+    - else
+      - x -= 5000;
+      - dir = (x <= -15000)? "up" : "down";
+    - if last != dir
+      - y += 5000
+
+    == partial :letter, :locals => { :x => x, :y => y, :item => letter }
+
+  #overview.step data-scale="20"
+
+- content_for :js do
+  javascript:
+    $('#impress').show();
+    var tag = document.getElementsByTagName('script')[0]
+    var script = document.createElement('script');
+    script.src = '//s3.goingslowly.com/widget/impress.js'
+    script.async = true;
+    tag.parentNode.insertBefore(script,tag);
+
+
+css:
+  body {
+      min-height: 740px;
+      background: rgb(15, 15, 15) !important;
+      background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(40, 40, 40)), to(rgb(10, 10, 10))) !important;
+      background: -webkit-radial-gradient(rgb(40, 40, 40), rgb(10, 10, 10)) !important;
+      background:    -moz-radial-gradient(rgb(40, 40, 40), rgb(10, 10, 10)) !important;
+      background:      -o-radial-gradient(rgb(40, 40, 40), rgb(10, 10, 10)) !important;
+      background:         radial-gradient(rgb(40, 40, 40), rgb(10, 10, 10)) !important;
+      -webkit-font-smoothing: antialiased;
+  }
+
+== partial :footer

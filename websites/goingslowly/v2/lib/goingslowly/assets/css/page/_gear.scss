@@ -1,0 +1,13 @@
+.parts td { text-align:left; }
+.parts { width: 800px; margin-left: 75px; }
+.parts th { text-align: left; }
+.parts td.price, .parts th.price {
+  font-weight: bold;
+  text-align: right;
+}
+.parts th, .parts td { padding: 2px 0px 0px 20px; }
+.component { width: 27%; }
+.part { width: 60%; }
+.price { width: 13%; }
+.geardrawing { float: left; margin-top: 10px; }
+table.replaced tr td.part { text-decoration: line-through; }

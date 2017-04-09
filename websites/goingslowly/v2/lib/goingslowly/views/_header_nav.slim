@@ -1,0 +1,26 @@
+header#top
+  nav
+    a#logo href="http://goingslowly.com" title="return to home"
+    form action="#{CONFIG['url']['journal']}/search" method="post" onsubmit="return gs.search();"
+      input#search autocomplete="off" name="search" placeholder="search" type="text" value=""
+      #searchloader
+      a.social.rss.external href="http://feeds.feedburner.com/BicycleTouringAroundTheWorld" title="follow our rss"
+      a.social.tw.external href="http://twitter.com/goingslowly" title="find us on twitter"
+      a.social.fb.external href="http://facebook.com/goingslowly" title="find us on facebook"
+      a.social.nl href="http://goingslowly.com/newsletter" title="sign up for our newsletter"
+    ul#menu
+      li
+        a.green href="http://journal.goingslowly.com" title="our journal" journal
+      li
+        a.orange href="http://www.goingslowly.com/photos" title="our favorite photos" photos
+      li
+        a.red href="http://map.goingslowly.com" title="see our map" map
+      li
+        a.purple href="http://www.goingslowly.com/gear" title="see our gear" gear
+      li
+        a.yellow href="http://www.goingslowly.com/internet" title="how we stay connected" internet
+      li
+        a.menublue href="http://www.goingslowly.com/planning" title="how we planned" how
+      li
+        a.green href="http://www.goingslowly.com/contact" title="contact us" contact
+    a#gsdb.external href="http://db.goingslowly.com" title="behind the scenes: statistics, expenses and more"

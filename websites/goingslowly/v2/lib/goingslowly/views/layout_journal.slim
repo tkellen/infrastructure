@@ -1,0 +1,45 @@
+doctype html
+html
+  head
+    == partial :header
+
+  body
+    == partial :header_nav
+    #container.roundbot
+      #left
+        #time.tableft
+          #timecontent
+            - if defined?(count)
+              - if count > 0
+                .day style="padding:8px 0 5px 0" #{count}
+                span style="text-transform:lowercase" found
+              - else
+                .day style="padding-top:18px"==":("
+            - if defined?(journal)
+              ==journal.monthAbbr
+              .day==journal.day
+              ==journal.year
+
+        - if defined?(journal)
+          a#info.tableft href==(defined?(journal) ? CONFIG['url']['map']+journal.href : nil)
+          a#lprev.tableft href==(defined?(prevEntry) ? prevEntry.href : nil)
+          a#lnext.tableft href==(defined?(nextEntry) ? nextEntry.href : nil)
+      #journal
+        == yield
+      #right
+        - if defined?(journal)
+          a#rprev.tabright href==(defined?(prevEntry) ? prevEntry.href : nil)
+          a#rnext.tabright href==(defined?(nextEntry) ? nextEntry.href : nil)
+      - if defined?(journal) && !defined?(filedUnder)
+        #bookmark
+        a#bookmarklink href="/bookmarks" Bookmarks
+        #infobox
+
+    == partial :footer_nav, :locals => defined?(footer) ? footer : footerContext()
+    == partial :footer
+
+    javascript:
+      gs.journal.init();
+      gs.bookmark.init();
+
+    == yield_content :initJournal

@@ -1,0 +1,8 @@
+.sass-cache
+Gemfile.lock
+public/assets
+tmp
+log
+config/auth.yml
+node_modules
+search

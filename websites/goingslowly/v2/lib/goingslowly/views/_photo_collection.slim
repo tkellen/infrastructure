@@ -1,0 +1,6 @@
+- if !['4787797-72157626844989497','4787797-72157625303141215'].include?(item.id)
+  h2==item.title.gsub('Going Slowly:','')
+  ul.classic.photogallery
+    - for set in item.set
+      li
+        a href="/photos/#{set.title.gsub(/\//,'_').gsub(/&/,'_').gsub(/ /,'+')}/#{set.id}/"==set.title

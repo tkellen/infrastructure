@@ -1,0 +1,18 @@
+meta charset='utf8'
+meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'
+meta name='viewport' content='width=device-width'
+meta name='author' content='Tyler Kellen & Tara Alan'
+
+title== @title
+- if !@description.nil?
+  meta name='description' content==@description
+- if !@keywords.nil?
+  meta name='keywords' content==@keywords
+
+link rel='stylesheet' href==assetPath('site.css')
+/[ if lt IE 9 ]
+  script src='http://html5shiv.googlecode.com/svn/trunk/html5.js'
+  link rel='stylesheet' href==assetPath('ie.css')
+
+link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/BicycleTouringAroundTheWorld"
+script var gs = {}

@@ -1,0 +1,55 @@
+#footer {
+  position: relative;
+  background: #090909 image-url("us-riding.png") bottom left no-repeat;
+  padding: 30px 80px 50px 80px;
+  width: 790px;
+  margin: 0 auto 25px auto;
+  overflow: auto;
+
+  section {
+    float: left;
+    width:30%;
+    margin-right:3%;
+    &:last-child { margin-right:0; }
+    h1 { font-size:24px; }
+  }
+
+  .journals {
+    width: 100% !important;
+    padding-bottom: 50px;
+  }
+
+  a { color: #ccc; }
+  a:hover {
+    color: #fff;
+    text-decoration:underline;
+  }
+  li { font-size: 16px; }
+
+  .browse {
+    float: left;
+    margin-bottom: 30px;
+  }
+
+  .beginning {
+    float: right;
+    margin-top:-45px;
+    a { color: #92caf9 !important; }
+  }
+
+}
+
+#archive {
+  strong {
+    font-size: 12px; font-family:Dax,trebuchet,sans-serif;
+  }
+}
+
+#kids
+{
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  text-align: right;
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+section#listing
+  h1.bar
+    a.color.paulmaul href=="/bookmarks" title="Bookmarked Entries" Bookmarked Entries
+
+  == partial :journal_synopsis, :collection => journals
+
+  - if journals.length == 0
+    p.medium None found.
+    p
+     em
+       strong Tip:
+       '  Clicking on the ribbon in the upper right corner of any journal entry will create a new bookmark.
+
+- content_for :js do
+  javascript:
+    gs.photos.initEffects();

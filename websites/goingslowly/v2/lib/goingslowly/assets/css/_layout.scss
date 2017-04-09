@@ -1,0 +1,52 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;}body{line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}nav ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent;}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help;}table{border-collapse:collapse;border-spacing:0;}input,select{vertical-align:middle;}
+
+html {
+  margin:0 auto;
+  height:100%;
+  margin-bottom:1px;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+  color: #ddd;
+  font: 18px DaxLight,trebuchet,sans-serif;
+  line-height: 135%;
+}
+
+#container
+{
+  position: relative;
+  margin:0 auto;
+  background-color: rgba(0,0,0,.4);
+  border-left:1px solid #000;
+  border-right:1px solid #000;
+  width:960px;
+  box-shadow:0px 1px 5px rgba(0,0,0,.8);
+  -moz-box-shadow:0px 1px 5px rgba(0,0,0,.8);
+  -webkit-box-shadow:0px 1px 5px rgba(0,0,0,.8);
+  overflow: hidden;
+  @include border-radius(5px);
+  border-bottom:1px solid #000;
+}
+
+#content {
+  padding: 80px 35px 10px 35px;
+  min-height:500px;
+}
+
+.social {
+  display: block;
+  float: left;
+  margin: 13px 10px 0 0;
+  height: 20px;
+  width: 20px;
+  background: transparent image-url("socialsprite.png") no-repeat;
+  @include border-radius(2px);
+}
+.tw { background-position: 0 -20px }
+.fb { background-position: 0 -40px }
+.fl { background-position: 0 -60px }
+.sc { background-position: 0 -80px }
+.nl { background-position: 0 -100px }

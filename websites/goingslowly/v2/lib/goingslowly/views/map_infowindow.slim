@@ -1,0 +1,18 @@
+.infowindow
+  strong style="font-size:18px;"==location.name
+  br
+  - for journal in location.journals
+    - if !journal.photo.nil?
+      == journal.photo.render(:thumbnail)
+      '
+  - for journal in location.journals
+      br
+      a href==CONFIG['url']['journal']+journal.href rel="external" #{journal.title}
+  .bar style="margin:0 auto 5px auto;border-bottom:1px solid #ddd"
+  - if trackIn
+    a href='javascript:;' onclick='gs.map.loadTrack(#{location.trackIn.id}, #{location.id})' &laquo; Track In
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  a href==request.url onclick='gs.map.zoomTo(#{location.id});return false' Zoom In!
+  - if trackOut
+    |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    a href='javascript:;' onclick='gs.map.loadTrack(#{location.trackOut.id}, #{location.id})' Track Out &raquo;

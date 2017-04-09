@@ -1,0 +1,247 @@
+.entries {
+  clear: both;
+  font-size: 16px;
+  ul {
+    float: left;
+    width: 28%;
+    padding-right: 5%;
+    li {
+      list-style: none;
+      padding-bottom: 10px;
+      strong {
+        color: ddd;
+        padding-bottom:10px;
+        font-family: Dax,trebuchet,sans-serif;font-weight:bold;
+      }
+      ul {
+        width: 100% !important;
+        float: none !important;
+        li { padding-bottom: 0 !important; }
+      }
+    }
+  }
+  h2 {
+    margin: 5px 0 10px 0;
+    font-size: 28px;
+    line-height: 28px;
+  }
+}
+
+.slidewrap {
+  margin: 0 -40px 15px -40px;
+  padding: 0 40px;
+  section {
+    padding: 20px;
+  }
+  h1 {
+    font:bold 24px Dax,sans-serif;
+  }
+  max-height: 400px;
+  overflow:hidden;
+}
+
+#about {
+  h1 {
+    margin:0 0 10px 17px;
+  }
+  .detail {
+    float: left;
+    width: 575px;
+    margin-top: 10px;
+  }
+  .half {
+    float: left;
+    width: 268px;
+    margin-left: 17px;
+  }
+  .aboutphoto {
+    display:block;
+    float:left;
+    width:260px;
+    height:310px;
+    @include border-radius(3px);
+    background:transparent image-url("sprite-about.jpg") no-repeat;
+  }
+  .howto { background-position: 0 -310px; }
+  .tara { background-position: 0 -620px; }
+  .tyler { background-position: 0 -930px; }
+  .news { background-position: 0 -1240px; }
+}
+
+#readmore {
+  margin: -40px 5px 0 0;
+  float: right;
+  font-size: 24px;
+  background: transparent image-url("leftarrow.png") 0 3px no-repeat;
+  height: 30px;
+  padding-left: 45px;
+  font-family: PaulMaul,sans-serif;
+}
+
+#recents {
+  section h1 {
+    float: left;
+    height: 35px;
+    margin: 0;
+  }
+  .social {
+    float: right;
+    margin: 2px 0 0 0;
+  }
+  .photos {
+    clear: both;
+    float: left;
+    padding: 0;
+    list-style: none;
+    margin: -5px 0 0 -9px;
+    li {
+      float: left;
+      padding: 10px 0 0 10px;
+      height: 64px;
+    }
+    img {
+      @include border-radius(3px);
+      opacity: .80;
+      cursor: pointer;
+      &:hover { opacity:1; }
+    }
+  }
+  .tweet_list
+  {
+    clear:both;
+    float:left;
+    font-size:16px;
+    line-height:20px;
+    margin:-25px -25px 0 0;
+    li {
+      list-style: none;
+      margin: 25px 25px 0 0;
+      width: 405px;
+      height: 75px;
+      float: left;
+    }
+    .tweet_avatar {
+      height: 34px;
+      width: 30px;
+      padding-top: 4px;
+      padding-right: 15px;
+      float:left;
+    }
+    .tweet_avatar img {
+      @include border-radius(2px);
+    }
+  }
+  #soundcloud { clear:both; }
+}
+
+#adventures {
+  @include clearfix;
+  padding: 5px;
+  margin:0 -20px 25px 0;
+  a {
+    display: block;
+    height: 220px;
+  }
+  section {
+    position: relative;
+    cursor: pointer;
+    width: 430px;
+    height: 220px;
+    float: left;
+    margin: 5px 20px 15px 0;
+    background: transparent image-url("adventure/all.jpg") no-repeat;
+    @include border-radius(3px);
+    @include box-shadow(0 0 5px rgba(0,0,0,.3));
+    &:hover h1 { background-color:#000; }
+    &:hover {
+      @include box-shadow(0 0 5px rgba(0,0,0,.8), 0 0 5px rgba(0,0,0,.8), 0 0 5px rgba(0,0,0,.8));
+    }
+    h1 {
+      font-family: Dax;
+      font-weight: normal;
+      background-color: #111;
+      background-color: rgba(0,0,0,.8);
+      color: #fff;
+      padding: 5px 10px;
+      line-height: 25px;
+      font-size: 18px;
+      margin-top: 160px;
+      float: left;
+      @include border-right-radius(5px);
+    }
+  }
+  .gstab { background-position: 0 0 !important; }
+  .btiwe { background-position: 0 -220px !important; }
+  .totw { background-position: 0 -440px !important; }
+  .btiee { background-position: 0 -660px !important; }
+  .eert { background-position: 0 -880px !important; }
+  .srt { background-position: 0 -1100px !important; }
+  .rrt { background-position: 0 -1320px !important; }
+  .mrt { background-position: 0 -1540px !important; }
+  .btisa{ background-position: 0 -1760px !important; }
+  .chrta { background-position: 0 -1980px !important; }
+  .lhfoh { background-position: 0 -2200px !important; }
+  .hayop { background-position: 0 -2420px !important; }
+}
+
+/* Slider Box Styles */
+.slidewrap {
+  &:hover .bx-prev, &:hover .bx-next {
+    display: block !important
+  }
+}
+.bx-window {
+  background:#000;
+  background:rgba(0,0,0,.7);
+  @include border-radius(3px);
+}
+.bx-prev, .bx-next {
+  display: none;
+  cursor: pointer;
+  background-image: image-url("controlsflipped.png");
+  background-repeat: no-repeat;
+  opacity: .7;
+}
+.bx-prev {
+  position: absolute;
+  top: 34%;
+  left: -28px;
+  z-index: 999;
+  width: 28px;
+  height: 65px;
+  text-indent: -999999px;
+  background-position: top right;
+  &:hover {
+    background-position: bottom right;
+  }
+}
+.bx-next {
+  position:absolute;
+  top:34%;
+  right:-28px;
+  z-index:999;
+  width: 28px;
+  height: 65px;
+  text-indent: -999999px;
+  background-position: top left;
+  &:hover {
+    background-position: bottom left;
+  }
+}
+.bx-pager {
+  text-align: center;
+  margin-top: 10px;
+  a {
+    @include border-radius(10px);
+    padding: 3px 6px 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    margin: 5px 3px 25px 3px;
+    background-color: #000;
+  }
+}
+a.pager-active {
+  background-color:#b7c134;
+  color:#000;
+}

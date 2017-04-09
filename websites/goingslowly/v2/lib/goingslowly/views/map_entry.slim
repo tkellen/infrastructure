@@ -1,0 +1,13 @@
+#gmap
+- content_for :js do
+  javascript:
+    gs.map.init($('#gmap')#{params[:hidenav].nil? ? nil : ",{marginTop:0}"});
+    gs.map.afterLoad = function() {
+      var location = #{{location.forMap.to_json}};
+      this.fullscreen();
+      this.map.setZoom(10);
+      this.map.setCenter(new google.maps.LatLng(location.lat, location.lng));
+      this.drawMarker(location);
+      #{{(trackIn.nil? ? nil : "this.drawPolyline(this.buildTrack(#{trackIn.pointsForMap}));")}}
+      #{{(trackOut.nil? ? nil : "this.drawPolyline(this.buildTrack(#{trackOut.pointsForMap}));")}}
+    };

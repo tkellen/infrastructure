@@ -1,0 +1,25 @@
+- @title = "Bicycle Touring Around the World: Contact Us"
+- @desc = "Have a question or just want to say hello?  We'd love to hear from you, please fill out our contact form below and we will respond as quickly as we can."
+
+form.styled.ajax method='post'
+
+  h1.paulmaul.color contact us
+  p Have a question or just want to say hello?  We'd love to hear from you, please fill out our contact form below and we will respond as quickly as we can.
+  br
+
+  input type='hidden' name='source' value='contact'
+  .clearfix
+    label for="name" Name:
+    input#name name="contact[name]" type="text" style="width:400px"
+  .clearfix
+    label for="email" Email:
+    input#email name="contact[email]" type="text" style="width:400px"
+  .clearfix
+    label for="message" Message:
+    textarea#message name="contact[message]" style="width:600px;height:150px"
+  .clearfix style="margin-left:130px"
+    input.button type='submit' value='Send Message'
+br
+
+/  .recaptcha
+/    == partial :recaptcha

@@ -1,0 +1,10 @@
+item
+  title==item.rssTitle
+  description
+    |<![CDATA[#{{item.body}}|]]>
+  author #{item.author.email} (#{item.author.name})
+  link==CONFIG['url']['journal']+item.href
+  guid==CONFIG['url']['journal']+item.href
+  pubDate==item.pubDate
+  - for topic in item.topics
+    category==topic.name

@@ -1,0 +1,12 @@
+- @title = "#{topic.title} #{topic.name}"
+- @description = topic.description
+
+section#listing
+  h1.bar
+    a.color.paulmaul href==topic.href title="#{topic.name} Entries" #{topic.name} Entries
+
+  == partial :journal_synopsis, :locals=> { :prefix => topic.href }, :collection => journals
+
+- content_for :js do
+  javascript:
+    gs.photos.initEffects();

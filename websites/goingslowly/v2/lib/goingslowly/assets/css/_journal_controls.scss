@@ -1,0 +1,188 @@
+.tableft:before, .tabright:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 11px;
+  height: 13px;
+  content: " ";
+}
+.tableft, .tabright {
+  z-index: 1000;
+  cursor: pointer;
+  background-color: #090909;
+}
+.tableft {
+  @include border-bottom-left-radius(13px);
+  @include border-right-radius(7px);
+  @include box-shadow(2px 2px 2px rgba(0,0,0,.3));
+  margin-left: -11px;
+  &:before {
+    left: 0;
+    margin: -13px 0 0 -1px;
+  }
+  &:active {
+    margin-left: -9px;
+    @include box-shadow(2px 2px 2px rgba(0,0,0,.2));
+  }
+  &:hover { text-decoration: none; }
+  &:active:before { width: 9px; }
+}
+.tabright {
+  @include border-bottom-right-radius(13px);
+  @include border-left-radius(7px);
+  @include box-shadow(-2px 2px 2px rgba(0,0,0,.3));
+  margin-left: 6px;
+  &:after {
+    right: 0;
+    margin: -13px -1px 0 0;
+    background-position: top right;
+  }
+  &:active {
+    margin-left: 4px;
+    @include box-shadow(-2px 2px 2px rgba(0,0,0,.2));
+  }
+  &:hover { text-decoration: none; }
+  &:active:after { width: 9px; }
+}
+#lprev:after,
+#rprev:before,
+#lnext:after,
+#rnext:before {
+  font-family: times,serif;
+  font-size: 50px;
+  font-weight: normal;
+  color: #ccc;
+}
+#lprev:after,
+#rprev:before {
+  content: "\00AB";
+  line-height: 50px;
+}
+#lnext:after,
+#rnext:before {
+  content: "\00BB";
+  line-height: 110px;
+}
+#lprev,
+#lnext,
+#rprev,
+#rnext {
+  position: fixed;
+  top: 350px;
+  width: 35px;
+  height: 120px;
+}
+#rprev,
+#lprev {
+  height: 60px;
+  top: 270px;
+  padding-right: 10px;
+  text-align: right;
+}
+#lnext,
+#rnext {
+  padding-left: 10px;
+  text-align: left;
+}
+#time {
+  position: fixed;
+  top: 75px;
+  height: 69px;
+  width: 60px;
+  padding-top: 8px;
+  font: 16px Dax, trebuchet, sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  background-image: none;
+  color: #fff !important;
+  .day {
+    line-height: 24px;
+    font-style: italic;
+    font-size: 24px;
+    font-weight: bold;
+  }
+}
+#timecontent { color: #ddd; }
+#info {
+  position: fixed;
+  top: 172px;
+  height: 40px;
+  width: 40px;
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  background-image: image-url("info.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+#infobox {
+  position: fixed;
+  top: 75px;
+  left: 50%;
+  margin-left: -416px;
+  height: 450px;
+  width: 820px;
+  z-index: 100;
+  padding: 8px;
+  display: none;
+  background-color: #000;
+  @include box-shadow(0px 0px 10px rgba(0,0,0,.3));
+  @include border-radius(5px);
+}
+
+#bookmark {
+  position: absolute;
+  top: 20px;
+  right: 80px;
+  width: 45px;
+  height: 70px;
+  background: transparent image-url("bookmark.png") top left no-repeat;
+  cursor: pointer;
+  @include single-transition(top,0.2s);
+  &:hover {
+    top: 30px;
+    background-position: top right;
+    &.bookmarked {
+      background-position: top left;
+    }
+  }
+  &.bookmarked {
+    top: 35px;
+    background-position: top right;
+    &:hover {
+      background-position: top left;
+    }
+  }
+  // these single use flags must be set when a bookmark's state changes
+  // otherwise the hover stae will immediately switch to the opposite,
+  // making for a weird effect
+  &.justMarked { background-position: top right !important; }
+  &.justUnmarked { background-position: top left !important; }
+
+}
+#bookmarklink {
+  position: absolute;
+  font-size: 12px;
+  font-weight: bold;
+  right: 13px;
+  top: 50px;
+  color: #688d66;
+  &::hover {
+    color: #3da638;
+  }
+}
+
+#left {
+  width: 40px;
+  float: left;
+}
+#right {
+  width: 40px;
+  float: right;
+}
+#nl {
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+}

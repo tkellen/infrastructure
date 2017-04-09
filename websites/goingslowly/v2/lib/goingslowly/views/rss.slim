@@ -1,0 +1,7 @@
+rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
+  channel
+    title Going Slowly Journal RSS
+    link=CONFIG['url']['journal']
+    description=CONFIG['seo']['description']
+    |<atom:link href="#{CONFIG['url']['journal']}/rss" rel="self" type="application/rss+xml"/>
+    == partial :rss_item, :collection => entries

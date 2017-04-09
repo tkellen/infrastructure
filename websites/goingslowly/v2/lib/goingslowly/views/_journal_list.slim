@@ -1,0 +1,7 @@
+- journals.group_by(&:date).each do |date, entries|
+  li
+    strong #{date}
+    ul
+      - entries.each do |entry|
+        li
+          a href=="#{CONFIG['url']['journal']}#{entry.href}" title==entry.title #{entry.title}

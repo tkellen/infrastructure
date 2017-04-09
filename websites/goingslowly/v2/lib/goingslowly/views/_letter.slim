@@ -1,0 +1,7 @@
+.step.slide[data-scale==rand(1..6)
+            data-rotate==['-180','-90','0','90','180'].sample
+            data-x==(x+rand(500..2500))
+            data-y==y+rand(500..2500)]
+  p #{{item.body}}
+  p #{{item.author_display}}
+  p #{{item.location}}

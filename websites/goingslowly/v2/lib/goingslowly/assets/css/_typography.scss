@@ -1,0 +1,162 @@
+a {
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+
+a[rel=external] {
+  padding-right: 15px;
+  background: transparent image-url("external.png") no-repeat center right;
+}
+
+h1,h2,h3,h4,h5 { margin-bottom: 15px; }
+h1 { font-size: 48px; }
+h2 { font-size: 36px; }
+h3 { font-size: 24px; }
+h4 { font-size: 20px; }
+h5 { font-size: 18px; }
+
+hr {
+  clear: both;
+  border: 0;
+  height: 19px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  outline: 0;
+  background-position: center center;
+}
+
+input {
+  font: 14px Dax,trebuchet,sans-serif
+}
+
+sup {
+  vertical-align: super;
+  font-size: 12px;
+}
+
+p {
+  clear: both;
+  padding-bottom: 20px;
+  &.dropcap:first-letter {
+    float: left;
+    font-size: 50px;
+    font-family: Dax, sans-serif !important;
+    padding-right: 8px;
+    padding-top: 13px;
+    display: block;
+    clear: both;
+  }
+}
+
+pre {
+  padding-bottom: 25px
+}
+/* remove for adsense
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+*/
+
+del {
+  text-decoration: line-through
+}
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+small { font-size: 14px; }
+
+blockquote {
+  font-size: 24px;
+  font-style: italic;
+  font-family: georgia;
+  font-weight: normal!important;
+  color: #ccc;
+  margin-top:0px;
+  padding: 20px 60px 20px 60px;
+  line-height: 30px;
+  background-position: 0px 10px;
+  background-repeat: no-repeat;
+}
+
+cite {
+  display: block;
+  text-align: right;
+  font-size:18px;
+  &:before {
+    content: '\2013';
+    padding-right: 5px;
+  }
+}
+
+ol.styled,ul.styled {
+  padding:0 50px 25px 50px;
+  font: italic 24px georgia,serif;
+}
+
+h1.color,
+h2.color,
+h3.color,
+h4.color,
+.dialog span {
+  color:#ccc;
+  text-shadow:0 0 5px #000,
+              0 0 5px #000,
+              0 0 5px #000,
+              0 0 5px #000;
+}
+
+.dialog, .talkbox {
+  float: left;
+  margin: 0 65px 25px 60px;
+  position: relative;
+  padding: 20px 30px;
+  background-color: #101010;
+  background-color: rgba(0,0,0,.6);
+  @include border-radius(10px);
+  line-height: 150%;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 15px 15px 0;
+    border-style: solid;
+    top: 16px;
+    left: -50px;
+    bottom: auto;
+    border-width: 10px 50px 10px 0;
+    border-color: transparent #101010;
+    border-color: transparent rgba(0,0,0,.6);
+  }
+}
+
+.dialog span {
+  font-family: Dax,trebuchet,sans-serif;
+  font-weight:bold;
+  padding-right: 2px;
+  span:after { content:":"; }
+}
+
+.styled p {
+  color:#ccc;
+  font: normal 18px DaxLight,trebuchet,sans-serif;
+  padding-bottom:10px;
+}
+
+.big, .medium {
+  font-weight: normal;
+  line-height: 135%;
+  font-family: georgia, serif;
+}
+.big { font-size: 36px; }
+.medium { font-size: 24px; }
+.serif { font-family: georgia,serif; }

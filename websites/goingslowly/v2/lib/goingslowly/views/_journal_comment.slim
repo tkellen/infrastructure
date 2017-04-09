@@ -1,0 +1,8 @@
+dd.comment-top
+dd.comment-body==item.body
+
+- if item.url
+  dd class="comment-bottom#{item.authorpost ? " authorpost" : nil}"
+    |Posted by <a href="#{item.url}" rel="external nofollow">#{item.name}</a> on #{item.timestamp}
+- else
+  dd class="comment-bottom#{item.authorpost ? " authorpost" : nil}" Posted by #{item.name} on #{item.timestamp}

@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    == partial :header_nav
+    == partial :header
+
+  body
+    #play onclick="$('#play').fadeOut(300,function(){$('#synopsis').fadeIn();});"
+    section#synopsis
+      h1==@title
+      == yield
+
+    == partial :footer
+
+    style type="text/css" body{background:#111;overflow:auto;}
+    javascript:
+      $.backstretch
+      (
+        "#{CONFIG['url']['cdn']}/img/adventure/#{img}.jpg",
+        {speed:0,centeredY:#{centeredY}}
+      );

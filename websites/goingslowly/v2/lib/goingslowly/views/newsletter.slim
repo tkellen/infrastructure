@@ -1,0 +1,17 @@
+- @title = "Going Slowly Newsletter";
+- @description = "If you'd like to receive a message when we're up to something exciting (like publishing a book, or starting a new adventure), please share your name and email with us&mdash;that way we can stay in touch!";
+
+#newsletter
+  h1.paulmaul.color going slowly newsletter
+  br
+  form.styled.ajax method='post' action='/newsletter'
+    p If you'd like to receive a message when we're up to something exciting (like publishing a book, or starting a new adventure), please share your name and email with us&mdash;that way we can stay in touch!
+    input type='hidden' name='source' value='contact'
+    .clearfix
+      label for="name" Name:
+      input#name name="newsletter[name]" type="text" style="width:350px"
+    .clearfix
+      label for="email" Email:
+      input#email name="newsletter[email]" type="text" style="width:350px"
+    .clearfix style="margin-left:-13px"
+      input.button type='submit' value='sign me up!'

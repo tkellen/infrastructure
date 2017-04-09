@@ -1,0 +1,15 @@
+body,.bg{background:#222 image-url("bg.jpg") top left fixed;}
+a{color:#92caf9;}
+hr{background-image:image-url("hr.png");}
+blockquote{background-image: image-url("blockquote.png");}
+#topics ul li a:hover{background-color: #b7c134 !important; border-color: #b7c134 !important;}
+.colored,.color,blockquote a,.styled li,#fat h3{color:#b7c134;}
+.color a { color: #ddd; }
+#lnext:hover:after,
+#lprev:hover:after,
+#rnext:hover:before,
+#rprev:hover:before{color:#b7c134 !important;}
+#logo{background:transparent image-url("logo.png") no-repeat;}
+.tableft:before,.tabright:after{background-image:image-url("tabcurl.png");background-repeat:none;background-color:transparent;}
+.highlight{font-weight:bold;background: #b7c134;color:#000;padding: 1px 3px;@include border-radius(3px);}
+::selection{background-color:#b7c134;}

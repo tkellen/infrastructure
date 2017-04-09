@@ -1,0 +1,103 @@
+- @title = journal.prefixedTitle
+- @description = journal.synopsis
+
+article#entry
+  header
+    h2
+      a href="http://bikecampcook.com" style="font-weight:normal;display:block;font-size:24px;text-align:center;margin-top:-20px;"
+        |Order Tara's Bicycle Touring Cookbook Today!
+    h1
+      a.color href==journal.href rel="bookmark" title="link to this post" #{journal.title}
+    #author.color
+      strong by #{journal.author.name}
+    - if !request.xhr?
+      time datetime==journal.ymd
+        ==journal.monthAbbr
+        .day==journal.day
+        ==journal.year
+    .bar.clear
+    - if defined?(filedUnder)
+      aside.filedunder
+        a href==filedUnder[:href] title="#{filedUnder[:name]} Table of Contents"
+          ' ...filed under #{defined?(search) ? "the search " : nil}<strong>#{filedUnder[:name]}</strong>
+        a.x title="leave this section" href==journal.href x
+
+  .entry
+    == journal.body
+
+    hr
+    div style="text-align:center;margin-bottom: 15px;"
+      javascript:
+        google_ad_client = "ca-pub-9031021032277384";
+        google_ad_slot = "3618152958";
+        google_ad_width = 728;
+        google_ad_height = 90;
+      script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"
+
+
+  footer
+    section#pagination
+      .older
+        strong Previous#{defined?(filedUnder) && !defined?(search) ? " #{filedUnder[:name]}" : nil} Entry
+        br
+        - if initEntry[:prev]
+          a href==initEntry[:prev][:href] title=initEntry[:prev][:title]
+            ==initEntry[:prev][:title]
+        - else
+          |-
+
+
+      .onthisday
+        strong In Years Past and Future
+        br
+        - if defined?(onThisDay)
+          - for entry in onThisDay
+            a href=entry.href title==entry.title #{entry.year} - #{entry.title}
+            br
+        - else
+          |-
+
+      .newer
+        strong Next#{defined?(filedUnder) && !defined?(search) ? " #{filedUnder[:name]}" : nil} Entry
+        br
+        - if initEntry[:next]
+          a href==initEntry[:next][:href] title=initEntry[:next][:title]
+            ==initEntry[:next][:title]
+        - else
+          |-
+
+    section#meta
+      a.rating href="/rating/#{journal.rating.name}" title="this entry is rated #{journal.rating[:display]}"
+        ==journal.rating[:display]
+
+    section#topics
+      strong Topics:
+      ul
+        - for topic in journal.topics
+          li
+            a href==topic.href #{topic.name}
+
+    section#comments.nobar
+      a name="comments"
+      - if comments.length > 0
+        h4 #{comments.length} comment#{comments.length > 1 ? "s" : ""}
+      dl
+        == partial :journal_comment, :collection => comments
+      - if !journal.nocomments
+        == partial :journal_comment_form, :locals => { :journal => journal }
+
+- content_for :initJournal do
+  javascript:
+    $(function(){
+      gs.photos.initEffects($('#journal'));
+      gs.bookmark.initEntry(#{initEntry[:id]});
+      gs.journal.initEntry(#{{initEntry.to_json}});
+    });
+    #{{journal.js}}
+
+- for widget in journal.widgets
+  - content_for :initJournal do
+    ==widget.code
+
+- if request.xhr?
+  == yield_content :initJournal

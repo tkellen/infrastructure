@@ -1,0 +1,32 @@
+url:
+  www: http://goingslowly.com
+  cdn: http://cdn.goingslowly.com
+  journal: http://journal.goingslowly.com
+  map: http://map.goingslowly.com
+  photos: http://photos.goingslowly.com
+  flickr: http://flickr.com/photos/tylerkellen
+
+db:
+  host: localhost
+  adapter: postgres
+  database: goingslowly
+  user: tkellen
+
+sphinx:
+  host: localhost
+  port: 9312
+  match_mode: extended
+  limit: 1000
+
+email:
+  to: us@goingslowly.com
+  from: us@goingslowly.com
+
+seo:
+  title: "Bicycle Touring Around the World & Off Grid Living"
+  description: "We are Tara Alan & Tyler Kellen.  We started this website in February of 2008 to document our bicycle tour around the world.  The epic journey that followed--an expedition spanning two years and twenty five countries, from Scotland to Southeast Asia, changed the trajectory of our lives forever.  Going Slowly is now the scrapbook of our adventures together, an outlet to record and remember our life in vivid detail."
+
+messages:
+  error_submission: Ack!  There are some errors with your submission, please try again.
+  error_unknown: An unknown error occurred, please contact tyler@sleekcode.net for help.
+  thankyou: "<h4>Thanks for saying hello, we'll get back to you as soon as we can!</h4><p>- Tyler & Tara</p>"

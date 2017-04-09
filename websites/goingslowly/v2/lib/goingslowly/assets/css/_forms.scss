@@ -1,0 +1,67 @@
+.placeholder { color: #aaa; }
+
+.styled {
+  .clearfix {
+    padding: 5px 0;
+
+    label {
+      float: left;
+      margin-right: 15px;
+      width: 128px;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 5px 0;
+      cursor: pointer;
+    }
+    input[type=text],
+    input[type=email],
+    input[type=password],
+    select,
+    textarea {
+      padding: 5px;
+      border: 2px solid #ddd;
+      background-color: transparent;
+      color: #fff;
+      font: bold 14px trebuchet, sans-serif;
+      @include border-radius(5px);
+    }
+  }
+  .error { border-color: red !important; }
+  .errormsg {
+    margin-left: 145px;
+    font-size: 12px;
+    color: red;
+  }
+  .recaptcha {
+    background-color: #fff;
+    @include border-radius(5px);
+    padding: 5px;
+    width: 442px;
+    margin-left: 143px;
+    border: 2px solid #000;
+    .errormsg {
+      margin-left: 5px !important;
+      color:#000;
+      font-weight: bold;
+    }
+  }
+}
+
+.button {
+  display: inline-block;
+  margin: 8px 0 0 12px;
+  padding: 15px 25px 15px 25px;
+  background-color: #ff9e00;
+  border: 2px solid #000;
+  font-size: 24px;
+  color: #fff;
+  @include border-radius(5px);
+  &:hover {
+    background-color: #fc8500;
+    cursor: pointer;
+  }
+  &:active {
+    background-color: #f08004;
+    cursor: pointer;
+  }
+}

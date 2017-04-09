@@ -1,0 +1,159 @@
+- @title = "#{CONFIG['seo']['title']}: Going Slowly"
+
+a#departure href="http://bikecampcook.com" style="display:block;font-size:24px;text-align:center;margin-top:-10px;padding-bottom:20px"
+  |Order Tara's Bicycle Touring Cookbook Today!
+
+.slidewrap
+  #about
+    section
+      .aboutphoto.welcome
+      .detail
+        h1 Welcome to Going Slowly
+        .half
+          p We're Tara & Tyler, and we started this website in February of 2008 to document our bicycle tour around the world.
+          p The epic journey that followed&mdash;an expedition spanning two years and twenty five countries, from Scotland to Southeast Asia, changed the trajectory of our lives forever.
+
+        .half
+          p Going Slowly is now the scrapbook of our adventures together, an outlet to record and remember our life in vivid detail.
+          p We are currently documenting the experience of <a href="http://journal.goingslowly.com/topic/land+hunting">buying a small piece of land</a>, <a href="http://journal.goingslowly.com/topic/timber+framing">building a timber framed straw bale house</a>, living off the grid, and growing our own food.
+
+    section
+      .aboutphoto.howto
+      .detail
+        h1 How to Read Our Story
+        .half
+          p Our journal is a continuous thread over 1,000 entries long.  In order to make it more approachable, we've split our story into several chapters.
+          p The large images at the bottom of our home page link to overviews of our adventures together.  These synopses also provide jumping off points into our journal.
+
+        .half
+          p You can bookmark your place using the ribbon in the upper right corner of any entry.  <em>This only saves on the computer where it was made.</em>
+          p So <a href="http://journal.goingslowly.com/2007/12/merry-christmas">start at the beginning</a>, middle, end&mdash;or anywhere else you like, and enjoy!  It is our sincere hope that you find inspiration and entertainment within.
+
+    section
+      .aboutphoto.tara
+      .detail
+        h1 About Tara
+        .half
+          p I am a passionate photographer and writer; I find deep satisfaction in capturing life's fleeting moments with images and stories.
+          p I love traveling the world, but I am a domestic creature by nature. The fashioned arts of do-it-yourself homesteading have resonated with me for as long as I can remember.
+
+        .half
+          p I enjoy cooking, baking, camping, knitting, ceramics, speaking French, and learning skills like canning, bee-keeping, and quilting.
+          p <strong>What I am currently up to:</strong><br/> Reading <a href="http://bloodbonesandbutter.net" rel="external"><em>Blood Bones and Butter</em></a> by Gabrielle Hamilton, writing a cycle touring cookbook, and teaching myself how to use Adobe InDesign.
+
+    section
+      .aboutphoto.tyler
+      .detail
+        h1 About Tyler
+        .half
+          p When I'm not documenting my life experiences with Tara, I make a living as an independent software developer.
+          p I am an explorer at heart&mdash;I thrive on planning and pursuing exciting adventures, testing my limits, being in nature, and whenever possible, learning new skills.
+
+        .half
+          p I spend a good deal of time reading and thinking about psychology, philosophy, science, and the nature of the universe.
+          p <strong>What I am currently up to:</strong><br/>  Reading <a href="http://www.amazon.co.uk/Story-Substance-Structure-Principles-Screenwriting/dp/0413715604" rel="external"><em>Story: Substance, Structure, Style and the Principles of Screenwriting</em></a>, by <a href="http://en.wikipedia.org/wiki/Robert_McKee" rel="external">Robert McKee</a> and learning <a href="http://www.paulgraham.com/onlisp.html" rel="external">lisp</a>.
+
+    section.news
+      .aboutphoto
+      .detail
+        h1 Going Slowly in the News
+        div style="padding-left:20px"
+          == partial :media, :collection => news
+
+          a href="/news" Click here to read more!
+
+#readmore click to read more!
+hr
+
+div style="text-align:center;margin-bottom: 15px;"
+  javascript:
+    google_ad_client = "ca-pub-9031021032277384";
+    google_ad_slot = "3618152958";
+    google_ad_width = 728;
+    google_ad_height = 90;
+  script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"
+
+hr
+
+.slidewrap
+
+  #recents
+    section
+      h1 recent photos
+      a.social.fl.external href="http://flickr.com/photos/tylerkellen" title="find us on flickr"
+      ul.photos
+        - photos.each do |photo|
+          li== partial :photo_thumbnail, :locals => { :item => photo }
+
+    section
+      h1 recent entries
+      a.social.rss.external href="http://feeds.feedburner.com/BicycleTouringAroundTheWorld" title="follow our rss"
+      .entries
+        ul
+          == partial :journal_list, :locals => { :journals => journals[0...4] }
+        ul
+          == partial :journal_list, :locals => { :journals => journals[4...8] }
+        ul
+          == partial :journal_list, :locals => { :journals => journals[8...12] }
+
+    section
+      h1 recent tweets
+      a.social.tw.external href="http://twitter.com/goingslowly" title="find us on twitter"
+      #tweets
+
+    section.audio
+      a.social.sc.external href="http://soundcloud.com/goingslowly" title="find us on soundcloud"
+      h1 recent field recordings
+      #soundcloud
+
+#adventures
+  section.hayop
+    a href="/homesteading-year-of-preparation" title="Read about our how we prepared to start our homestead"
+      h1 Homesteading: A Year of Preparation
+
+  section.lhfoh
+    a href="/land-hunting-finding-our-homestead" title="Read about our land-hunting project"
+      h1 Land Hunting: Finding our Homestead
+
+  section.chrta
+    a href="/coming-home-return-to-america" title="Read about our homecoming in America"
+      h1 Coming Home: Return to America
+
+  section.btisa
+    a href="/bicycle-touring-in-southeast-asia" title="Read about our bicycle tour in Southeast Asia"
+      h1 Bicycle Touring in Southeast Asia
+
+  section.mrt
+    a href="/mongolian-road-trip" title="Read about our road trip across Mongolia"
+      h1 Mongolian Road Trip: Driving the Steppe
+
+  section.rrt
+    a href="/russian-road-trip" title="Read about our road trip across Russia"
+      h1 Russian Road Trip: Crossing Siberia
+
+  section.srt
+    a href="/scandinavian-road-trip" title="Read about our road trip in Scandinavia"
+      h1 Scandinavian Road Trip: Driving to the Midnight Sun
+
+  section.eert
+    a href="/eastern-european-road-trip" title="Read about our road trip across Eastern Europe"
+      h1 Eastern European Road Trip
+
+  section.btiee
+    a href="/bicycle-touring-in-eastern-europe" title="Read about our bicycle tour of Eastern Europe"
+      h1 Bicycle Touring in Eastern Europe
+
+  section.totw
+    a href="/tunisia-on-two-wheels" title="Read about our adventure in Tunisia"
+      h1 Tunisia on Two Wheels
+
+  section.btiwe
+    a href="/bicycle-touring-in-western-europe" title="Read about our bicycle tour of Western Europe"
+      h1 Bicycle Touring in Western Europe
+
+  section.gstab
+    a href="/going-slowly-the-adventure-begins" title="Read about our how this whole thing got started"
+      h1 Going Slowly: The Adventure Begins
+
+- content_for :js do
+  script src==assetPath('page/index.js')
