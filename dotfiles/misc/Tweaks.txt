@@ -1,0 +1,57 @@
+# show iTerm visor immediately
+defaults write com.googlecode.iterm2 HotkeyTermAnimationDuration -float 0
+
+# speed up mission control animation
+defaults write com.apple.dock expose-animation-duration -float 0.1; killall Dock
+
+# make dock show/hide much faster
+defaults write com.apple.dock autohide-time-modifier -float 0.1; killall Dock
+
+# kill the dashboard
+defaults write com.apple.dashboard mcx-disabled -boolean YES; killall Dock
+
+# turn off window animations
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool NO
+
+# show my library folder
+chflags nohidden /Users/tkellen/Library
+
+# always use column view in finder
+defaults write com.apple.Finder FXPreferredViewStyle clmv
+
+# Expand save panel by default
+defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# get rid of notification center
+sudo launchctl remove com.apple.notificationcenterui.agent
+
+# show full path in finder window
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
+
+# Finder: show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Finder: show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Automatically illuminate built-in MacBook keyboard in low light
+defaults write com.apple.BezelServices kDim -bool true
+# Turn off keyboard illumination when computer is not used for 5 minutes
+defaults write com.apple.BezelServices kDimTime -int 300
+
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# Enable spring loading for directories
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Remove the spring loading delay for directories
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0
+# Remove the animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 0

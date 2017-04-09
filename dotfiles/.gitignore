@@ -1,0 +1,7 @@
+*~
+*.elc
+auto-save-list
+emacs/elpa/archives
+*.mc-lists.el
+*places
+*.eld
