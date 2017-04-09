@@ -1,0 +1,123 @@
+extends layout/main
+
+block content
+  section.home
+    .container
+      .sixteen.columns
+        img.logo(src="assets/img/logo.png")
+        br
+        a.button.scroll(href="#buy") Order Now!
+    h1.subtitle The hungry cycle tourist's guide to slowing down, eating well, and savoring life on the open road.
+  nav
+    ul
+      li
+        a.scroll(href="#trailer") About
+      li
+        a.scroll(href="#sample") Sample Pages
+      li
+        a.scroll(href="#reviews") Reviews
+      li
+        a.scroll(href="#buy") Buy the Book
+      li
+        a.scroll(href="#sightings") Sightings
+      li
+        a.scroll(href="#contact") Contact Me
+
+  section.quotes.panel
+    a#reviews(name="reviews")
+    .container
+      h1.shadow What People Are Saying
+      .books.eight.columns.alpha
+         .book.book3d
+           img.bcc(src="/assets/img/cover.jpg")
+      .eight.columns.omega
+        blockquote
+          |This book should be a staple in the panniers of food-loving bike tourists everywhere.
+          cite Friedel &amp; Andrew, <a href="http://travellingtwo.com/13589" rel="external">travellingtwo.com</a>
+
+        blockquote
+          |As both a professional chef, and a veteran long distance touring cyclist, I can honestly say that this gem of a book should be part of any cyclist, campers, boater, or kayakers kit.
+          cite Paul Dorr
+
+  section.trailer.panel
+    a#trailer(name="trailer")
+    .container
+      h1 About the Book
+      .video
+        iframe(src="http://player.vimeo.com/video/76372353?badge=0", frameborder="0", webkitallowfullscreen="", mozallowfullscreen="", allowfullscreen="")
+
+  section.sample.panel
+    a#sample(name="sample")
+    .container
+      h1.shadow Sample Pages
+      img(src="assets/img/recipe.jpg")
+      br
+      img(src="assets/img/granola.jpg")
+
+  .purchase.panel
+    a#buy(name="buy")
+    .container
+      .row
+        if config.discount
+          h1.shadow Order Your Copy On Sale Today
+        else
+          h1.shadow Order Your Copy Today
+        h3(style="margin-top:-15px;margin-bottom:35px")
+          em All purchases include electronic download.
+
+      .eight.columns.pricing
+        .buypanel
+          .name Ship to the USA
+          paypal = {id: 'bcc-print-usa', title: 'Bike. Camp. Cook', amount: 24.95, discount: config.discount}
+          include include/paypal
+
+      .eight.columns.pricing
+        .buypanel
+          .name Ship Worldwide
+          paypal = {id: 'bcc-print-intl', title: 'Bike. Camp. Cook', amount: 34.95, discount: config.discount}
+          include include/paypal
+
+      a#download(name="download")
+      .eight.columns.pricing
+        .buypanel
+          .name Instant Download (PDF)
+          paypal = {id: 'bcc-pdf', title: 'Bike. Camp. Cook', amount: 14.95, discount: config.discount}
+          include include/paypal
+
+      .eight.columns
+        .download
+          h2 ALREADY PURCHASED?
+          br
+          p Download the electronic version for free!
+          br
+          form(action='/download', method='post')
+            input.email.iconed(name='purchaser_email', id='email', type='text', placeholder!='&#xf0e0; Email')
+            br
+            input(type='submit', value='Download Now')
+
+
+  section.panel.sightings
+    a#sightings(name="sightings")
+    .container
+      h1 Sightings
+      h3(style="margin-top:-15px;margin-bottom:35px;text-align:center")
+        |Bike Camp Cook has readers worldwide&mdash;buy a book today & make your mark on the map!*
+      div#map
+      p(style="text-align:right;margin-top:5px;font-size:14px")
+        em * Country and postal code are used for representation, not exact addresses!
+
+  section.panel#contact
+    a#contact(name="contact")
+    .container
+      h1 Contact Me
+      form.contact(action='/contact',method='post').sixteen.columns
+        input.iconed(name='from', type='text', placeholder!="&#61447; Name")
+        input.iconed(name='email', type='text', placeholder!='&#xf0e0; Email')
+        textarea.iconed(name='message', placeholder='Message')
+        input(type='submit', value='Send Your Message')
+
+  section.goingslowly
+    .container
+      a(href="http://goingslowly.com", rel="external")
+        img(src="/assets/img/gslogo.png")
+      p arlington, vt

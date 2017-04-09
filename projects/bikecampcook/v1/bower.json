@@ -1,0 +1,19 @@
+{
+  "name": "bikecampcook",
+  "version": "0.1.0",
+  "devDependencies": {
+    "modernizr": "~2.6.2",
+    "requirejs": "~2.1.6",
+    "almond": "~0.2.5",
+    "requirejs-plugins": "~1.0.2",
+    "require-cs": "~0.4.4",
+    "jquery": "~2.0.0",
+    "cjs": "latest",
+    "jquery-waypoints": "imakewebthings/jquery-waypoints#~2.0.3",
+    "jquery.scrollTo": "~1.4.6",
+    "jquery-placeholder": "~2.0.7",
+    "jquery-form": "~3.46.0",
+    "jquery-numeric": "byllc/jquery-numeric",
+    "query-string": "~1.0.0"
+  }
+}

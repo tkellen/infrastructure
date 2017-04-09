@@ -1,0 +1,17 @@
+form.paypal(action="https://www.paypal.com/cgi-bin/webscr", method="post")
+  input(type="hidden", name="cmd", value="_cart")
+  input(type="hidden", name="add", value="1")
+  input(type="hidden", name="business", value="tara@goingslowly.com")
+  input(type="hidden", name="item_name", value=paypal.title)
+  input(type="hidden", name="item_number", value=paypal.id)
+  input(type="hidden", name="notify_url", value="https://bikecampcook.com/ipn")
+  input(type="hidden", name="return", value="http://bikecampcook.com")
+  input(type="hidden", name="undefined_quantity", value="1")
+  input(type="hidden", name="amount", value=paypal.amount-paypal.discount)
+  if paypal.discount
+    .price
+      strike="$ "+paypal.amount
+      ="$ "+Math.round(paypal.amount-paypal.discount,2).toFixed(2)
+  else
+    .price="$ "+paypal.amount
+  input.buy.button(type="submit", value="Place Order")

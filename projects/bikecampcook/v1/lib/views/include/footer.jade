@@ -1,0 +1,8 @@
+if process.env['NODE_ENV'] === 'development'
+  script(src="http://localhost:35729/livereload.js")
+  script(data-main="/config/requirejs", src="/bower_components/requirejs/require.js")
+else
+  script(src="site.js")
+
+block js
+include ../include/analytics

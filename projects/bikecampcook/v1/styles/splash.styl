@@ -1,0 +1,37 @@
+.home
+  background: url('assets/img/chili.jpg') no-repeat
+  background-position: center -100px
+  background-size: cover
+  width: 100%
+  .subtitle
+    background-color: #84ab2e
+    text-align: center
+    font-size: 50px
+    padding: 30px
+    line-height: 120%
+  .container
+    position: relative
+    height: 550px
+    text-align: center
+
+
+// scale text down so it doesn't hit three lines
+@media only screen and (max-width: 1150px)
+  .subtitle
+    font-size: 40px !important
+
+// small screens and tablets
+@media only screen and (min-width: 768px) and (max-width: 959px)
+  .subtitle
+    font-size: 32px !important
+
+// mobile only
+@media only screen and (max-width: 767px)
+  .home
+    .container
+      height: 340px !important
+    .subtitle
+      padding: 20px !important
+      font-size: 25px !important
+  .logo
+    width: 300px

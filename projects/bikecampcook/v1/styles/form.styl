@@ -1,0 +1,80 @@
+form
+  width: 100%
+
+input, textarea
+  color: #333
+  font-weight: bold
+  position: relative
+  font-size: 18px
+  background-color: #f2f2f2
+  padding: 10px
+  box-sizing: border-box
+  border: 3px solid rgba(0,0,0,0)
+  border-radius: 3px
+  &.iconed
+    font-family: FontAwesome
+  &:focus
+    outline: none
+
+textarea
+  height: 150px
+  line-height: 125%
+
+.contact, .download
+  input, textarea
+    width: 100%
+    margin-bottom: 20px
+    &:hover
+      background-color: white
+    &:focus
+      background: #fff
+      box-shadow: 0
+      border: 3px solid darken(#84ab2e,10%)
+  input[type=submit]
+    padding: 20px 0
+    cursor: pointer
+    background-color: #84ab2e
+    color: white
+    font-size: 24px
+    transition: background-color .25s
+    &:hover
+      background-color: darken(#84ab2e,30%)
+
+.download
+  input[type=submit]
+    font-size: 28px !important
+    padding: 9px 10px !important
+
+.button
+  font-size: 48px
+  font-weight: bold
+  position: relative
+  display: inline-block
+  color: #fff
+  text-decoration: none
+  text-align: center
+  padding: 15px 30px
+  border-radius: 4px
+  border: 1px solid darken(#f40000,30%)
+  background: #f40000
+  background: linear-gradient(top, #f40000 0%,
+                                   darken(#f40000,30%) 100%)
+  width: auto !important
+  cursor: pointer
+  &:hover, &:active
+    border: 1px solid darken(#f40000,30%)
+    text-decoration: none
+  &:hover
+    background: darken(#f40000,5%)
+    background: linear-gradient(top, darken(#f40000,5%),
+                                     darken(#f40000,35%) 100%)
+    box-shadow: 0 1px 1px #333333
+  &:active
+    box-shadow: inset 0 0 8px 4px darken(#f40000,30%)
+
+
+// mobile only
+@media only screen and (max-width: 767px)
+  .button
+    font-size: 28px !important
+    padding: 10px 15px !important

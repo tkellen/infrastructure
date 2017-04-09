@@ -1,0 +1,25 @@
+!!! 5
+html(lang='en')
+  head
+    block config
+    title=title?title:config.title
+    meta(charset='utf-8')
+    meta(content='IE=edge,chrome=1', http-equiv='X-UA-Compatible')
+    meta(name='description', content=description?description:config.description)
+    meta(name='author', content=author?author:config.author)
+    meta(name='viewport', content='width=device-width, height=device-height, initial-scale=1')
+    link(href='style.css', rel='stylesheet', type='text/css', media='all')
+    link(href='http://fonts.googleapis.com/css?family=#{fonts?fonts:config.fonts}', rel='stylesheet', type='text/css')
+    //if lt IE 9
+      script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
+    // if IE
+      link(href='ie.css', rel='stylesheet', type='text/css', media='all')
+
+  body
+    if config.discount
+      .corner-ribbon ON SALE!
+    include ../include/header
+    block content
+    script.
+      window.sightings = !{sightings}
+    include ../include/footer
