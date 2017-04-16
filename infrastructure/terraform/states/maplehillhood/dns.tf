@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "redirect-www" {
 resource "aws_s3_bucket" "redirect-calendar" {
   bucket = "calendar.${var.domain}"
   website {
-    redirect_all_requests_to = "https://teamup.com/ks9cce28760c21cfa7/"
+    redirect_all_requests_to = "https://teamup.com/ks9cce28760c21cfa7"
   }
 }
 
