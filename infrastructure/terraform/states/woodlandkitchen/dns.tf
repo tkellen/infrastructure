@@ -5,6 +5,14 @@ resource "aws_route53_zone" "main" {
   }
 }
 
+resource "aws_route53_record" "a-db" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "A"
+  name = "db"
+  ttl = "1"
+  records = ["${aws_instance.production.public_ip}"]
+}
+
 resource "aws_route53_record" "mx" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "MX"
