@@ -2,32 +2,20 @@ STATES_DIR = terraform/states
 STATES = $(notdir $(wildcard $(STATES_DIR)/*))
 STATE_FROM_TARGET = $(firstword $(subst /, ,$1))
 
-.PHONY: init
-init: $(addsuffix /init, $(STATES))
+.PHONY: init plan apply cowboy %/init %/plan %/apply %/cowboy %/ssh-status %/ssh-toggle
+init plan apply: $(addsuffix /init, $(STATES))
 
-.PHONY: plan
-plan: $(addsuffix /plan, $(STATES))
+%/init %/plan %/apply %/cowboy: state = $(call STATE_FROM_TARGET, $@)
 
-.PHONY: apply
-apply: $(addsuffix /apply, $(STATES))
-
-.PHONY: %/init
-%/init: state = $(call STATE_FROM_TARGET, $@)
 %/init:
 	cd terraform/states/$(state) && terraform init
 
-.PHONY: %/plan
-%/plan: state = $(call STATE_FROM_TARGET, $@)
 %/plan:
 	cd terraform/states/$(state) && terraform plan -out $(state).plan
 
-.PHONY: %/apply
-%/apply: state = $(call STATE_FROM_TARGET, $@)
 %/apply:
 	cd terraform/states/$(state) && terraform apply $(state).plan
 
-.PHONY: %/cowboy
-%/cowboy: state = $(call STATE_FROM_TARGET, $@)
 %/cowboy:
 	cd terraform/states/$(state) && terraform apply
 
@@ -57,7 +45,6 @@ SSH_MODIFY = $(shell aws ec2 \
 SSH_STATE = $(if $(findstring $(call SSH_CHECK,$1,$2),$1),'true',)
 SSH_TOGGLE = $(if $1,$(call SSH_DISABLE,$2,$3),$(call SSH_ENABLE,$2,$3))
 
-.PHONY: %/ssh-status %/ssh-toggle
 %/ssh-status %/ssh-toggle: state = $(call STATE_FROM_TARGET, $@)
 %/ssh-status %/ssh-toggle: sg_id = $(shell cd terraform/states/$(state) && terraform output security_group_id 2> /dev/null)
 %/ssh-status %/ssh-toggle: profile = $(shell cd terraform/states/$(state) && terraform output profile)
@@ -69,5 +56,4 @@ SSH_TOGGLE = $(if $1,$(call SSH_DISABLE,$2,$3),$(call SSH_ENABLE,$2,$3))
 %/ssh-toggle:
 	@echo SSH status for $(state) set to $(if $(sg_id),$(call SSH_MODIFY,$(next_state),$(sg_id),$(profile)),'n/a').
 
-.PHONY: ssh-status
 ssh-status: $(addsuffix /ssh-status, $(STATES))
