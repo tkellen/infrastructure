@@ -1,6 +1,7 @@
 **.terraform**
 **.backup
 **.plan
+**/assets
 node_modules
 tmp
 .DS_Store
