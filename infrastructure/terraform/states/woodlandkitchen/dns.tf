@@ -10,7 +10,23 @@ resource "aws_route53_record" "a-db" {
   type = "A"
   name = "db"
   ttl = "1"
-  records = ["${aws_instance.production.public_ip}"]
+  records = ["${aws_instance.db.public_ip}"]
+}
+
+resource "aws_route53_record" "apex" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "A"
+  name = "${var.domain}"
+  ttl = "1"
+  records = ["${aws_instance.www.public_ip}"]
+}
+
+resource "aws_route53_record" "cname-www" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "1"
+  ttl = "1"
+  records = ["${var.domain}"]
 }
 
 resource "aws_route53_record" "mx" {
