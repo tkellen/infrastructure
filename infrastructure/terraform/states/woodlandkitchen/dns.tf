@@ -24,9 +24,17 @@ resource "aws_route53_record" "apex" {
 resource "aws_route53_record" "cname-www" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "CNAME"
-  name = "1"
+  name = "www"
   ttl = "1"
   records = ["${var.domain}"]
+}
+
+resource "aws_route53_record" "cname-shop" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "shop"
+  ttl = "1"
+  records = ["shops.myshopify.com"]
 }
 
 resource "aws_route53_record" "mx" {
