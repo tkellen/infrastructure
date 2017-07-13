@@ -1,0 +1,32 @@
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: ensure local user has a matching account on the host
+      user:
+        state: present
+        name: "{{ lookup('env', 'USER') }}"
+        shell: /bin/bash
+        groups: sudo
+      register: user
+
+    - name: ensure local user's public key is on the host
+      authorized_key:
+        user: "{{ lookup('env', 'USER') }}"
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+
+    - name: ensure ssh agent socket environment variable persists when sudoing
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        insertafter: "^Defaults"
+        line: "Defaults\tenv_keep += \"SSH_AUTH_SOCK\""
+        validate: "visudo -cf %s"
+
+    - name: allow passwordless sudo - development only!
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: "^%sudo"
+        line: "%sudo\tALL=(ALL:ALL) NOPASSWD:ALL"
+        validate: "visudo -cf %s"

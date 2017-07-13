@@ -1,0 +1,9 @@
+- hosts: metronet
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  vars_files:
+    - vars/main.yml
+    - vars/metronet.yml
+  roles:
+    - deploy

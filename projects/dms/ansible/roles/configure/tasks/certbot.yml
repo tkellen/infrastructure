@@ -1,0 +1,50 @@
+## configure ssl certificates with letsencrypt
+
+- name: add certbot ppa to apt
+  apt_repository:
+    repo: ppa:certbot/certbot
+
+- name: install certbot
+  apt:
+    name: certbot
+    state: present
+
+- name: ensure certbot well-known path exists
+  file:
+    path: "{{base_path}}/certbot/.well-known"
+    state: directory
+
+- name: test if certbot has been initialized
+  stat:
+    path: /etc/letsencrypt/live/{{dist.fqdn}}/fullchain.pem
+  register: cert_file
+
+- name: intialize certbot
+  command: >
+    certbot certonly --webroot --agree-tos --non-interactive
+    {{ (env != 'development') | ternary('', '--test-cert') }}
+    --email {{email}}
+    -w {{base_path}}/certbot
+    -d {{dist.fqdn}}
+  when: cert_file.stat.exists == false
+
+- name: ensure certbot certs are linked
+  file:
+    src: /etc/letsencrypt/live/{{dist.fqdn}}/{{item.src}}
+    dest: "{{item.dest}}"
+    state: link
+    force: true
+  with_items:
+    - src: fullchain.pem
+      dest: "{{ssl_cert_path}}"
+    - src: privkey.pem
+      dest: "{{ssl_key_path}}"
+
+- name: configure daily cronjob runs
+  cron:
+    name: daily
+    hour: 1
+    minute: 0
+    job: systemctl reload nginx
+    cron_file: reload_nginx
+    user: root

@@ -1,0 +1,35 @@
+- name: generate strong dhe parameter
+  shell: openssl dhparam -dsaparam -out /etc/ssl/dh.pem 4096
+  args:
+    creates: /etc/ssl/dh.pem
+
+- name: create self-signed ssl cert/key
+  command: >
+    openssl req -new -nodes -x509
+    -subj "/C=US/ST=Vermont/L=Arlington/O=IT/CN={{dist.fqdn}}" -days 3650
+    -keyout {{ssl_key_path}} -out {{ssl_cert_path}} -extensions v3_ca
+  args:
+    creates: "{{ssl_cert_path}}"
+
+- name: ensure hardened ssl configuration is presnt
+  template:
+    src: ssl_params
+    dest: /etc/nginx
+
+- name: ensure nginx is configured
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/conf.d/dms-{{dist.name}}.conf
+
+- name: ensure default nginx config is absent
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: ensure nginx is restarted
+  systemd:
+    name: nginx
+    state: restarted
+
+- include: certbot.yml
+  when: env != 'development'

@@ -1,0 +1,15 @@
+- name: ensure dms core is deployed
+  git:
+    repo: "{{repo}}"
+    dest: "{{core_path}}"
+    version: "{{version}}"
+    accept_hostkey: yes
+    force: yes
+
+- name: ensure distribution is deployed
+  git:
+    repo: "{{dist.repo}}"
+    dest: "{{dist.base_path}}"
+    version: "{{dist.version}}"
+    accept_hostkey: yes
+    force: yes

@@ -1,0 +1,88 @@
+- name: ensure distribution specific system packages are installed
+  apt:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - samba # to enable remote file sharing
+    - ruby # to run ruby-based api
+    - ruby-bundler # to install dependencies
+    - ruby-dev # to build native extensions
+    - libpq-dev # to build pg gem
+    - unixodbc # to connect to databases using odbc
+    - unixodbc-dev # to building native extensions
+    - tdsodbc # to connect to mssql over odbc
+    - php7.0-odbc # to connect to databases over odbc w/ php
+
+- name: ensure directories exist
+  file:
+    state: directory
+    path: "{{item}}"
+    owner: "{{user}}"
+    group: "{{group}}"
+    mode: 0777
+    recurse: yes
+  with_items: "{{dist.dirs}}"
+
+- name: ensure documents user exists
+  user:
+    name: documents
+    state: present
+
+- name: ensure samba has been configured
+  template:
+    src: smb.conf.j2
+    dest: /etc/samba/smb.conf
+
+- name: ensure samba credentials have been configured for dms user
+  shell:
+    printf "{{item}}\n{{item}}\n" | smbpasswd -a -s {{item}}
+  with_items:
+    - "{{user}}"
+    - documents
+
+- name: ensure samba will start at boot
+  systemd:
+    name: smbd
+    enabled: yes
+
+- name: ensure ruby dependencies have been installed
+  shell: bundle
+  args:
+    chdir: "{{dist.base_path}}/api"
+
+- name: ensure ruby api service has been installed
+  template:
+    src: api.service.j2
+    dest: /etc/systemd/system/api.service
+
+- name: ensure ruby api service is running and will start at boot
+  systemd:
+    name: api
+    enabled: yes
+    state: restarted
+
+- name: ensure odbc drivers have been configured
+  template:
+    src: odbcinst.ini.j2
+    dest: /etc/odbcinst.ini
+
+- name: ensure odbc connections have been configured
+  template:
+    src: odbc.ini.j2
+    dest: /etc/odbc.ini
+
+- name: ensure freetds connections have been configured
+  template:
+    src: freetds.conf.j2
+    dest: /etc/freetds/freetds.conf
+
+- name: configure daily cronjob runs
+  cron:
+    name: daily
+    hour: 1
+    minute: 0
+    job: |
+      cd {{dist.base_path}}/bin && {% for param in dist.env %}{{param}}={{dist.env[param]}} {% endfor %}./daily_cron
+    cron_file: daily
+    user: root
+  when: env == 'production'

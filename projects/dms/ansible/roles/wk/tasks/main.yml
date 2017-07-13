@@ -1,0 +1,10 @@
+- name: ensure awscli has been installed
+  apt:
+    name: awscli
+    state: present
+
+- name: ensure dbmate has been installed
+  get_url:
+    url: https://github.com/amacneil/dbmate/releases/download/v1.2.1/dbmate-linux-amd64
+    dest: /usr/local/bin/dbmate
+    mode: 755

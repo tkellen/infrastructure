@@ -1,0 +1,44 @@
+server {
+  server_name {{dist.fqdn}} {{dist.name}}.loc;
+  root {{core_path}}/src;
+  client_max_body_size {{max_upload_size}};
+  index index.php;
+{% if env == 'development' %}
+  listen 80;
+{% else %}
+  listen 443 ssl;
+  include ssl_params;
+  ssl_certificate_key {{ssl_key_path}};
+  ssl_certificate {{ssl_cert_path}};
+{% endif %}
+  location ~ /dist {
+    root {{base_path}};
+    location ~* \.(jpg|png|gif|css|js) {
+      allow all;
+    }
+    deny all;
+  }
+  location / {
+    try_files $uri $uri/ /index.php?cmd=$uri&$args;
+  }
+  location ~ \.php$ {
+    include snippets/fastcgi-php.conf;
+    fastcgi_param ENVIRONMENT {{env}};
+{% for param in dist.env if dist.env[param] %}
+    fastcgi_param {{param}} {{dist.env[param]}};
+{% endfor %}
+    fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+    fastcgi_intercept_errors off;
+  }
+  # This allows certbot to get letsencrypt certs.
+  location /.well-known {
+    alias {{base_path}}/certbot/.well-known;
+  }
+}
+
+# Force HTTPS for all connections.
+server {
+  listen 80;
+  server_name {{dist.fqdn}} {{dist.name}}.loc;
+  return 301 https://$server_name$request_uri;
+}

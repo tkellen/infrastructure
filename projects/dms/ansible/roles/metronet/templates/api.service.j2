@@ -1,0 +1,11 @@
+[Unit]
+Description=metronet daemon
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Restart=always
+ExecStart=/usr/local/bin/thin -e production -p {{dist.env.RUBY_API_PORT}} -R /mnt/dist/metronet/api/config.ru start
+
+[Install]
+WantedBy=multi-user.target

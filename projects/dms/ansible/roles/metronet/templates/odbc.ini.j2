@@ -1,0 +1,7 @@
+{% for connection in dist.odbc %}
+[{{connection}}]
+{% for key in dist.odbc[connection] %}
+{{key}} = {{dist.odbc[connection][key]}}
+{% endfor %}
+
+{% endfor %}

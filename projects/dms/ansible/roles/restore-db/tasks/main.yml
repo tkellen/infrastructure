@@ -1,0 +1,26 @@
+- name: ensure database can be managed
+  apt:
+    name: python-psycopg2
+    state: present
+
+- name: ensure database user exists
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    name: "{{dist.env.PGUSER}}"
+    password: "{{dist.env.PGPASSWORD}}"
+
+- name: ensure database exists
+  become: yes
+  become_user: postgres
+  postgresql_db:
+    name: "{{dist.env.PGNAME}}"
+    owner: "{{dist.env.PGUSER}}"
+    lc_collate: "{{dist.env.LC_COLLATE}}"
+    lc_ctype: "{{dist.env.LC_CTYPE}}"
+    state: present
+    template: template0
+
+- name: ensure database has been loaded
+  shell: psql {{dist.env.PGNAME}} < /mnt/{{dist.name}}.sql
+  environment: "{{dist.env}}"

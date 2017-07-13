@@ -2,6 +2,9 @@
 **.backup
 **.plan
 **/assets
+**.vagrant
+**.retry
+projects/dms/src/**
 node_modules
 tmp
 .DS_Store

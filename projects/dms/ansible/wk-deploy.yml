@@ -1,0 +1,9 @@
+- hosts: wk
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  vars_files:
+    - vars/main.yml
+    - vars/wk.yml
+  roles:
+    - deploy
