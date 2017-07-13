@@ -19,7 +19,7 @@ deploy: ## deploy a distribution
 
 .PHONY: restore-db
 restore-db: ## restore a database
-	@echo Please specify a distribution.
+	@echo Please specify a distribution and ensure src/[dist].sql exists on the target host.
 	@echo Usage: make restore-db/[$(DISTRIBUTIONS)]
 
 .PHONY: edit-vars

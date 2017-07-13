@@ -11,9 +11,8 @@
    - `apt-get/yum install ansible` (Linux)
 
 ## Setup
-1. Clone this repository
-2. Run `vagrant up`
-3. Run `make provision/[dist]`
-4. Run `make deploy/[dist]`
-5. Place database dump in `src/[dist].sql`
-6. Run `make restore-db/[dist]`
+1. Run `vagrant up`
+2. Run `make provision/[dist]`
+3. Run `make deploy/[dist]`
+4. Place database dump in `src/[dist].sql`
+5. Run `make restore-db/[dist]`
