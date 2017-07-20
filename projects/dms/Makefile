@@ -1,6 +1,6 @@
 PLAYBOOKS_DIR = ansible
 DISTRIBUTIONS = $(subst -deploy,,$(patsubst %.yml,%,$(notdir $(wildcard $(PLAYBOOKS_DIR)/*-deploy.yml))))
-DISTRIBUTION_FROM_TARGET = $(lastword $(subst /, ,$1))
+DISTRIBUTION_FROM_TARGET = $(firstword $(subst /, ,$1))
 ENV ?= dev
 
 .PHONY: help
@@ -27,24 +27,24 @@ edit-vars: ## edit encrypted variables
 	@echo Please specify a distribution.
 	@echo Usage: make edit-vars/[$(DISTRIBUTIONS)]
 
-deploy/% provision/% restore-db/% edit-vars/%: dist = $(call DISTRIBUTION_FROM_TARGET, $@)
-deploy/% provision/% restore-db/% edit-vars/%: inv = inventory/$(dist)-$(ENV)
-provision/%:
+%/deploy %/provision %/restore-db %/edit-vars: dist = $(call DISTRIBUTION_FROM_TARGET, $@)
+%/deploy %/provision %/restore-db %/edit-vars: inv = inventory/$(dist)-$(ENV)
+%/provision:
 	@echo Provisioning environment...
 	cd $(PLAYBOOKS_DIR) && ansible-playbook --ask-vault-pass -i $(inv) $(dist)-provision.yml
 	@echo Environment provisioned.
 
-deploy/%:
+%/deploy:
 	@echo Deploying $(dist)...
 	cd $(PLAYBOOKS_DIR) && ansible-playbook --ask-vault-pass -i $(inv) $(dist)-deploy.yml
 	@echo Deployed.
 
-restore-db/%:
+%/restore-db:
 	@echo Restoring database for $(dist)...
 	cd $(PLAYBOOKS_DIR) && ansible-playbook --ask-vault-pass -i $(inv) $(dist)-restore-db.yml
 	@echo Database restored.
 
-edit-vars/%:
+%/edit-vars:
 	@echo Decrypting $(dist) variables for editing...
 	ansible-vault edit ansible/vars/$(dist).yml
 	@echo Variables re-encrypted.

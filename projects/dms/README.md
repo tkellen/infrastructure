@@ -12,7 +12,7 @@
 
 ## Setup
 1. Run `vagrant up`
-2. Run `make provision/[dist]`
-3. Run `make deploy/[dist]`
+2. Run `make [dist]/provision`
+3. Run `make [dist]/deploy`
 4. Place database dump in `src/[dist].sql`
-5. Run `make restore-db/[dist]`
+5. Run `make [dist]/restore-db`
