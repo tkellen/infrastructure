@@ -2,7 +2,6 @@
 CREATE TABLE meal (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL CHECK(name <> '') UNIQUE,
-  alias TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMPTZ
 );
@@ -52,13 +51,32 @@ CREATE TABLE recipe (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL CHECK(name <> '') UNIQUE,
   description TEXT NOT NULL,
+  instructions TEXT NOT NULL,
   output TEXT,
   amount NUMERIC,
   created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMPTZ
 );
 COMMENT ON TABLE recipe IS $$
-  Annotate recipes, parent record for holding ingredients and stages.
+  Annotate recipes, parent record for meals / components / ingredients / stages.
+$$;
+
+CREATE TABLE recipe_component (
+  id SERIAL PRIMARY KEY,
+  source_recipe_id INTEGER NOT NULL REFERENCES recipe(id),
+  recipe_id INTEGER NOT NULL REFERENCES recipe(id),
+  ordering INTEGER NOT NULL DEFAULT 0,
+  show_description BOOLEAN NOT NULL DEFAULT false,
+  show_stages BOOLEAN NOT NULL DEFAULT false,
+  show_output BOOLEAN NOT NULL DEFAULT false,
+  show_instructions BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMPTZ
+);
+COMMENT ON TABLE recipe_component IS $$
+  Augment a recipe by attaching other recipes to it. For example, most pie
+  recipes are a common crust + filling. This allows recipe authors to use
+  the same crust across multiple recipes.
 $$;
 
 CREATE TABLE recipe_meal (
@@ -123,6 +141,9 @@ CREATE TRIGGER updated_at BEFORE UPDATE ON stage
 CREATE TRIGGER updated_at BEFORE UPDATE ON recipe
   FOR EACH ROW EXECUTE PROCEDURE updated_at();
 
+CREATE TRIGGER updated_at BEFORE UPDATE ON recipe_component
+  FOR EACH ROW EXECUTE PROCEDURE updated_at();
+
 CREATE TRIGGER updated_at BEFORE UPDATE ON recipe_meal
   FOR EACH ROW EXECUTE PROCEDURE updated_at();
 
@@ -136,6 +157,7 @@ CREATE TRIGGER updated_at BEFORE UPDATE ON recipe_stage
 DROP TABLE recipe_stage;
 DROP TABLE recipe_ingredient;
 DROP TABLE recipe_meal;
+DROP TABLE recipe_component;
 DROP TABLE recipe;
 DROP TABLE stage;
 DROP TABLE ingredient;

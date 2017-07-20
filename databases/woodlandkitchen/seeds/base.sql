@@ -2,7 +2,7 @@ INSERT INTO meal (id, name) VALUES (1, 'breakfast');
 INSERT INTO meal (id, name) VALUES (2, 'lunch');
 INSERT INTO meal (id, name) VALUES (3, 'snack');
 INSERT INTO meal (id, name) VALUES (4, 'appetizer');
-INSERT INTO meal (id, name, alias) VALUES (5, 'dinner', 'supper');
+INSERT INTO meal (id, name) VALUES (5, 'dinner');
 INSERT INTO meal (id, name) VALUES (6, 'dessert');
 
 INSERT INTO stage (id, name) VALUES (1, 'prep');
@@ -42,7 +42,7 @@ INSERT INTO ingredient (
   (17,'ground allspice',1,1.9),
   (18,'ground ginger',1,1.8),
   (19,'ground nutmeg',1,1.849),
-  (20,'dark chocolate coarsely grated',1,1.7),
+  (20,'coarsely grated dark chocolate',1,1.7),
   (21,'vanilla extract',1,4.2),
   (22,'orange zest',1,1.78),
   (23,'large egg',null,56),
@@ -50,10 +50,15 @@ INSERT INTO ingredient (
   (25,'candied orange peel',1,null),
   (26,'lemon extract', 1, null);
 
-INSERT INTO recipe (id, name, description, output, amount) VALUES
-  (1, 'Ottolenghi''s Jerusalem Spice Cookies', 'to be written', 'cups', 1.5),
-  (2, 'Panna Cotta', 'to be written', 'servings', 4),
-  (3, 'Strawberry Topping', 'to be written', 'cups', 1.5);
+INSERT INTO recipe (id, name, description, instructions, output, amount) VALUES
+  (1, 'Ottolenghi''s Jerusalem Spice Cookies', 'to be written','to be written', 'cups', 1.5),
+  (2, 'Panna Cotta', 'to be written', 'to be written', 'servings', 4),
+  (3, 'Strawberry Topping', 'to be written', 'to be written', 'cups', 1.5),
+  (4, 'Strawberry Rose Panna Cotta', 'description', 'instructions', 'servings', 4);
+
+INSERT INTO recipe_component (source_recipe_id,recipe_id,ordering) VALUES
+  (4,2,1),
+  (4,3,2);
 
 INSERT INTO recipe_meal (recipe_id, meal_id) VALUES
   (1, 6),
@@ -66,10 +71,10 @@ INSERT INTO recipe_stage (
 ) VALUES
   -- Ottolenghi's Jerusalem Spice Cookies
   (1,1,1,'15 minutes',null), -- prep time approximately 10 minutes
-  (2,3,1,'15 minutes',null), -- bake time approximately 20 minutes
+  (2,3,1,'20 minutes',null), -- bake time approximately 20 minutes
 
   -- Panna Cotta
-  (1,1,2,'5 minutes',null),    -- prep time approximately 5 minutes
+  (1,1,2,'5 minutes',null), -- prep time approximately 5 minutes
   (2,4,2,'1 hour','[4,8]'), -- chill time approximately 4-8 hours
 
   -- Strawberry Topping
@@ -98,9 +103,9 @@ INSERT INTO recipe_ingredient (
   (16,1,1,1,null,21,null,false),     -- 1 teaspoon vanilla extract (2g)
   (17,1,.5,1,null,9,null,false),     -- 1/2 teaspoon lemon zest (2g)
   (18,1,.5,1,null,22,null,false),    -- 1/2 teaspoon orange zest (2g)
-  (19,1,.5,null,null,24,null,false),   -- 1/2 large egg (26g)
-  (20,1,2,2,null,25,null,true),      -- 2 tablespoons minced crystallized ginger (2g) (decorative)
-  (21,1,2,2,null,26,null,true);      -- 2 tablespoons candied orange peel (2g) (decorative)
+  (19,1,.5,null,null,23,null,false), -- 1/2 large egg (26g)
+  (20,1,2,2,null,24,null,true),      -- 2 tablespoons minced crystallized ginger (2g) (decorative)
+  (21,1,2,2,null,25,null,true);      -- 2 tablespoons candied orange peel (2g) (decorative)
 
 INSERT INTO recipe_ingredient (
   ordering, recipe_id, amount, volume_id, ingredient_id

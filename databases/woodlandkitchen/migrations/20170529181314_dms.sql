@@ -58,12 +58,69 @@ CREATE TABLE dms.account_access_group (
   UNIQUE(account_id,access_group_id)
 );
 
+CREATE TYPE tree AS (id int,name text,parent_id int,id_tree int[],name_tree text[],parent_id_tree int[]);
+CREATE OR REPLACE FUNCTION public.tree(tablename text,lookup int) RETURNS setof tree AS $$
+BEGIN
+RETURN QUERY
+EXECUTE '
+WITH RECURSIVE tree(id,name,parent_id,id_tree,name_tree,parent_id_tree) AS
+(
+  SELECT
+    id,
+    name,
+    parent_id,
+    ARRAY[id],
+    ARRAY[name],
+    ARRAY[parent_id]
+  FROM
+    '||tablename||'
+  UNION ALL
+  SELECT
+    t1.id,
+    t1.name,
+    t1.parent_id,
+    t2.id_tree||t1.id,
+    t2.name_tree||t1.name,
+    t2.parent_id_tree||t1.parent_id
+  FROM
+    '||tablename||' t1
+  JOIN
+    tree t2
+  ON
+    t1.parent_id = t2.id
+)
+SELECT
+  id,
+  name,
+  parent_id,
+  id_tree,
+  name_tree AS name_tree,
+  parent_id_tree AS parent_id_tree
+FROM
+  tree
+'||
+CASE WHEN
+  lookup IS NOT null
+THEN
+  'WHERE id='||lookup
+ELSE
+  ''
+END
+||'
+ORDER BY
+  name_tree';
+END;
+$$ LANGUAGE plpgsql;
+
+
 -- migrate:down
+DROP FUNCTION tree(text, integer);
+DROP TYPE tree;
 DROP TABLE dms.account_access_group;
 DROP TABLE dms.account;
 DROP TABLE dms.access_listing;
+DROP TABLE dms.access_group;
 DROP TABLE dms.menu;
 DROP TABLE dms.func;
 DROP TABLE dms.module;
-DROP TABLE dms
 DROP SCHEMA dms;

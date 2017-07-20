@@ -34,3 +34,10 @@ INSERT INTO dms.access_group (name) VALUES
 
 INSERT INTO dms.access_listing (access_group_id,func_id)
   (SELECT '2',id FROM dms.func);
+
+INSERT INTO dms.account (first,last,login,pass) VALUES
+  ('Administrator','Account','admin','d20cc757691a14668f217a01c3a58898');
+
+INSERT INTO dms.account_access_group (account_id,access_group_id) VALUES
+  (1,1),
+  (1,2);
