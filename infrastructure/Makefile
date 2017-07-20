@@ -3,7 +3,9 @@ STATES = $(notdir $(wildcard $(STATES_DIR)/*))
 STATE_FROM_TARGET = $(firstword $(subst /, ,$1))
 
 .PHONY: init plan apply cowboy %/init %/plan %/apply %/cowboy %/ssh-status %/ssh-toggle
-init plan apply: $(addsuffix /init, $(STATES))
+init: $(addsuffix /init, $(STATES))
+plan: $(addsuffix /plan, $(STATES))
+apply: $(addsuffix /apply, $(STATES))
 
 %/init %/plan %/apply %/cowboy: state = $(call STATE_FROM_TARGET, $@)
 
