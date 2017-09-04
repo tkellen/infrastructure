@@ -94,8 +94,8 @@ async function subscribe(payload) {
   return {
     error,
     message,
-    first_name,
-    email_address,
+    first_name: member.first_name || payload.first_name,
+    email_address: member.email_address || payload.email_address,
     list_id: member.list_id,
     group_ids: member.interests
   }

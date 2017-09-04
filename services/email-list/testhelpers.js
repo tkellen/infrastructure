@@ -16,13 +16,13 @@ exports.withMailchimp = async (fn) => {
         state: 'VT',
         zip: '05250',
         country: 'US',
-        phone:'
+        phone: ''
       },
       permission_reminder: 'test',
       campaign_defaults: {
         from_name: 'test',
         from_email: 'infrastructure@aevitas.io',
-        subject: ',
+        subject: '',
         language: 'en'
       },
       email_type_option: true
