@@ -3,7 +3,7 @@ const { client } = require('./mailchimp')
 exports.mockEmail = () =>
   `${Math.random().toString(36).substring(7)}@aevitas.io`
 
-exports.withList = async (fn) => {
+exports.withMailchimp = async (fn) => {
   let tempList
   try {
     tempList = await client().post('/lists', {
@@ -31,17 +31,21 @@ exports.withList = async (fn) => {
       title: 'test',
       type: 'hidden'
     })
-    const tempGroup = await client().post(`/lists/${tempList.id}/interest-categories/${tempInterest.id}/interests`, {
-      name: 'test'
+    const tempGroupOne = await client().post(`/lists/${tempList.id}/interest-categories/${tempInterest.id}/interests`, {
+      name: 'one'
+    })
+    const tempGroupTwo = await client().post(`/lists/${tempList.id}/interest-categories/${tempInterest.id}/interests`, {
+      name: 'two'
     })
     await fn({
       list_id: tempList.id,
-      group_id: tempGroup.id
+      group_id_one: tempGroupOne.id,
+      group_id_two: tempGroupTwo.id
     })
   } catch(e) {
-    console.log(e)
-    // don't care about failures, just clean up
+    // don't care about failures
   } finally {
+    // clean up!
     return await client().delete(`/lists/${tempList.id}`)
   }
 

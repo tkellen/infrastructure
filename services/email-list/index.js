@@ -6,8 +6,8 @@ module.exports = async (req, res) => {
   try {
     const payload = await json(req)
     const result = await subscribe(payload)
-    return send(res, 200, payload)
+    return send(res, result.error ? 500 : 200, result)
   } catch(err) {
-    return send(res, 500, 'No good.')
+    return send(res, 500, err)
   }
 }
