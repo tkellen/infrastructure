@@ -73,8 +73,8 @@ test('handles repeated signups', async t => {
       first_name: 'second'
     })
     t.is(second.message, 'welcome-back')
-    t.is(first.first_name, 'second')
-    t.is(first.email_address, email)
+    t.is(second.first_name, 'second')
+    t.is(second.email_address, email)
     t.is(second.list_id, list_id)
     t.true(second.group_ids[group_id_one])
     t.true(second.group_ids[group_id_two])
