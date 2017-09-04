@@ -28,3 +28,19 @@ resource "aws_route53_record" "mx" {
     "10 aspmx.l.google.com."
   ]
 }
+
+resource "aws_route53_record" "cnams-mailchimp-dkim" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "k1._domainkey"
+  ttl = "1"
+  records = ["dkim.mcsv.net"]
+}
+
+resource "aws_route53_record" "txt-mailchimp-spf" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "TXT"
+  name = "${var.domain}"
+  ttl = "1"
+  records = ["v=spf1 include:servers.mcsv.net ?all"]
+}
