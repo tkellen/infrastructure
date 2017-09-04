@@ -7,23 +7,23 @@ exports.withMailchimp = async (fn) => {
   let tempList
   try {
     tempList = await client().post('/lists', {
-      name: "test",
+      name: 'test',
       contact: {
-        company: "test",
-        address1: "test",
-        address2: "test",
-        city: "test",
-        state: "VT",
-        zip: "05250",
-        country: "US",
-        phone:""
+        company: 'test',
+        address1: 'test',
+        address2: 'test',
+        city: 'test',
+        state: 'VT',
+        zip: '05250',
+        country: 'US',
+        phone:'
       },
-      permission_reminder: "test",
+      permission_reminder: 'test',
       campaign_defaults: {
-        from_name: "test",
-        from_email: "infrastructure@aevitas.io",
-        subject: "",
-        language: "en"
+        from_name: 'test',
+        from_email: 'infrastructure@aevitas.io',
+        subject: ',
+        language: 'en'
       },
       email_type_option: true
     });
@@ -48,5 +48,4 @@ exports.withMailchimp = async (fn) => {
     // clean up!
     return await client().delete(`/lists/${tempList.id}`)
   }
-
 }
