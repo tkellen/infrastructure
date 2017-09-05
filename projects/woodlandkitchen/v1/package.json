@@ -1,0 +1,17 @@
+{
+  "name": "woodlandkitchen",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "express": "^4.15.4",
+    "fontfaceobserver": "^2.0.13",
+    "next": "^3.2.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-ga": "^2.2.0"
+  },
+  "devDependencies": {}
+}
