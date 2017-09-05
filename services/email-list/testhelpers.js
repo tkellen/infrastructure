@@ -26,7 +26,7 @@ exports.withMailchimp = async (fn) => {
         language: 'en'
       },
       email_type_option: true
-    });
+    })
     const tempInterest = await client().post(`/lists/${tempList.id}/interest-categories`, {
       title: 'test',
       type: 'hidden'
@@ -42,10 +42,10 @@ exports.withMailchimp = async (fn) => {
       group_id_one: tempGroupOne.id,
       group_id_two: tempGroupTwo.id
     })
-  } catch(e) {
+  } catch (e) {
     // don't care about failures
   } finally {
     // clean up!
-    return await client().delete(`/lists/${tempList.id}`)
+    await client().delete(`/lists/${tempList.id}`)
   }
 }

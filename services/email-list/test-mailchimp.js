@@ -1,6 +1,6 @@
 const test = require('ava')
 const { subscribe } = require('./mailchimp')
-const { withMailchimp, mockEmail } = require('./testhelpers');
+const { withMailchimp, mockEmail } = require('./testhelpers')
 
 test('fails if a bad list is supplied', async t => {
   const failed = await subscribe({
@@ -35,7 +35,7 @@ test('fails if a bad email is supplied', async t => {
 
 test('handles new signups', async t => {
   const email = mockEmail()
-  await withMailchimp(async ({list_id, group_id_one}) => {
+  await withMailchimp(async ({list_id, group_id_one, group_id_two}) => {
     const subscribed = await subscribe({
       list_id: list_id,
       group_id: group_id_one,
@@ -66,6 +66,7 @@ test('handles repeated signups', async t => {
     t.is(first.list_id, list_id)
     t.true(first.group_ids[group_id_one])
     t.false(first.group_ids[group_id_two])
+
     const second = await subscribe({
       list_id: list_id,
       email_address: email,

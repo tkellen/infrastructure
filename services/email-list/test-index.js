@@ -3,7 +3,7 @@ const micro = require('micro')
 const listen = require('test-listen')
 const service = micro(require('./'))
 const request = require('request-promise')
-const { withMailchimp, mockEmail } = require('./testhelpers');
+const { withMailchimp, mockEmail } = require('./testhelpers')
 
 test('adding emails to mailchimp', async t => {
   const url = await listen(service)

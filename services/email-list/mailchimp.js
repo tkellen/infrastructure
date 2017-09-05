@@ -3,24 +3,23 @@ const md5 = require('./md5')
 
 const MailChimp = require('mailchimp-api-v3')
 
-function client() {
+function client () {
   try {
-    return new MailChimp(api_key);
-  }
-  catch (err) {
+    return new MailChimp(api_key)
+  } catch (err) {
     // TODO: replace with something where the email will get saved
     // to a service we know is alive.
-    throw new Error("Unable to create mailchimp client.")
+    throw new Error('Unable to create mailchimp client.')
   }
 }
 
-async function status(payload) {
-  return await client().get(
+function status (payload) {
+  return client().get(
     `/lists/${payload.list_id}/members/${md5(payload.email_address)}`
   )
 }
 
-async function subscribe(payload) {
+async function subscribe (payload) {
   // By default we are expecting users are first time visitors. This means
   // we will put them into a "pending" state. That will tell Mailchimp to
   // send them a "double opt-in" email.
@@ -31,13 +30,13 @@ async function subscribe(payload) {
   let message = 'waiting-on-approval'
 
   // By default we want to use the HTTP method put to update/create in place.
-  let method = 'put';
+  let method = 'put'
 
   // By default we assume no error has occured.
-  let error = false;
+  let error = false
 
   // Keep member data in scope so we can return it
-  let member = {};
+  let member = {}
 
   // First, let's see if this email is already in our list.
   try {
@@ -50,14 +49,14 @@ async function subscribe(payload) {
 
       // If a user already exists, change to updating specific fields rather
       // than whole sale replacment/creation.
-      method = 'patch';
+      method = 'patch'
 
       // We want to be smart in our reply. If a user has already signed up and
       // they are back for more, let's welcome them vs showing them the same
       // initial signup flow.
       message = 'welcome-back'
     }
-  } catch(e) {
+  } catch (e) {
     // If this fails it just means the user didn't exist.
   }
 
@@ -79,7 +78,7 @@ async function subscribe(payload) {
       path: `/lists/${payload.list_id}/members/${md5(payload.email_address)}`,
       body: body
     })
-  } catch(e) {
+  } catch (e) {
     error = true
     if (e.status === 404) {
       message = 'failed-bad-list'
