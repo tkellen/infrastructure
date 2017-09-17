@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "id": "email-register",
+  "required": [
+    "firstName",
+    "emailAddress",
+    "listId"
+  ],
+  "properties": {
+    "firstName": {
+      "type": "string"
+    },
+    "emailAddress": {
+      "type": "string",
+      "format": "email"
+    },
+    "listId": {
+      "type": "string"
+    },
+    "groupId": {
+      "type": "string"
+    }
+  }
+}
