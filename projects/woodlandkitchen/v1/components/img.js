@@ -1,5 +1,4 @@
-import theme from '../theme'
-import { images } from '../data'
+import { imageHost, images } from '../data'
 
 export default (props) => {
   // todo, look up images in database
@@ -22,14 +21,14 @@ export default (props) => {
           background-color: #000;
         }
       `}</style>
-      <img style={props.style} alt={image.title} src={`/static/img/320/${src}`} srcSet={`
-        /static/img/320/${src}} 320w,
-        /static/img/480/${src} 480w,
-        /static/img/640/${src} 640w,
-        /static/img/960/${src} 960w,
-        /static/img/1280/${src} 1280w,
-        /static/img/1920/${src} 1920w,
-        /static/img/2560/${src} 2560w`}/>
+      <img style={props.style} alt={image.title} src={`${imageHost}/img/320/${src}`} srcSet={`
+        ${imageHost}/img/320/${src}} 320w,
+        ${imageHost}/img/480/${src} 480w,
+        ${imageHost}/img/640/${src} 640w,
+        ${imageHost}/img/960/${src} 960w,
+        ${imageHost}/img/1280/${src} 1280w,
+        ${imageHost}/img/1920/${src} 1920w,
+        ${imageHost}/img/2560/${src} 2560w`} />
     </div>
   )
 }

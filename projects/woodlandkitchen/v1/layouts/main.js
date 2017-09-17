@@ -4,21 +4,21 @@ import Head from 'next/head'
 import asyncFonts from '../utils/async-fonts'
 import analytics from '../utils/analytics'
 
-import theme from '../theme';
+import theme from '../theme'
 
 class Layout extends Component {
-  componentDidMount() {
+  componentDidMount () {
     asyncFonts(theme.webfonts)
   }
 
-  render() {
-    const { title } = this.props;
+  render () {
+    const { title } = this.props
     return (
       <div>
         <Head>
           <title>{title} | {theme.title}</title>
-          <meta charSet="utf-8"/>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+          <meta charSet='utf-8' />
+          <meta name='viewport' content='initial-scale=1.0, width=device-width' />
           <style dangerouslySetInnerHTML={{__html: `
             * {
               -webkit-font-smoothing: antialiased;
@@ -32,7 +32,7 @@ class Layout extends Component {
               margin: 0;
               min-width: 320px;
             }
-          `}}/>
+          `}} />
         </Head>
         {this.props.children}
       </div>

@@ -1,5 +1,3 @@
-import Img from './img'
-
 import pluralize from '../utils/pluralize'
 import theme from '../theme'
 
@@ -11,36 +9,36 @@ const DECIMAL_TO_DISPLAY = {
   '0.5': '½',
   '0.75': '¾',
   '0.66': '⅔'
-};
+}
 
-function display_amount(input) {
-  const whole_qty = Math.floor(input)
-  const fractional_qty = input-whole_qty;
-  const output = [];
-  if (whole_qty > 0) {
-    output.push(whole_qty);
+function displayAmount (input) {
+  const wholeQty = Math.floor(input)
+  const fractionalQty = input - wholeQty
+  const output = []
+  if (wholeQty > 0) {
+    output.push(wholeQty)
   }
-  if (fractional_qty > 0) {
-    output.push(DECIMAL_TO_DISPLAY[fractional_qty])
+  if (fractionalQty > 0) {
+    output.push(DECIMAL_TO_DISPLAY[fractionalQty])
   }
   return output.join(' ')
 }
 
-function prep_ingredients(input) {
+function prepIngredients (input) {
   return input.reduce((carry, currentIngredient, idx) => {
-    const nextIngredient = input[idx+1];
-    const lastIngredient = input[idx-1];
+    const nextIngredient = input[idx + 1]
+    const lastIngredient = input[idx - 1]
     if (lastIngredient && nextIngredient && currentIngredient.name === lastIngredient.name) {
-      return carry;
+      return carry
     }
     if (nextIngredient && currentIngredient.name === nextIngredient.name) {
-      currentIngredient.amount += nextIngredient.amount;
+      currentIngredient.amount += nextIngredient.amount
     }
     if (currentIngredient.amount >= 1) {
-      currentIngredient.volume_display = pluralize(currentIngredient.volume_display);
+      currentIngredient.volume_display = pluralize(currentIngredient.volume_display)
     }
     carry.push(currentIngredient)
-    return carry;
+    return carry
   }, [])
 }
 
@@ -107,8 +105,8 @@ export default (props) => (
     `}</style>
     <p>{recipe.description}</p>
     <h2>Ingredients</h2>
-    <ul>{prep_ingredients(ingredients).map(i => (
-      <li><span className="qty">{display_amount(i.amount)}</span> {i.volume_display} {i.name} {i.note} {i.options}</li>
+    <ul>{prepIngredients(ingredients).map(i => (
+      <li><span className='qty'>{displayAmount(i.amount)}</span> {i.volume_display} {i.name} {i.note} {i.options}</li>
     ))}</ul>
     <h2>Intructions</h2>
     <p>Measure the currants into a small bowl and drizzle the brandy over them. While they soak for a bit, begin preparing the rest of your ingredients: in a large bowl, whisk together the flour, cocoa powder, baking powder, baking soda, spices, salt, and dark chocolate. (Pro tip: do not slice your finger open grating chocolate by hand.)</p>

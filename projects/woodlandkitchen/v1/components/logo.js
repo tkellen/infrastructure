@@ -3,7 +3,7 @@ import Link from 'next/link'
 import theme from '../theme'
 
 export default () => (
-  <Link href="/">
+  <Link href='/'>
     <a>
       <em>The</em> Woodland Kitchen
       <style jsx>{`

@@ -1,5 +1,3 @@
-import Img from './img'
-
 import theme from '../theme'
 
 export default (props) => (

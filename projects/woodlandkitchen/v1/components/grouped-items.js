@@ -1,6 +1,6 @@
-import arrayChunk from '../utils/array-chunk';
+import arrayChunk from '../utils/array-chunk'
 
-import theme from '../theme';
+import theme from '../theme'
 
 export default (props) => {
   const { Component, groupCount, items } = props
@@ -16,7 +16,7 @@ export default (props) => {
       `}</style>
       {groups.map(group =>
         <section key={group.key}>
-          {group.items.map(item => <Component {...item}/> )}
+          {group.items.map(item => <Component {...item} />)}
         </section>
       )}
     </div>

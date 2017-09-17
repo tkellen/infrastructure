@@ -5,7 +5,7 @@ export default {
   largeScreen: 'min-width: 1224px',
   fonts: {
     sansSerif: 'Source Sans Pro',
-    serif: 'Gentium Book Basic',
+    serif: 'Gentium Book Basic'
   },
   margin: '5vw',
   colors: {
@@ -30,7 +30,7 @@ export default {
         { weight: 400, style: 'normal' },
         { weight: 400, style: 'italic' },
         { weight: 600, style: 'normal' },
-        { weight: 600, style: 'italic' },
+        { weight: 600, style: 'italic' }
       ]
     },
     {
@@ -38,7 +38,7 @@ export default {
       styles: [
         { weight: 400, style: 'normal' },
         { weight: 700, style: 'normal' },
-        { weight: 400, style: 'italic', },
+        { weight: 400, style: 'italic' },
         { weight: 700, style: 'italic' }
       ]
     }

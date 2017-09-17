@@ -4,9 +4,9 @@ import Lead from '../components/lead'
 import Footer from '../components/footer'
 
 export default () => (
-  <Layout title="Workshops">
-    <Header/>
-    <Lead tagline="Workshops" subheading="Content..."/>
-    <Footer/>
+  <Layout title='Workshops'>
+    <Header />
+    <Lead tagline='Workshops' subheading='Content...' />
+    <Footer />
   </Layout>
 )

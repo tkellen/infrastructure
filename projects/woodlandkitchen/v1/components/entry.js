@@ -1,10 +1,9 @@
-import Container from './container'
 import Img from '../components/img'
 
 import theme from '../theme'
 
 export default (props) => (
-  <div className="entry">
+  <div className='entry'>
     <style jsx>{`
       p:first-of-type:first-line, hr + p:first-line {
         /* first line of content post + first line after any hr should
@@ -184,11 +183,11 @@ export default (props) => (
       <cite>Tasha Tudor</cite>
     </aside>
     <p>(Granted, I am not so naive as to think it would be idyllic. The all-consuming grind of cooking, laundry, and cleaning would probably drive me insane within the space of day, and I'd surely be burned as a witch within the space of a month. But still. Just as Tyler longs to explore space, I long to explore time.)</p>
-    <Img id="30762565764"/>
+    <Img id='30762565764' />
     <p>And yet, despite my nostalgia, I also have the opposite thought on a regular basis: <em>I am so thankful I live in this time.</em> My gratitude is for many things (a modicum&mdash;but not much more&mdash;of social equality, washing machines, jeans, etc.) but the one I keep coming back to is this: <strong>I have access to a dazzling array of affordable foods and spices from around the globe</strong>. I can easily buy vanilla beans from Madagascar, whole nutmegs from Indonesia, an  hundreds of cardamom pods from India. Even if I can't find kaffir lime leaves at my local general store, I can order them online and they'll arrive at my door within a couple of days. Crazy!</p>
-    <Img id="30794129423"/>
+    <Img id='30794129423' />
     <p>Crazier still is how recent this proliferation of global food availability has occurred. I mean, my <em>mom</em> can remember when she was a little girl and <em>zucchini</em> first appeared her small-town supermarket! Even more mind-boggling is the realization that surely this global spice trade cannot last forever. I have a hunch that sooner or later, we'll recognize that it isn't sustainable to use fossil fuels to ship food across the globe. Eventually, spices will once again becom  highly sought-after luxury items like they were for centuries.</p>
-    <Img id="30762553254"/>
+    <Img id='30762553254' />
     <p>Spices were synonymous with wealth in many cultures and many eras, from Pharoah Hatshepsut to Emperor Chen-Nong to King Henry the Eighth. They were so coveted that they were the cause of shady deals and bloodshed and centuries of oppressive colonial rule. They were so prized, historically, that folks would embark on dangerous, years'-long sea voyages and desert treks and spend fortunes just to acquire them!</p>
     <aside>
       <p>Garlic and onions were the only flavourings the common [ancient Egyptian] people had in their diet.</p>
@@ -201,7 +200,7 @@ export default (props) => (
       <li>bullet three</li>
     </ul>
     <p>Spices were synonymous with wealth in many cultures and many eras, from Pharoah Hatshepsut to Emperor Chen-Nong to King Henry the Eighth. They were so coveted that they were the cause of shady deals and bloodshed and centuries of oppressive colonial rule. They were so prized, historically, that folks would embark on dangerous, years'-long sea voyages and desert treks and spend fortunes just to acquire them!</p>
-    <hr/>
+    <hr />
 
     <p>Spices were synonymous with wealth in many cultures and many eras, from Pharoah Hatshepsut to Emperor Chen-Nong to King Henry the Eighth. They were so coveted that they were the cause of shady deals and bloodshed and centuries of oppressive colonial rule. They were so prized, historically, that folks would embark on dangerous, years'-long sea voyages and desert treks and spend fortunes just to acquire them!</p>
     <ol>
@@ -209,14 +208,14 @@ export default (props) => (
       <li>Spices were synonymous with wealth in many cultures and many eras, from Pharoah Hatshepsut to Emperor Chen-Nong to King Henry the Eighth. They were so coveted that they were the cause of shady deals and bloodshed and centuries of oppressive colonial rule. They were so prized, historically, that folks would embark on dangerous, years'-long sea voyages and desert treks and spend fortunes just to acquire them!</li>
       <li>item 3</li>
     </ol>
-    <Img id="30794115363"/>
+    <Img id='30794115363' />
     <p>Yes, I thank my lucky stars that I live in <em>this</em> time. Without an abundance of inexpensive spices, apple pie and pumpkin pie would be sad, homely treats. I wouldn't be able to afford to taste, much less cook, chana masala, Jamaican jerk chicken, Thai green curry, chai spice tea, or gingerbread. And what would become of Scandinavian baking, with its penchant for cardamom and caraway?</p>
-    <Img id="31499170292"/>
+    <Img id='31499170292' />
     <h3>My new favorite Christmas treats</h3>
-    <p>My new favorite Christmas treats, Yotam Ottolengi and Sami Tamimi's spice cookies from their <a href="https://www.amazon.com/Jerusalem-Cookbook-Yotam-Ottolenghi/dp/1607743949" rel="external">Jerusalem cookbook</a>, would be nigh on impossible to make in any other time by anyone except for the wealthiest royalty. The addictive little lumps are full of ingredients that were once exotic: cinnamon, ginger, nutmeg, and allspice, not to mention chocolate, orange zest, and lemon zest! An  what a shame it would be to miss out on these treats. From the first bite&mdash;cracking through an icing crust of lemon glaze, into a velvety cushion of cocoa and spice studded with little currant jewels&mdash;I was officially smitten. I have hunch you will be, too.</p>
-    <Img id="31529650461"/>
+    <p>My new favorite Christmas treats, Yotam Ottolengi and Sami Tamimi's spice cookies from their <a href='https://www.amazon.com/Jerusalem-Cookbook-Yotam-Ottolenghi/dp/1607743949' rel='external'>Jerusalem cookbook</a>, would be nigh on impossible to make in any other time by anyone except for the wealthiest royalty. The addictive little lumps are full of ingredients that were once exotic: cinnamon, ginger, nutmeg, and allspice, not to mention chocolate, orange zest, and lemon zest! An  what a shame it would be to miss out on these treats. From the first bite&mdash;cracking through an icing crust of lemon glaze, into a velvety cushion of cocoa and spice studded with little currant jewels&mdash;I was officially smitten. I have hunch you will be, too.</p>
+    <Img id='31529650461' />
     <p>And this is coming from a woman who, by all accounts, shouldn't love this recipe: I'm not usually a chocolate-with-other-flavors kind of person, and I am frequently frustrated when "spiced" baked goods fall flat from lack of taste. But <em>oh</em> these little tuffets are <em>packed</em> with a multitude of flavors, the combination of which really does work marvelously well.</p>
     <p>Like I said, these are my new favorite Christmas cookies. I do hope you'll make them. Go, revel in their delicious complexity, and appreciate the fact that you live in a time when you're able to make them at all.</p>
-    <Img id="31645372455"/>
+    <Img id='31645372455' />
   </div>
 )

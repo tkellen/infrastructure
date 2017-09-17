@@ -6,23 +6,22 @@ import HamburgerButton from './hamburger-button'
 import theme from '../theme'
 
 export default class extends Component {
-
-  constructor() {
+  constructor () {
     super()
     this.state = {
       forceShow: false
-    };
+    }
     this.showHide = this.showHide.bind(this)
   }
 
-  showHide(state) {
-    this.setState({forceShow:state})
+  showHide (state) {
+    this.setState({forceShow: state})
   }
 
-  render() {
-    const forceShowClass = this.state.forceShow ? 'show' : '';
+  render () {
+    const forceShowClass = this.state.forceShow ? 'show' : ''
     return (
-      <nav role="navigation" aria-label="primary navigation">
+      <nav role='navigation' aria-label='primary navigation'>
         <style jsx>{`
           nav {
             position: relative;
@@ -69,17 +68,16 @@ export default class extends Component {
             }
           }
         `}</style>
-        <HamburgerButton clickHandler={this.showHide}/>
+        <HamburgerButton clickHandler={this.showHide} />
         <ul className={forceShowClass}>
-          <li><Link href="/about"><a>about</a></Link></li>
-          <li><Link href="/journal"><a>journal</a></Link></li>
-          <li><Link href="/recipes"><a>recipes</a></Link></li>
-          <li><Link href="/free-cooking-guides"><a>free cooking guides</a></Link></li>
-          <li><Link href="/workshops"><a>workshops</a></Link></li>
-          <li><Link href="/books"><a>books</a></Link></li>
+          <li><Link href='/about'><a>about</a></Link></li>
+          <li><Link href='/journal'><a>journal</a></Link></li>
+          <li><Link href='/recipes'><a>recipes</a></Link></li>
+          <li><Link href='/free-cooking-guides'><a>free cooking guides</a></Link></li>
+          <li><Link href='/workshops'><a>workshops</a></Link></li>
+          <li><Link href='/books'><a>books</a></Link></li>
         </ul>
       </nav>
     )
   }
-
 }

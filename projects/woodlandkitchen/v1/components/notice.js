@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import theme from '../theme';
+import theme from '../theme'
 
 export default (props) => (
   <div>

@@ -11,7 +11,6 @@
 import { Component } from 'react'
 
 export default class extends Component {
-
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
@@ -22,19 +21,19 @@ export default class extends Component {
   }
 
   handleClick () {
-    const next = !this.state.active;
+    const next = !this.state.active
     this.setState({active: next})
-    this.clickHandler(next);
+    this.clickHandler(next)
   }
 
-  render() {
-    const activeClass = this.state.active ? 'is-active' : '';
+  render () {
+    const activeClass = this.state.active ? 'is-active' : ''
     return (
       <button
-        ref="button"
-        type="button"
-        aria-label="Menu"
-        aria-controls="navigation"
+        ref='button'
+        type='button'
+        aria-label='Menu'
+        aria-controls='navigation'
         className={activeClass}
         onClick={this.handleClick}
         >
@@ -118,7 +117,7 @@ export default class extends Component {
                         transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
           }
         `}</style>
-        <div><span></span></div>
+        <div><span /></div>
       </button>
     )
   }

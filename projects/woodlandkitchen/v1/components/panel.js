@@ -81,7 +81,7 @@ export default (props) => (
       }
     `}</style>
     <Link href={props.link}><a><h3>{props.title}</h3></a></Link>
-    <Img id={props.img}/>
+    <Img id={props.img} />
     <p>{props.description}</p>
   </div>
 )

@@ -16,6 +16,6 @@ export default (props) => (
         border: none;
       }
     `}</style>
-    <iframe src={props.src} frameBorder="0" allowFullScreen></iframe>
+    <iframe src={props.src} frameBorder='0' allowFullScreen />
   </div>
 )
