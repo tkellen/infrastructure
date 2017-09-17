@@ -1,5 +1,5 @@
-import { Component } from 'react'
 import Link from 'next/link'
+import { Component } from 'react'
 
 import HamburgerButton from './hamburger-button'
 
@@ -31,7 +31,7 @@ export default class extends Component {
             border-top: 1px solid ${theme.colors.border};
             /* stop giant bright click effect on mobile taps */
             -webkit-tap-highlight-color: transparent;
-            background-color: ${theme.colors.navBackground};
+            background-color: #212121;
             font-family: "${theme.fonts.sansSerif}";
             font-weight: 200;
           }
@@ -73,7 +73,7 @@ export default class extends Component {
           <li><Link href='/about'><a>about</a></Link></li>
           <li><Link href='/journal'><a>journal</a></Link></li>
           <li><Link href='/recipes'><a>recipes</a></Link></li>
-          <li><Link href='/free-cooking-guides'><a>free cooking guides</a></Link></li>
+          <li><Link href='/free-resources'><a>free resources</a></Link></li>
           <li><Link href='/workshops'><a>workshops</a></Link></li>
           <li><Link href='/books'><a>books</a></Link></li>
         </ul>

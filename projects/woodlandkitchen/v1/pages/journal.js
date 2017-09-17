@@ -1,14 +1,14 @@
-import Layout from '../layouts/main'
-import Header from '../components/header'
+import Layout from '../layouts/with-nav'
+import Notice from '../components/notice'
+import Logo from '../components/logo'
+import Nav from '../components/nav'
 import Container from '../components/container'
 import Img from '../components/img'
 import Entry from '../components/entry'
 import EmailSignup from '../components/email-signup'
-import Footer from '../components/footer'
 
 export default () => (
   <Layout title='Journal'>
-    <Header />
     <Container
       title="Ottolenghi's Jerusalem Spice Cookies"
       img={<Img id='36797251436' style={{opacity: 0.9}} />}
@@ -16,7 +16,6 @@ export default () => (
       <Entry />
     </Container>
     <EmailSignup />
-    <Footer />
   </Layout>
 )
 

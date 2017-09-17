@@ -8,15 +8,15 @@ const { withMailchimp, mockEmail } = require('./testhelpers')
 test('subscribing works', async t => {
   const url = await listen(service)
   const email = mockEmail()
-  await withMailchimp(async ({list_id, group_id_one, group_id_two}) => {
+  await withMailchimp(async ({listId, groupIdOne, groupIdTwo}) => {
     const response = await request({
       method: 'POST',
       uri: url,
       body: {
-        list_id: list_id,
-        group_id: group_id_one,
-        email_address: email,
-        first_name: 'test'
+        listId: listId,
+        groupId: groupIdOne,
+        emailAddress: email,
+        firstName: 'test'
       },
       json: true,
       resolveWithFullResponse: true
@@ -30,16 +30,16 @@ test('subscribing works', async t => {
 
 test('bad payloads send 400 with errors', async t => {
   const url = await listen(service)
-  await withMailchimp(async ({list_id, group_id_one, group_id_two}) => {
+  await withMailchimp(async ({listId, groupIdOne, groupIdTwo}) => {
     try {
       await request({
         method: 'POST',
         uri: url,
         body: {
-          // list_id: list_id,
-          group_id: group_id_one,
-          email_address: 'bad',
-          first_name: 'test'
+          // listId: listId,
+          groupId: groupIdOne,
+          emailAddress: 'bad',
+          firstName: 'test'
         },
         json: true,
         resolveWithFullResponse: true

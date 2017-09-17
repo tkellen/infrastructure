@@ -38,9 +38,9 @@ exports.withMailchimp = async (fn) => {
       name: 'two'
     })
     await fn({
-      list_id: tempList.id,
-      group_id_one: tempGroupOne.id,
-      group_id_two: tempGroupTwo.id
+      listId: tempList.id,
+      groupIdOne: tempGroupOne.id,
+      groupIdTwo: tempGroupTwo.id
     })
   } catch (e) {
     // don't care about failures

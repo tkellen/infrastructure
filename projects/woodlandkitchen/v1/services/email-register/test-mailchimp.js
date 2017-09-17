@@ -4,30 +4,30 @@ const { withMailchimp, mockEmail } = require('./testhelpers')
 
 test('fails if a bad list is supplied', async t => {
   const failed = await subscribe({
-    list_id: 'nope',
-    email_address: mockEmail()
+    listId: 'nope',
+    emailAddress: mockEmail()
   })
   t.is(failed.message, 'failed-bad-list')
 })
 
 test('fails if a bad group is supplied', async t => {
-  await withMailchimp(async ({list_id}) => {
+  await withMailchimp(async ({listId}) => {
     const failed = await subscribe({
-      list_id: list_id,
+      listId: listId,
       group_id: 'nope',
-      email_address: mockEmail()
+      emailAddress: mockEmail()
     })
     t.is(failed.message, 'failed-bad-group')
   })
 })
 
 test('fails if a bad email is supplied', async t => {
-  await withMailchimp(async ({list_id, group_id_one}) => {
+  await withMailchimp(async ({listId, groupIdOne}) => {
     const failed = await subscribe({
-      list_id: list_id,
-      group_id: group_id_one,
-      email_address: 'nope',
-      first_name: 'test'
+      listId: listId,
+      group_id: groupIdOne,
+      emailAddress: 'nope',
+      firstName: 'test'
     })
     t.is(failed.message, 'failed-bad-email')
   })
@@ -35,49 +35,49 @@ test('fails if a bad email is supplied', async t => {
 
 test('handles new signups', async t => {
   const email = mockEmail()
-  await withMailchimp(async ({list_id, group_id_one, group_id_two}) => {
+  await withMailchimp(async ({listId, groupIdOne, groupIdTwo}) => {
     const subscribed = await subscribe({
-      list_id: list_id,
-      group_id: group_id_one,
-      email_address: email,
-      first_name: 'test'
+      listId: listId,
+      group_id: groupIdOne,
+      emailAddress: email,
+      firstName: 'test'
     })
     t.is(subscribed.message, 'waiting-on-approval')
-    t.is(subscribed.first_name, 'test')
-    t.is(subscribed.email_address, email)
-    t.is(subscribed.list_id, list_id)
-    t.true(subscribed.groups[group_id_one])
-    t.false(subscribed.groups[group_id_two])
+    t.is(subscribed.firstName, 'test')
+    t.is(subscribed.emailAddress, email)
+    t.is(subscribed.listId, listId)
+    t.true(subscribed.groups[groupIdOne])
+    t.false(subscribed.groups[groupIdTwo])
   })
 })
 
 test('handles repeated signups', async t => {
   const email = mockEmail()
-  await withMailchimp(async ({list_id, group_id_one, group_id_two}) => {
+  await withMailchimp(async ({listId, groupIdOne, groupIdTwo}) => {
     const first = await subscribe({
-      list_id: list_id,
-      group_id: group_id_one,
-      email_address: email,
-      first_name: 'first'
+      listId: listId,
+      group_id: groupIdOne,
+      emailAddress: email,
+      firstName: 'first'
     })
     t.is(first.message, 'waiting-on-approval')
-    t.is(first.first_name, 'first')
-    t.is(first.email_address, email)
-    t.is(first.list_id, list_id)
-    t.true(first.group_ids[group_id_one])
-    t.false(first.group_ids[group_id_two])
+    t.is(first.firstName, 'first')
+    t.is(first.emailAddress, email)
+    t.is(first.listId, listId)
+    t.true(first.group_ids[groupIdOne])
+    t.false(first.group_ids[groupIdTwo])
 
     const second = await subscribe({
-      list_id: list_id,
-      email_address: email,
-      group_id: group_id_two,
-      first_name: 'second'
+      listId: listId,
+      emailAddress: email,
+      group_id: groupIdTwo,
+      firstName: 'second'
     })
     t.is(second.message, 'welcome-back')
-    t.is(second.first_name, 'second')
-    t.is(second.email_address, email)
-    t.is(second.list_id, list_id)
-    t.true(second.group_ids[group_id_one])
-    t.true(second.group_ids[group_id_two])
+    t.is(second.firstName, 'second')
+    t.is(second.emailAddress, email)
+    t.is(second.listId, listId)
+    t.true(second.group_ids[groupIdOne])
+    t.true(second.group_ids[groupIdTwo])
   })
 })

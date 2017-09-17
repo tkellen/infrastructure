@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import theme from '../theme'
 
 export default (props) => (
@@ -32,6 +30,6 @@ export default (props) => (
         }
       }
     `}</style>
-    <Link href={props.url}><a>{props.body}</a></Link>
+    <a href={props.url}>{props.body}</a>
   </div>
 )

@@ -11,21 +11,22 @@ export default (props) => (
         position: relative;
       }
       h3 {
-        margin: 0;
-        padding: 0;
         font-weight: 200;
         font-family: "${theme.fonts.serif}";
         text-transform: lowercase;
-      }
-      a {
         position: absolute;
-        z-index: 1;
         text-align: center;
         width: 100%;
         height: 100%;
-        cursor: pointer;
+        z-index: 1;
+        margin: 2vw 0;
+      }
+      a {
         color: #fff;
         text-decoration: none;
+        display: block;
+        border: 1px solid #000;
+        width: 100%;
       }
       a:hover {
         color: #336627;
@@ -46,7 +47,7 @@ export default (props) => (
         box-sizing: border-box;
       }
       /* todo find a better way to break this out */
-      .skills a {
+      .skills h3 {
         padding-top: 25%;
         font-size: 20vw;
         opacity: .9;
@@ -55,7 +56,7 @@ export default (props) => (
           0 0 1vw ${theme.colors.hazy},
           0 0 1vw ${theme.colors.hazy};
       }
-      .skills a:hover {
+      .skills a:hover h3{
         opacity: 1;
         color: #fff !important;
       }
@@ -75,13 +76,17 @@ export default (props) => (
         /* Bump down font size considerably because panel are displayed
          * in multiple columns at large screen sizes.
          */
-        .skills a {
+        .skills h3 {
           font-size: 5vw;
         }
       }
     `}</style>
-    <Link href={props.link}><a><h3>{props.title}</h3></a></Link>
-    <Img id={props.img} />
-    <p>{props.description}</p>
+    <Link href={props.link}>
+      <a>
+        {props.title && props.description && <h3>{props.title}</h3>}
+        <Img id={props.imgId} />
+        <p>{props.description || props.title}</p>
+      </a>
+    </Link>
   </div>
 )

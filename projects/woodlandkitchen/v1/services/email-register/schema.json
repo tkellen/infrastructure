@@ -2,22 +2,22 @@
   "type": "object",
   "id": "email-register",
   "required": [
-    "first_name",
-    "email_address",
-    "list_id"
+    "firstName",
+    "emailAddress",
+    "listId"
   ],
   "properties": {
-    "first_name": {
+    "firstName": {
       "type": "string"
     },
-    "email_address": {
+    "emailAddress": {
       "type": "string",
       "format": "email"
     },
-    "list_id": {
+    "listId": {
       "type": "string"
     },
-    "group_id": {
+    "groupId": {
       "type": "string"
     }
   }

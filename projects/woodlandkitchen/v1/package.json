@@ -4,10 +4,12 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "next start",
-    "test": "standard --fix | snazzy && ava --verbose services/**/test-*.js"
+    "lint": "standard --fix | snazzy",
+    "test": "npm run lint && ava --verbose services/**/test-*.js"
   },
   "dependencies": {
     "ajv": "^5.2.2",
+    "axios": "^0.16.2",
     "dotenv": "^4.0.0",
     "fontfaceobserver": "^2.0.13",
     "mailchimp-api-v3": "^1.7.0",

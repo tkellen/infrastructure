@@ -12,7 +12,6 @@ export default {
     action: '#2d5a22',
     actionHighlight: '#336627',
     background: '#000',
-    navBackground: '#212121',
     text: '#ddd',
     border: '#000',
     gray: '#666',

@@ -1,12 +1,10 @@
-import Layout from '../layouts/main'
-import Header from '../components/header'
+import Layout from '../layouts/with-nav'
+import Logo from '../components/logo'
+import Nav from '../components/nav'
 import Lead from '../components/lead'
-import Footer from '../components/footer'
 
 export default () => (
   <Layout title='Workshops'>
-    <Header />
     <Lead tagline='Workshops' subheading='Content...' />
-    <Footer />
   </Layout>
 )

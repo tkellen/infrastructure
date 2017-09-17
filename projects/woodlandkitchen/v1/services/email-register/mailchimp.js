@@ -15,7 +15,7 @@ function client () {
 
 function status (payload) {
   return client().get(
-    `/lists/${payload.list_id}/members/${md5(payload.email_address)}`
+    `/lists/${payload.listId}/members/${md5(payload.emailAddress)}`
   )
 }
 
@@ -62,20 +62,20 @@ async function subscribe (payload) {
 
   // Prep the payload we are going to use for creating/updating our user
   const body = {
-    email_address: payload.email_address,
+    email_address: payload.emailAddress,
     status: state,
     merge_fields: {
-      FNAME: payload.first_name
+      FNAME: payload.firstName
     },
     // We use hidden groups to classify how people signed up. This ensures
     // that our signup call will flag the user as being in any group that
     // we havs specified.
-    interests: payload.group_id ? { [payload.group_id]: true } : {}
+    interests: payload.groupId ? { [payload.groupId]: true } : {}
   }
   // Create or update the user!
   try {
     member = await client()[method]({
-      path: `/lists/${payload.list_id}/members/${md5(payload.email_address)}`,
+      path: `/lists/${payload.listId}/members/${md5(payload.emailAddress)}`,
       body: body
     })
   } catch (e) {
@@ -93,10 +93,10 @@ async function subscribe (payload) {
   return {
     error,
     message,
-    first_name: member.first_name || payload.first_name,
-    email_address: member.email_address || payload.email_address,
-    list_id: member.list_id,
-    group_ids: member.interests
+    firstName: member.first_name || payload.firstName,
+    emailAddress: member.email_address || payload.emailAddress,
+    listId: member.list_id,
+    groupIds: member.interests
   }
 }
 

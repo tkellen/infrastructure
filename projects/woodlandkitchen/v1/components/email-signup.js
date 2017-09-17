@@ -1,12 +1,91 @@
-import Lead from './lead'
+import request from 'axios'
+import { Component } from 'react'
 
-// todo, make this actually work!
-export default () => (
-  <Lead type='signup' tagline='Get signed up.' subheading="Don't miss a thing!">
-    <form action='//goingslowly.us6.list-manage.com/subscribe/post?u=97094f70bf583862c9bd412fa&amp;id=ba733fba79' method='post' target='_blank' noValidate>
-      <input type='email' value='' name='EMAIL' placeholder='Email' required /><br />
-      <div className='hidden' aria-hidden='true'><input type='text' name='b_97094f70bf583862c9bd412fa_ba733fba79' tabIndex='-1' value='' /></div>
-      <input type='submit' className='action-button' value='Take me to the woods!' name='subscribe' />
-    </form>
-  </Lead>
-)
+import theme from '../theme'
+
+export default class extends Component {
+  constructor (props) {
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.router = this.props.router
+    this.state = {
+      formData: {
+        listId: props.listId,
+        groupId: props.groupId
+      }
+    }
+  }
+
+  handleInputChange (event) {
+    const { name, value } = event.target
+    const { formData } = this.state
+    formData[name] = value
+    this.setState({errors:null})
+    this.setState(formData)
+  }
+
+  async handleSubmit (event) {
+    event.preventDefault()
+    const { formData } = this.state
+    const { endpoint, router, baseUrl, errorUrl } = this.props
+    try {
+      const response = await request.post(endpoint, formData)
+      const { message } = response.data
+      router.push({
+        pathname: `${baseUrl}/${message}`
+      })
+    } catch (err) {
+      // get the details of the response if we threw due to a bad xhr request
+      const { response } = err;
+      // if we have no response, or the status code isn't 400, just bail
+      if (!response || !response.data || response.status !== 400) {
+        return router.push({
+          pathname: errorUrl
+        })
+      }
+      // get the messages that indicate what was wrong with the request
+      const { messages } = response.data
+      // show the errors
+      this.setState({errors:response.data.message})
+    }
+  }
+
+  render () {
+    const { errors } = this.state
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div className="errors">
+          {errors && JSON.stringify(errors)}
+        </div>
+        <style jsx>{`
+          input {
+            font-family: "${theme.fonts.sansSerif}";
+            font-size: 4vw;
+            border: 0;
+            background-color: #fff;
+          }
+        `}</style>
+        <input
+          type='text'
+          name='firstName'
+          placeholder='First Name'
+          onChange={this.handleInputChange}
+          required
+        />
+        <br />
+        <input
+          type='email'
+          name='emailAddress'
+          placeholder='Email'
+          onChange={this.handleInputChange}
+          required
+        />
+        <br />
+        We'll keep your email secret and safe.
+        <br />
+        <input type='submit' value='action word to take a next step' />
+      </form>
+    )
+  }
+}
