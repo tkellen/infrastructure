@@ -12,7 +12,5 @@
 
 ## Setup
 1. Run `vagrant up`
-2. Run `make [dist]/provision`
-3. Run `make [dist]/deploy`
-4. Place database dump in `src/[dist].sql`
-5. Run `make [dist]/restore-db`
+2. Place database dump in `src/[dist].sql`
+3. Run `make [dist]/init`
