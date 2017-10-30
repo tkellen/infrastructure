@@ -1,0 +1,26 @@
+{
+  "name": "image-pipe",
+  "description": "push and resize images to storage",
+  "private": true,
+  "license": "MIT",
+  "repository": "git@github.com:tkellen/aevitas.git",
+  "scripts": {
+    "start": "micro",
+    "dev": "micro-dev",
+    "test": "standard --fix | snazzy && ava --verbose"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.108.0",
+    "hyperquest": "^2.1.2",
+    "micro": "^8.0.4"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "micro-dev": "^1.2.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3",
+    "test-listen": "^1.0.2"
+  }
+}
