@@ -13,6 +13,17 @@ resource "aws_route53_record" "cname-cdn" {
   records = ["${aws_cloudfront_distribution.cdn.domain_name}"]
 }
 
+resource "aws_route53_record" "a-log" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "A"
+  name = "log"
+  alias {
+    name = "${aws_s3_bucket.log.website_domain}"
+    zone_id = "${aws_s3_bucket.log.hosted_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "mx" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "MX"
