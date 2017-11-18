@@ -19,5 +19,3 @@ alias dsnuke="find . -name '*.DS_Store' -type f -ls -delete"
 alias pkey="pbcopy < ~/.ssh/id_rsa.pub"
 
 alias a="atom"
-
-alias k="kubectl"
