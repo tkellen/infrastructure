@@ -10,7 +10,6 @@
     "jquery": "~2.0.0",
     "cjs": "latest",
     "jquery-waypoints": "imakewebthings/jquery-waypoints#~2.0.3",
-    "jquery.scrollTo": "~1.4.6",
     "jquery-placeholder": "~2.0.7",
     "jquery-form": "~3.46.0",
     "jquery-numeric": "byllc/jquery-numeric",

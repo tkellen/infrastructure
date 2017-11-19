@@ -3,7 +3,6 @@ define (require) ->
   $ = jQuery = require('jquery')
   queryString = require('query_string')
   require('waypoints_sticky')
-  require('scrollto')
   require('placeholder')
   require('forms')
   require('modernizr')
@@ -41,12 +40,6 @@ define (require) ->
 
     # make navbar stick to top of page after scroll
     $('nav').waypoint('sticky');
-
-    # make anchor links scroll nicely
-    $('a.scroll').click (e) ->
-      href = this.href.split('#')[1];
-      $.scrollTo('#'+href,{duration:200});
-      e.preventDefault()
 
      # ajaxify contact form
     $('#contact form').submit ->
