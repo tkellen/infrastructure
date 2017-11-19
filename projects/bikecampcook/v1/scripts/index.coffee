@@ -75,7 +75,7 @@ define (require) ->
     # add google map
     script = document.createElement('script')
     script.type = 'text/javascript'
-    script.src = 'https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCuIy2sg0FV6hWvjXor7TEY1B0iJFqmKPc&sensor=true&callback=mapLoaded'
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA8vEftZJN3dDb77eDDsQSQouIUxVuymvs&sensor=true&callback=mapLoaded'
     document.body.appendChild(script)
 
     window.mapLoaded = ->
