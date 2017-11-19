@@ -1,7 +1,6 @@
 **.terraform**
 **.backup
 **.plan
-**/assets
 **.vagrant
 **.retry
 projects/dms/src/**
