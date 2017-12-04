@@ -55,3 +55,10 @@ resource "aws_route53_record" "txt-mailchimp-spf" {
   ttl = "1"
   records = ["v=spf1 include:servers.mcsv.net ?all"]
 }
+
+resource "aws_s3_bucket" "log" {
+  bucket = "log.${var.domain}"
+  website {
+    redirect_all_requests_to = "https://github.com/tkellen/yakb"
+  }
+}
