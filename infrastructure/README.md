@@ -1,5 +1,5 @@
 # infrastructure
-> my infrastructure, as code
+> infrastructure configuration and legacy source code
 
 ## Bootstrapping
 1. Install [AWSCLI], [Terraform] & [Make].

@@ -1,5 +1,4 @@
-PROJECTS_DIR = terraform/projects
-PROJECTS = $(notdir $(wildcard $(PROJECTS_DIR)/*))
+PROJECTS = $(filter-out Makefile README.md,$(notdir $(wildcard *)))
 PROJECT_FROM_TARGET = $(firstword $(subst /, ,$1))
 
 .PHONY: init plan apply cowboy %/init %/plan %/apply %/cowboy %/ssh-status %/ssh-toggle
@@ -10,16 +9,17 @@ apply: $(addsuffix /apply, $(PROJECTS))
 %/init %/plan %/apply %/cowboy: project = $(call PROJECT_FROM_TARGET, $@)
 
 %/init:
-	cd $(PROJECTS_DIR)/$(project) && terraform init
+	rm -rf $(project)/terraform/.terraform
+	cd $(project)/terraform && terraform init
 
 %/plan:
-	cd $(PROJECTS_DIR)/$(project) && terraform plan -out $(project).plan
+	cd $(project)/terraform && terraform plan -out $(project).plan
 
 %/apply:
-	cd $(PROJECTS_DIR)/$(project) && terraform apply $(project).plan
+	cd $(project)/terraform && terraform apply $(project).plan
 
 %/cowboy:
-	cd $(PROJECTS_DIR)/$(project) && terraform apply
+	cd $(project)/terraform && terraform apply
 
 ##
 # This section provides support for managing SSH access.
@@ -48,8 +48,8 @@ SSH_STATE = $(if $(findstring $(call SSH_CHECK,$1,$2),$1),'true',)
 SSH_TOGGLE = $(if $1,$(call SSH_DISABLE,$2,$3),$(call SSH_ENABLE,$2,$3))
 
 %/ssh-status %/ssh-toggle: project = $(call PROJECT_FROM_TARGET, $@)
-%/ssh-status %/ssh-toggle: sg_id = $(shell cd $(PROJECTS_DIR)/$(project) && terraform output security_group_id 2> /dev/null)
-%/ssh-status %/ssh-toggle: profile = $(shell cd $(PROJECTS_DIR)/$(project) && terraform output profile)
+%/ssh-status %/ssh-toggle: sg_id = $(shell cd $(project)/terraform && terraform output security_group_id 2> /dev/null)
+%/ssh-status %/ssh-toggle: profile = $(shell cd $(project)/terraform && terraform output profile)
 %/ssh-status %/ssh-toggle: ssh_is_enabled = $(call SSH_STATE,$(sg_id),$(profile))
 %/ssh-status %/ssh-toggle: next_project = $(if $(sg_id),$(if $(ssh_is_enabled),'revoke','authorize'),)
 %/ssh-status:

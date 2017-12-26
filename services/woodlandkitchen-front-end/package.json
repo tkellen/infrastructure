@@ -1,0 +1,23 @@
+{
+  "name": "woodlandkitchen",
+  "scripts": {
+    "dev": "cd src && node server.js",
+    "build": "cd src && next build",
+    "start": "cd src && next start",
+    "test": "standard --fix src | snazzy src"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "fontfaceobserver": "^2.0.13",
+    "micro": "^9.0.0",
+    "micro-route": "^2.4.0",
+    "next": "^3.2.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-ga": "^2.2.0"
+  },
+  "devDependencies": {
+    "snazzy": "^7.0.0",
+    "standard": "^10.0.3"
+  }
+}
