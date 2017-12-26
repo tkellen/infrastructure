@@ -1,12 +1,14 @@
 {
   "name": "woodlandkitchen",
   "scripts": {
+    "lint": "standard --fix | snazzy",
+    "test": "npm run lint",
     "dev": "cd src && node server.js",
     "build": "cd src && next build",
-    "start": "cd src && next start",
-    "test": "standard --fix src | snazzy src"
+    "start": "cd src && next start"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "fontfaceobserver": "^2.0.13",
     "micro": "^9.0.0",

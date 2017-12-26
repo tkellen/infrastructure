@@ -3,9 +3,5 @@
 **.plan
 **.vagrant
 **.retry
-infrastructure/dms/legacy/src/**
-node_modules
-.env
-.next
 tmp
 .DS_Store

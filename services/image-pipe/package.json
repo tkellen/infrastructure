@@ -1,13 +1,8 @@
 {
   "name": "image-pipe",
-  "description": "push and resize images to storage",
-  "private": true,
-  "license": "MIT",
-  "repository": "git@github.com:tkellen/aevitas.git",
   "scripts": {
-    "start": "micro",
-    "dev": "micro-dev",
-    "test": "standard --fix | snazzy && ava --verbose"
+    "lint": "standard --fix | snazzy",
+    "test": "npm run lint && ava --verbose src/test-*.js"
   },
   "dependencies": {
     "aws-sdk": "^2.108.0",

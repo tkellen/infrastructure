@@ -1,3 +1,4 @@
+const config = require('../config')
 const express = require('express')
 const next = require('next')
 
@@ -11,9 +12,9 @@ app.prepare().then(() => {
   server.get('*', (req, res) => {
     return handle(req, res)
   })
-  server.listen(3000, '0.0.0.0', (err) => {
+  server.listen(config.port, '0.0.0.0', (err) => {
     if (err) throw err
-    console.log('> Ready on http://0.0.0.0:3000')
+    console.log(`> Ready on http://0.0.0.0:${config.port}`)
   })
 }).catch((ex) => {
   console.error(ex.stack)
