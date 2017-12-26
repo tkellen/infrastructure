@@ -1,7 +1,1 @@
-**.terraform**
-**.backup
-**.plan
-**.vagrant
-**.retry
-tmp
 .DS_Store
