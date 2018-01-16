@@ -31,7 +31,7 @@ terraform {
   backend "s3" {
     profile = "aevitas"
     region = "us-east-1"
-    bucket = "tfstate-store"
+    bucket = "infrastructure-state-store"
     key = "board.tfstate"
   }
 }

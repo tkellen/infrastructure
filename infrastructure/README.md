@@ -1,7 +1,7 @@
 # infrastructure
 > infrastructure configuration and legacy source code
 
-## Bootstrapping
+## Setup
 1. Install [AWSCLI], [Terraform] & [Make].
 2. Ensure `~/.aws/credentials` has an entry with administrative access keys
    matching the `profile` for the project. The profile name can be found in
