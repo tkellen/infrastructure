@@ -1,0 +1,2 @@
+# ignore .srl files created by openssl during cluster bootstrapping
+.srl

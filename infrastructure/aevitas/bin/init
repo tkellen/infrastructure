@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Configure environment to manage this infrastructure.
+set -euo pipefail
+
+here="$(cd "$(dirname "$0")"; pwd -P)"
+
+main() {
+  cat <<EOF
+export PATH=$PATH:$here
+export AWS_PROFILE=aevitas
+
+export KWM_CLUSTER_NAME=$(cluster name)
+export KWM_APISERVER_PUBLIC_IP=$(cluster public-ip)
+export KWM_APISERVER_PRIVATE_IP=$(cluster controlplane-private-ips | head -n 1 | sed 's/,$//')
+export KWM_POD_CIDR=10.1.0.0/16
+export KWM_SERVICE_CIDR=10.10.0.0/24
+export KWM_KUBERNETES_SERVICE_IP=10.10.0.1
+export KWM_DNS_SERVICE_IP=10.10.0.2
+export KWM_CONFIG_PATH=/etc/kubernetes
+export KWM_LOCAL_PKI_PATH=$here/../secrets/pki
+export KWM_VERSION_ETCD=3.2.14
+export KWM_VERSION_KUBERNETES=1.9.1
+export KWM_VERSION_KUBE_DNS=1.14.8
+export KWM_VERSION_CNI_PLUGIN=0.6.0
+export KWM_VERSION_CRI_CONTAINERD=1.0.0-beta.1
+export KWM_VERSION_KUBE_ROUTER=0.1.0-rc1
+EOF
+  export-hosts etcd etcd
+  export-hosts controlplane controlplane
+  export-hosts worker worker
+}
+
+cluster() {
+  cd $here/../terraform && terraform output "cluster-$1" | tr ',\n' ' '
+}
+
+key() {
+  printf $1 | md5sum | cut -c1-7
+}
+
+export-hosts() {
+  local namespace=$1
+  local role=$2
+  local hostnames=($(cluster $namespace-hostnames))
+  local privateIps=($(cluster $namespace-private-ips))
+  local sshIps=($(cluster $namespace-ssh-ips))
+  local nodeKey
+  for idx in ${!hostnames[@]}; do
+    nodeKey=$(key ${hostnames[$idx]})
+    cat <<EOF
+export KWM_ROLE_${nodeKey}="$role"
+export KWM_HOSTNAME_${nodeKey}=${hostnames[$idx]}
+export KWM_CONNECT_${nodeKey}="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ubuntu@${sshIps[$idx]}"
+export KWM_PRIVATE_IP_${nodeKey}=${privateIps[$idx]}
+EOF
+  done
+}
+
+main "$@"
