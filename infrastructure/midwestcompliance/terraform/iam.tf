@@ -1,5 +1,5 @@
 resource "aws_iam_policy" "ses" {
-  name = "ses"
+  name = "${var.name}-ses"
   path = "/${var.name}/ses/"
   policy = <<EOF
 {
@@ -89,5 +89,5 @@ resource "aws_iam_user_policy_attachment" "bucket" {
 resource "aws_iam_instance_profile" "main" {
   name = "${var.name}"
   path = "/${var.name}/"
-  roles = ["${aws_iam_role.main.name}"]
+  role = "${aws_iam_role.main.name}"
 }
