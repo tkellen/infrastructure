@@ -94,6 +94,14 @@ resource "aws_route53_record" "mx" {
   ]
 }
 
+resource "aws_route53_record" "txt-validation" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "TXT"
+  name = "midwestcompliance.com"
+  ttl = "1"
+  records = ["MS=ms72874370"]
+}
+
 ##
 # These records validate that we own midwestcompliance.com so that Amazon SES
 # will send emails as though they came from our domain. They also ensure that
