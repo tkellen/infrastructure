@@ -82,24 +82,86 @@ resource "aws_route53_record" "cname-cdn" {
   records = ["dj0liqp3podgx.cloudfront.net"]
 }
 
-resource "aws_route53_record" "mx" {
+resource "aws_route53_record" "mail" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "MX"
   name = "${var.domain}"
   ttl = "1"
   records = [
-    "0 asp.reflexion.net",
-    "100 mx-100.reflexion.net",
-    "200 mx-110.reflexion.net"
+    "0 midwestcompliance-com.mail.protection.outlook.com"
   ]
 }
 
-resource "aws_route53_record" "txt-validation" {
+resource "aws_route53_record" "mail-validation" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "TXT"
-  name = "midwestcompliance.com"
+  name = "${var.domain}"
   ttl = "1"
   records = ["MS=ms72874370"]
+}
+
+resource "aws_route53_record" "mail-autodiscover" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "autodiscover"
+  ttl = "1"
+  records = ["autodiscover.outlook.com"]
+}
+
+resource "aws_route53_record" "mail-sip" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "sip"
+  ttl = "1"
+  records = ["sipdir.online.lync.com"]
+}
+
+resource "aws_route53_record" "mail-lyncdiscover" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "lyncdiscover"
+  ttl = "1"
+  records = ["webdir.online.lync.com"]
+}
+
+resource "aws_route53_record" "mail-enterpriseregistration" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "enterpriseregistration"
+  ttl = "1"
+  records = ["enterpriseregistration.windows.net"]
+}
+
+resource "aws_route53_record" "mail-enterpriseenrollment" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "CNAME"
+  name = "enterpriseenrollment"
+  ttl = "1"
+  records = ["enterpriseenrollment.manage.microsoft.com"]
+}
+
+resource "aws_route53_record" "mail-spf" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "TXT"
+  name = "${var.domain}"
+  ttl = "1"
+  records = ["v=spf1 include:spf.protection.outlook.com -all"]
+}
+
+resource "aws_route53_record" "mail-sip-tls" {
+  zone_id = "${aws_route53_zone.main.id}"
+  name = "_sip._tls"
+  type = "SRV"
+  ttl = "1"
+  records = [ "100 1 443 sipdir.online.lync.com" ]
+}
+
+resource "aws_route53_record" "mail-sip-federation-tcp" {
+  zone_id = "${aws_route53_zone.main.id}"
+  name = "_sipfederationtls._tcp"
+  type = "SRV"
+  ttl = "1"
+  records = [ "100 1 5061 sipfed.online.lync.com" ]
 }
 
 ##
@@ -108,7 +170,7 @@ resource "aws_route53_record" "txt-validation" {
 # DKIM is configured properly so that the emails sent will not wind up in spam
 # folders for the recipients.
 #
-resource "aws_route53_record" "ses-validate-1" {
+resource "aws_route53_record" "mail-ses-validate-1" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "TXT"
   name = "_amazonses"
@@ -116,7 +178,7 @@ resource "aws_route53_record" "ses-validate-1" {
   records = ["pU89IWu8L6Tbct/xj0gSPALcPzIypa8E1105/xlM0Mw="]
 }
 
-resource "aws_route53_record" "ses-validate-2" {
+resource "aws_route53_record" "mail-ses-validate-2" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "CNAME"
   name = "meradfrx2cnxqawgusteuhmacrhtdrat._domainkey"
@@ -124,7 +186,7 @@ resource "aws_route53_record" "ses-validate-2" {
   records = ["meradfrx2cnxqawgusteuhmacrhtdrat.dkim.amazonses.com"]
 }
 
-resource "aws_route53_record" "ses-validate-3" {
+resource "aws_route53_record" "mail-ses-validate-3" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "CNAME"
   name = "fejsminveyu7wvqdbkpitihg3hn4mhz2._domainkey"
@@ -132,13 +194,10 @@ resource "aws_route53_record" "ses-validate-3" {
   records = ["fejsminveyu7wvqdbkpitihg3hn4mhz2.dkim.amazonses.com"]
 }
 
-resource "aws_route53_record" "ses-validate-4" {
+resource "aws_route53_record" "mail-ses-validate-4" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "CNAME"
   name = "5qpxqizafufc5zjohdi4vc7rz3q2fbx6._domainkey"
   ttl = "1"
   records = ["5qpxqizafufc5zjohdi4vc7rz3q2fbx6.dkim.amazonses.com"]
 }
-
-# TODO
-# add cdn.midwestcompliance.com
