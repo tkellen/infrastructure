@@ -5,30 +5,6 @@ resource "aws_route53_zone" "main" {
   }
 }
 
-resource "aws_route53_record" "a-db" {
-  zone_id = "${aws_route53_zone.main.id}"
-  type = "A"
-  name = "db"
-  ttl = "1"
-  records = ["${aws_instance.db.public_ip}"]
-}
-
-resource "aws_route53_record" "apex" {
-  zone_id = "${aws_route53_zone.main.id}"
-  type = "A"
-  name = "${var.domain}"
-  ttl = "1"
-  records = ["${aws_instance.www.public_ip}"]
-}
-
-resource "aws_route53_record" "cname-www" {
-  zone_id = "${aws_route53_zone.main.id}"
-  type = "CNAME"
-  name = "www"
-  ttl = "1"
-  records = ["${var.domain}"]
-}
-
 resource "aws_route53_record" "cname-shop" {
   zone_id = "${aws_route53_zone.main.id}"
   type = "CNAME"
