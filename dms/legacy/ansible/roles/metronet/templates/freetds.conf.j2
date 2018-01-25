@@ -1,7 +1,0 @@
-{% for connection in dist.freetds %}
-[{{connection}}]
-{% for key in dist.freetds[connection] %}
-{{key}} = {{dist.freetds[connection][key]}}
-{% endfor %}
-
-{% endfor %}

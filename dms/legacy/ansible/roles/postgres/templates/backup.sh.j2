@@ -1,4 +1,0 @@
-#!/bin/bash
-
-{% for param in dist.env %}{{param}}={{dist.env[param]}} {% endfor %}pg_dump -Fc -O {{dist.env.PGNAME}} | aws s3 cp - s3://{{dist.backup_bucket}}/db/current
-aws s3 cp s3://{{dist.backup_bucket}}/db/current s3://{{dist.backup_bucket}}/db/$(date +'%Y%m%d%H%M%S')
