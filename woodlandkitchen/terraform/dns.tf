@@ -5,12 +5,41 @@ resource "aws_route53_zone" "main" {
   }
 }
 
-resource "aws_route53_record" "cname-shop" {
+resource "aws_s3_bucket" "redirect-apex" {
+  bucket = "${var.domain}"
+  website {
+    redirect_all_requests_to = "www.bikecampcook.com"
+  }
+}
+
+
+resource "aws_s3_bucket" "redirect-www" {
+  bucket = "www.${var.domain}"
+  website {
+    redirect_all_requests_to = "www.bikecampcook.com"
+  }
+}
+
+resource "aws_route53_record" "a" {
   zone_id = "${aws_route53_zone.main.id}"
-  type = "CNAME"
-  name = "shop"
-  ttl = "1"
-  records = ["shops.myshopify.com"]
+  type = "A"
+  name = "${var.domain}"
+  alias {
+    name = "${aws_s3_bucket.redirect-apex.website_domain}"
+    zone_id = "${aws_s3_bucket.redirect-apex.hosted_zone_id}"
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www" {
+  zone_id = "${aws_route53_zone.main.id}"
+  type = "A"
+  name = "www.${var.domain}"
+  alias {
+    name = "${aws_s3_bucket.redirect-www.website_domain}"
+    zone_id = "${aws_s3_bucket.redirect-www.hosted_zone_id}"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "mx" {
