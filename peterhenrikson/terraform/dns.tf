@@ -64,12 +64,10 @@ resource "aws_route53_record" "mx" {
   name = "${var.domain}"
   ttl = "1"
   records = [
+    "1 aspmx.l.google.com.",
+    "10 alt3.aspmx.l.google.com",
+    "10 alt4.aspmx.l.google.com",
     "20 alt1.aspmx.l.google.com.",
-    "20 alt2.aspmx.l.google.com.",
-    "30 aspmx2.googlemail.com.",
-    "30 aspmx3.googlemail.com.",
-    "30 aspmx4.googlemail.com.",
-    "30 aspmx5.googlemail.com.",
-    "10 aspmx.l.google.com."
+    "20 alt2.aspmx.l.google.com."
   ]
 }

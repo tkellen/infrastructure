@@ -1,28 +1,28 @@
 resource "aws_route53_zone" "main" {
-  name = "${var.domain}"
+  name = var.domain
   lifecycle {
     prevent_destroy = true
   }
 }
 
 resource "aws_route53_record" "a" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "A"
-  name = "${var.domain}"
+  name = var.domain
   ttl = "1"
-  records = ["${var.public_ip}"]
+  records = [var.public_ip]
 }
 
 resource "aws_route53_record" "a-star" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "A"
   name = "*"
   ttl = "1"
-  records = ["${var.public_ip}"]
+  records = [var.public_ip]
 }
 
 resource "aws_route53_record" "cname-cdn" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "CNAME"
   name = "cdn"
   ttl = "1"
@@ -30,7 +30,7 @@ resource "aws_route53_record" "cname-cdn" {
 }
 
 resource "aws_route53_record" "cname-img0" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "CNAME"
   name = "img0"
   ttl = "1"
@@ -38,7 +38,7 @@ resource "aws_route53_record" "cname-img0" {
 }
 
 resource "aws_route53_record" "cname-img1" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "CNAME"
   name = "img1"
   ttl = "1"
@@ -46,7 +46,7 @@ resource "aws_route53_record" "cname-img1" {
 }
 
 resource "aws_route53_record" "cname-s3" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "CNAME"
   name = "s3"
   ttl = "1"
@@ -54,9 +54,9 @@ resource "aws_route53_record" "cname-s3" {
 }
 
 resource "aws_route53_record" "mx" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "MX"
-  name = "${var.domain}"
+  name = var.domain
   ttl = "1"
   records = [
     "20 alt1.aspmx.l.google.com.",
@@ -70,15 +70,15 @@ resource "aws_route53_record" "mx" {
 }
 
 resource "aws_route53_record" "txt-mailgun-spf" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "TXT"
-  name = "${var.domain}"
+  name = var.domain
   ttl = "1"
   records = ["v=spf1 include:mailgun.org ~all"]
 }
 
 resource "aws_route53_record" "txt-domainkey" {
-  zone_id = "${aws_route53_zone.main.id}"
+  zone_id = aws_route53_zone.main.id
   type = "TXT"
   name = "mailo._domainkey"
   ttl = "1"
@@ -90,27 +90,27 @@ resource "aws_route53_record" "txt-domainkey" {
 # e.g. alias.com and www.alias.com will go to canonical.
 #
 resource "aws_route53_zone" "aliases" {
-  count = "${length(var.alias_domains)}"
-  name = "${element(var.alias_domains, count.index)}"
+  count = length(var.alias_domains)
+  name = element(var.alias_domains, count.index)
   lifecycle {
     prevent_destroy = true
   }
 }
 
 resource "aws_route53_record" "aliases-apex" {
-  count = "${length(var.alias_domains)}"
-  zone_id = "${element(aws_route53_zone.aliases.*.id, count.index)}"
+  count = length(var.alias_domains)
+  zone_id = element(aws_route53_zone.aliases.*.id, count.index)
   type = "A"
-  name = "${element(var.alias_domains, count.index)}"
+  name = element(var.alias_domains, count.index)
   ttl = "1"
-  records = ["${var.public_ip}"]
+  records = [var.public_ip]
 }
 
 resource "aws_route53_record" "aliases-www" {
-  count = "${length(var.alias_domains)}"
-  zone_id = "${element(aws_route53_zone.aliases.*.id, count.index)}"
+  count = length(var.alias_domains)
+  zone_id = element(aws_route53_zone.aliases.*.id, count.index)
   type = "A"
   name = "www"
   ttl = "1"
-  records = ["${var.public_ip}"]
+  records = [var.public_ip]
 }

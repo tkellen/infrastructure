@@ -1,2 +1,0 @@
-e() { emacsclient $@  & }
-vi() { emacsclient $@  & }

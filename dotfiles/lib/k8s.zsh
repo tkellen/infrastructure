@@ -1,7 +1,0 @@
-alias k="kubectl"
-alias ka="k apply -f"
-alias kg="k get"
-alias kd="k describe"
-alias kl="k logs"
-alias ke="k exec"
-alias ks="kubectl --namespace=kube-system"

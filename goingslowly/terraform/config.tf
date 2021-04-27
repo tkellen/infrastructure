@@ -18,11 +18,11 @@ variable "alias_domains" {
 
 # still hosted on linode
 variable "public_ip" {
-  default = "198.58.97.98"
+  default = "45.33.68.150"
 }
 
 provider "aws" {
-  profile = "${var.profile}"
+  profile = var.profile
   region = "us-east-1"
 }
 

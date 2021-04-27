@@ -1,1 +1,0 @@
-source ~/.dotfiles/init.zsh
